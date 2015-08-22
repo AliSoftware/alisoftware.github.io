@@ -4,8 +4,16 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+My name is Olivier Halligon.
 
-You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
+I'm an iOS Lead Developer and Architect for more than 10 years now, and my skills include:
 
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+* Software Architecture (MVC, MVVM, Database models, Patterns, …)
+* iOS Development, both in Objective-C and Swift
+* Team Leading and Teaching (CocoaHeads and internal talks)
+
+I'm also doing my share of OpenSource work, which include:
+
+* CocoaPods (I'm one of the Core Contributors)
+* OHHTTPStubs (author)
+* SwiftGen (author)
