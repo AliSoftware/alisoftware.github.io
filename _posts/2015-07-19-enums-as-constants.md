@@ -3,20 +3,20 @@ layout: post
 title: Enums as constants
 excerpt: Use enums as constants for your images, colors, storyboards, and more… and make your code beautify (and error-free)
 categories: swift enum
-excerpt_separator: <!--more-->
 ---
 
 Swift enums are way more powerful than C/ObjC enums. For example, they are not limited to be mapped to Ints like in C but can also be e.g. Strings. And they also can contain methods inside them, quite like classes and struct.
 
 That new feature opens a broad new usage for them, especially using them as specialized constants that produce types which were not possible to use as constants before. Let's see some interesting use for that.
 
-&gt; TL;DR: [here is a nice tool to generate enums for all your constants](https://github.com/AliSoftware/SwiftGen#uicolor), provided with a Playground to see the below examples in action.
+
+> TL;DR: <a href="https://github.com/AliSoftware/SwiftGen">here is a nice tool to generate enums for all your constants</a>, provided with a Playground to see the below examples in action.
 
 <!--more-->
 
 ## Enums for your Image Assets
 
-When you use the images of your Assets Catalog, you&rsquo;re generally writing stuff like `UIImage(named: "FooBar")` to get the image of that name. The problem with that is that you need to remember exactly the name you gave to the image asset (did you name it `"foobar"`, `"FooBar"`, `"foo_bar"` or `"foo-bar"` in your assets catalog?), you are prone to typos, and you don't have any kind of autocompletion.
+When you use the images of your Assets Catalog, you're generally writing stuff like `UIImage(named: "FooBar")` to get the image of that name. The problem with that is that you need to remember exactly the name you gave to the image asset (did you name it `"foobar"`, `"FooBar"`, `"foo_bar"` or `"foo-bar"` in your assets catalog?), you are prone to typos, and you don't have any kind of autocompletion.
 
 Or course, you could declare a `let FooBarImageName = "FooBar"` constant somewhere in your code to avoid those problems, but having constants in the global space is not really cool as they are mixed with every other stuff, and are not clearly grouped with other constants representing image names. You could also group them in a static `struct` in the global namespace, but that's still not very elegant.
 
@@ -85,10 +85,10 @@ We will simply need an initializer that use that `UInt32`, do some bitmask arith
     extension UIColor {
       convenience init(named name: Name) {
         let rgbaValue = name.rawValue
-        let red   = CGFloat((rgbaValue &gt;&gt; 24) &amp; 0xff) / 255.0
-        let green = CGFloat((rgbaValue &gt;&gt; 16) &amp; 0xff) / 255.0
-        let blue  = CGFloat((rgbaValue &gt;&gt;  8) &amp; 0xff) / 255.0
-        let alpha = CGFloat((rgbaValue      ) &amp; 0xff) / 255.0
+        let red   = CGFloat((rgbaValue >> 24) & 0xff) / 255.0
+        let green = CGFloat((rgbaValue >> 16) & 0xff) / 255.0
+        let blue  = CGFloat((rgbaValue >>  8) & 0xff) / 255.0
+        let alpha = CGFloat((rgbaValue      ) & 0xff) / 255.0
         
         self.init(red: red, green: green, blue: blue, alpha: alpha)
       }
@@ -101,7 +101,7 @@ That looks pretty handy!
 
 ## Use `enum` constants everywhere!
 
-There are plenty of other types for which `enum` as constants can be applied. Let's look at two more example of what your code could look once you've implemented them for Strings and Storyboards _(implementation for those `enum`s are left as an exercice to the reader&hellip; or you can go check my Xcode Playground linked below)_.
+There are plenty of other types for which `enum` as constants can be applied. Let's look at two more example of what your code could look once you've implemented them for Strings and Storyboards _(implementation for those `enum`s are left as an exercice to the reader… or you can go check my Xcode Playground linked below)_.
 
 ### Localizable.strings
 
@@ -141,7 +141,7 @@ These tools can automatically generate the code to create `enums` and the `conve
 
 You can use those tool to generate the code for your `enum`s and create the appropriate `.swift` files, add those generated files in your Xcode project, and re-run the tools every time it's needed when you added an Asset or Storyboard Scene.
 
-These tools are written in Swift 2, and once compiled (using the provided `Rakefile`) into binary executables, are really fast to execute &mdash; even when they are parsing a big `Localizable.strings` file or a whole directory to search for `.imageset` asset files &mdash; so it shouldn't even be a problem to make them execute as part of an _"Script Build Phase"_ early in your build, to ensure that the code is always up-to-date each time you build your code.
+These tools are written in Swift 2, and once compiled (using the provided `Rakefile`) into binary executables, are really fast to execute — even when they are parsing a big `Localizable.strings` file or a whole directory to search for `.imageset` asset files — so it shouldn't even be a problem to make them execute as part of an _"Script Build Phase"_ early in your build, to ensure that the code is always up-to-date each time you build your code.
 
 ## Playground
 

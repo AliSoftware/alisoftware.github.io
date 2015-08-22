@@ -14,6 +14,6 @@ I'm an iOS Lead Developer and Architect for more than 10 years now, and my skill
 
 I'm also doing my share of OpenSource work, which include:
 
-* CocoaPods (I'm one of the Core Contributors)
-* OHHTTPStubs (author)
-* SwiftGen (author)
+* [CocoaPods](https://cocoapods.org/about) (part of the Core Team)
+* [OHHTTPStubs](https://github.com/AliSoftware/OHHTTPStubs) (author)
+* [SwiftGen](https://github.com/AliSoftware/SwiftGen) (author)

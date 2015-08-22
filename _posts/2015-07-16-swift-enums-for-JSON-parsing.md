@@ -5,16 +5,16 @@ excerpt: When your JSON contains string fields that can only contain a limited s
 categories: swift enum json
 ---
 
-I discovered Swift since some time now, and even if I haven&rsquo;t really used it in a production app yet, I really love playing around with it.
+I discovered Swift since some time now, and even if I haven't really used it in a production app yet, I really love playing around with it.
 
-There is plenty of stuff to love about Swift, so in the upcoming articles I&rsquo;ll probably talk about a lot of them. But for now, let start with enums
+There is plenty of stuff to love about Swift, so in the upcoming articles I'll probably talk about a lot of them. But for now, let start with enums
 
 
 ## Enums for parsing JSON
 
-One of the nice feature of enums is their ability to have a String raw type. This makes easy to &ldquo;convert&rdquo; from an enum to its String representation and vice-versa. This feature is particularly useful when parsing a JSON that comes from a WebService.
+One of the nice feature of enums is their ability to have a String raw type. This makes easy to "convert" from an enum to its String representation and vice-versa. This feature is particularly useful when parsing a JSON that comes from a WebService.
 
-Let&rsquo;s imagine your WebService returns a JSON in which some fields can only contain a finite number of possible values. Like:
+Let's imagine your WebService returns a JSON in which some fields can only contain a finite number of possible values. Like:
 
 
     [

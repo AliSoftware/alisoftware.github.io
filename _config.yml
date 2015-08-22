@@ -32,20 +32,22 @@ flattr_button:
 
 # Post sharing icons
 show_sharing_icons: true
-share_text: 'Share this post!'
+share_text: 'Share this post:'
 # Change to 'true' to enable individual icons
-share_facebook: false
+share_facebook: true
 share_twitter: true
-share_googleplus: false
+share_googleplus: true
 share_linkedin: false
 share_digg: false
-share_tumblr: false
+share_tumblr: true
 share_reddit: false
 share_stumbleupon: false
 share_hackernews: false
 
 # Build settings
 markdown:     kramdown
+kramdown:
+  input: GFM
 redcarpet:
   extensions: ['smart', 'tables', 'with_toc_data']
 permalink:    pretty
