@@ -1,0 +1,8 @@
+# Site settings
+title: Crunchy Development
+email: olivier@halligon.net
+description: Reflexions on how to make your Swift code more nice, fun and crunchy.
+twitter_username: aligatr
+
+# Build settings
+markdown: kramdown
