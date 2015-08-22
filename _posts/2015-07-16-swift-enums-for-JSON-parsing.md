@@ -16,32 +16,35 @@ One of the nice feature of enums is their ability to have a String raw type. Thi
 
 Let's imagine your WebService returns a JSON in which some fields can only contain a finite number of possible values. Like:
 
-
-    [
-        {
-            "name": "Alice",
-            "role": "Developer"
-        },
-        {
-            "name": "Bob",
-            "role": "Manager"
-        },
-        {
-            "name": "Clark",
-            "role": "Architect"
-        }
-    ]
+```json
+[
+    {
+        "name": "Alice",
+        "role": "Developer"
+    },
+    {
+        "name": "Bob",
+        "role": "Manager"
+    },
+    {
+        "name": "Clark",
+        "role": "Architect"
+    }
+]
+```
 
 
 Typically, the `role` field will only accept a finite list of values, like or `Developer`, `Manager`, `Architect`, that could typically be bound to an enum once transformed in your DataModel.
 
 Well, in Swift that's easy, simply define an enum with a String raw type that will match the string in the JSON:
 
-    enum Role : String {
-      case Developer = "Developer"
-      case Manager = "Manager"
-      case Architect = "Architect"
-    }
+```swift
+enum Role : String {
+  case Developer = "Developer"
+  case Manager = "Manager"
+  case Architect = "Architect"
+}
+```
 
 If you're using Swift 2.0, you can even omit to explicitly define the value if its the same as the string representation of the case name like here, and Swift 2.0 will automatically compute and associate the corresponding string!
 
@@ -53,29 +56,31 @@ So what we were doing typically using a huge `switch/case` in ObjC to do that ma
 
 So doing a model type that now handle each entry in our JSON is easy now:
 
-    struct Person {
-        var name: String
-        var role: Role
+```swift
+struct Person {
+    var name: String
+    var role: Role
+}
+
+let staff = [
+    Person(name: "Alice", role: .Developer),
+    Person(name: "Bob", role: .Manager),
+    Person(name: "Clark", role: .Architect),
+]
+
+extension Person {
+    var toJSONDict : [NSObject:AnyObject] {
+        return ["name":name, "role":role.rawValue]
     }
+}
 
-    let staff = [
-        Person(name: "Alice", role: .Developer),
-        Person(name: "Bob", role: .Manager),
-        Person(name: "Clark", role: .Architect),
-    ]
+let jsonDict = staff.map { $0.toJSONDict }
+let jsonData = try! NSJSONSerialization.dataWithJSONObject(jsonDict, options: [])
+let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding)
 
-    extension Person {
-        var toJSONDict : [NSObject:AnyObject] {
-            return ["name":name, "role":role.rawValue]
-        }
-    }
-
-    let jsonDict = staff.map { $0.toJSONDict }
-    let jsonData = try! NSJSONSerialization.dataWithJSONObject(jsonDict, options: [])
-    let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding)
-
-    print(jsonString)
-    // [{"role":"Developer","name":"Alice"},{"role":"Manager","name":"Bob"},{"role":"Architect","name":"Clark"}]
+print(jsonString)
+// [{"role":"Developer","name":"Alice"},{"role":"Manager","name":"Bob"},{"role":"Architect","name":"Clark"}]
+```
 
 
 That's all for today, but rest assured that Swift enums have a lot more to offer and we'll surely talk about more advanced usages later in there!

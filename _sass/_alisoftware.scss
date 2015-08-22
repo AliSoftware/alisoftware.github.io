@@ -1,3 +1,7 @@
+/**
+ * This is where I customize my CSS styles, to avoid overriding the ones copied from BASSCSS and Pixyll
+ */
+
 blockquote {
   padding-top: 0;
   padding-bottom: 0;
@@ -6,4 +10,95 @@ blockquote {
 .share-links a.fa {
   margin-left: 10px;
   margin-right: 10px;
+}
+
+/* Swift code highlighting */
+
+$code-generic: #222222;
+$code-comment: #008400;
+$code-type: #703daa;
+$code-keyword: #bb2ca2; 
+$code-name: #3e6d74;
+$code-literal: #1c00ce;
+$code-string: #c41a15;
+$code-constant: #2e0d6d;
+$code-preproc: #63381f;
+
+.highlight .language-swift {
+  .hll { background-color: #ffffcc }
+  .c   { color: $code-comment } /* Comment */
+  .err { color: $code-generic } /* Error */
+  .g   { color: $code-generic } /* Generic */
+  .k   { color: $code-keyword } /* Keyword */
+  .l   { color: $code-generic } /* Literal */
+  .n   { color: $code-name    } /* Name */
+  .o   { color: $code-generic } /* Operator */
+  .x   { color: $code-generic } /* Other */
+  .p   { color: $code-generic } /* Punctuation */
+  .cm  { color: $code-comment } /* Comment.Multiline */
+  .cp  { color: $code-preproc } /* Comment.Preproc */
+  .c1  { color: $code-comment } /* Comment.Single */
+  .cs  { color: $code-comment } /* Comment.Special */
+  .gd  { color: $code-generic; font-weight: bold; background-color: #008080 } /* Generic.Deleted */
+  .ge  { color: #c000c0; text-decoration: underline} /* Generic.Emph */
+  .gr  { color: #c0c0c0; font-weight: bold; background-color: #c00000 } /* Generic.Error */
+  .gh  { color: #cd5c5c } /* Generic.Heading */
+  .gi  { color: $code-generic; background-color: #0000c0 } /* Generic.Inserted */
+  span.go { color: #add8e6; font-weight: bold; background-color: #4d4d4d } /* Generic.Output, qualified with span to prevent applying this style to the Go language, see #1153. */
+  .gp  { color: $code-generic } /* Generic.Prompt */
+  .gs  { color: $code-generic } /* Generic.Strong */
+  .gu  { color: #cd5c5c } /* Generic.Subheading */
+  .gt  { color: #c0c0c0 ; font-weight: bold; background-color: #c00000 } /* Generic.Traceback */
+  .kc  { color: $code-keyword } /* Keyword.Constant */
+  .kd  { color: $code-keyword } /* Keyword.Declaration */
+  .kn  { color: $code-keyword } /* Keyword.Namespace */
+  .kp  { color: $code-keyword } /* Keyword.Pseudo */
+  .kr  { color: $code-keyword } /* Keyword.Reserved */
+  .kt  { color: $code-type } /* Keyword.Type */
+  .ld  { color: $code-literal } /* Literal.Date */
+  .m   { color: $code-literal } /* Literal.Number */
+  .s   { color: $code-string } /* Literal.String */
+  .na  { color: $code-name } /* Name.Attribute */
+  .nb  { color: $code-name } /* Name.Builtin */
+  .nc  { color: $code-name } /* Name.Class */
+  .no  { color: $code-constant } /* Name.Constant */
+  .nd  { color: $code-generic } /* Name.Decorator */
+  .ni  { color: #ffdead } /* Name.Entity */
+  .ne  { color: $code-generic } /* Name.Exception */
+  .nf  { color: $code-name } /* Name.Function */
+  .nl  { color: $code-name } /* Name.Label */
+  .nn  { color: $code-generic } /* Name.Namespace */
+  .nx  { color: $code-generic } /* Name.Other */
+  .py  { color: $code-generic } /* Name.Property */
+  .nt  { color: $code-string } /* Name.Tag */
+  .nv  { color: $code-name } /* Name.Variable */
+  .ow  { color: $code-generic } /* Operator.Word */
+  .w   { color: $code-generic } /* Text.Whitespace */
+  .mf  { color: $code-string } /* Literal.Number.Float */
+  .mh  { color: $code-string } /* Literal.Number.Hex */
+  .mi  { color: $code-string } /* Literal.Number.Integer */
+  .mo  { color: $code-string } /* Literal.Number.Oct */
+  .sb  { color: $code-string } /* Literal.String.Backtick */
+  .sc  { color: $code-string } /* Literal.String.Char */
+  .sd  { color: $code-string } /* Literal.String.Doc */
+  .s2  { color: $code-string } /* Literal.String.Double */
+  .se  { color: $code-string } /* Literal.String.Escape */
+  .sh  { color: $code-string } /* Literal.String.Heredoc */
+  .si  { color: $code-string } /* Literal.String.Interpol */
+  .sx  { color: $code-string } /* Literal.String.Other */
+  .sr  { color: $code-string } /* Literal.String.Regex */
+  .s1  { color: $code-string } /* Literal.String.Single */
+  .ss  { color: $code-string } /* Literal.String.Symbol */
+  .bp  { color: $code-type } /* Name.Builtin.Pseudo */
+  .vc  { color: #98fb98 } /* Name.Variable.Class */
+  .vg  { color: #98fb98 } /* Name.Variable.Global */
+  .vi  { color: #98fb98 } /* Name.Variable.Instance */
+  .il  { color: $code-generic } /* Literal.Number.Integer.Long */
+  .bash .nv {
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+         -o-user-select: none;
+            user-select: none;
+  }
 }

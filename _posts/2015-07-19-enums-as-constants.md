@@ -22,33 +22,39 @@ Or course, you could declare a `let FooBarImageName = "FooBar"` constant somewhe
 
 So here comes the Swift `enum`. As Swift can have `enums` with a raw type `String`, you can write stuff like this:
 
-    enum ImageAsset : String {
-      GreenApple = "green-apple"
-      Banana = "banana"
-      Pear = "pear"
-      Strawberry = "1-strawberry"
-      Strawberries = "strawberry-basket"
-    }
+```swift
+enum ImageAsset : String {
+  GreenApple = "green-apple"
+  Banana = "banana"
+  Pear = "pear"
+  Strawberry = "1-strawberry"
+  Strawberries = "strawberry-basket"
+}
+```
 
 ### Adding constructors
 
 That's nice, but we can go further by adding a method (or better, a computed variable) that convert this enum into an `UIImage`.
 
-    extension ImageAsset {
-      var image : UIImage {
-        return UIImage(named: self.rawValue)!
-      }
-    }
+```swift
+extension ImageAsset {
+  var image : UIImage {
+    return UIImage(named: self.rawValue)!
+  }
+}
+```
 
 And here you go, now `ImageAsset.GreenApple.image` will return your `UIImage`. No risk of any typo at the call site here, free autocompletion, everything looks nice!
 
 But hey, why not also make an `UIImage` constructor as well?
 
-    extension UIImage {
-      convenience init?(asset: ImageAsset) {
-        self.init(named: asset.rawValue)
-      }
-    }
+```swift
+extension UIImage {
+  convenience init?(asset: ImageAsset) {
+    self.init(named: asset.rawValue)
+  }
+}
+```
 
 And now you can go use `UIImage(asset: .GreenApple)` too!
 
@@ -69,32 +75,36 @@ That's not really a problem, because we know other ways to represent colors: usi
 So let's use that instead, representing colors using some `UInt32` `enum`, and take advantage of the `0x` notation to affect each value using their hexadecimal representation.  
 We'll also add it to the `UIColor` class as an `extension`, to scope it in that namespace instead of putting that `enum` the global scope:
 
-    extension UIColor {
-      enum ColorName : UInt32 {
-        case Translucent = 0xffffffcc
-        case ArticleBody = 0x339666ff
-        case Cyan = 0xff66ccff
-        case ArticleTitle = 0x33fe66ff
-      }
-    }
+```swift
+extension UIColor {
+  enum ColorName : UInt32 {
+    case Translucent = 0xffffffcc
+    case ArticleBody = 0x339666ff
+    case Cyan = 0xff66ccff
+    case ArticleTitle = 0x33fe66ff
+  }
+}
+```
 
 Ok, right, but now how do we build an `UIColor` instance from that?
 
 We will simply need an initializer that use that `UInt32`, do some bitmask arithmetics on it to split it in 4 `UInt8` components, and build an `UIColor` with that. Then, we will be able to write a `convenience init` to build a color from that `enum`:
 
-    extension UIColor {
-      convenience init(named name: Name) {
-        let rgbaValue = name.rawValue
-        let red   = CGFloat((rgbaValue >> 24) & 0xff) / 255.0
-        let green = CGFloat((rgbaValue >> 16) & 0xff) / 255.0
-        let blue  = CGFloat((rgbaValue >>  8) & 0xff) / 255.0
-        let alpha = CGFloat((rgbaValue      ) & 0xff) / 255.0
-        
-        self.init(red: red, green: green, blue: blue, alpha: alpha)
-      }
-    }
+```swift
+extension UIColor {
+  convenience init(named name: Name) {
+    let rgbaValue = name.rawValue
+    let red   = CGFloat((rgbaValue >> 24) & 0xff) / 255.0
+    let green = CGFloat((rgbaValue >> 16) & 0xff) / 255.0
+    let blue  = CGFloat((rgbaValue >>  8) & 0xff) / 255.0
+    let alpha = CGFloat((rgbaValue      ) & 0xff) / 255.0
+    
+    self.init(red: red, green: green, blue: blue, alpha: alpha)
+  }
+}
 
-    UIColor(named: .ArticleBody)
+UIColor(named: .ArticleBody)
+```
 
 That looks pretty handy!
 
@@ -115,9 +125,11 @@ You can also use it for creating your `UIStoryboard` instances and their scenes 
 
 Wouldn't it be cool to be able to write stuff like that?
 
-    let wizzardVC = UIStoryboard.Wizzard.initialViewController()
-    let msgCompVC = UIStoryboard.Message.Composer.viewController()
-    let tutorialVC = UIStoryboard.Tutorial.viewController(.QuickStart)
+```swift
+let wizzardVC = UIStoryboard.Wizzard.initialViewController()
+let msgCompVC = UIStoryboard.Message.Composer.viewController()
+let tutorialVC = UIStoryboard.Tutorial.viewController(.QuickStart)
+```
 
 Well you got it, using `enum` of course it is possible!  
 _One simple difference here is that we have an additional level of `enum`s (There are actually multiple enums like `Message` and `Composer`, each having a `case` entry for each of their scene)_
