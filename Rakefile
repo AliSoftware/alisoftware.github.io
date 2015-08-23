@@ -3,7 +3,7 @@ posts_dir  = '_posts'
 
 # rake post['my new post']
 desc 'create a new post'
-task :post, :title do |t, args|
+task :post, :title do |_, args|
   if args.title
     title = args.title
   else
@@ -17,7 +17,7 @@ task :post, :title do |t, args|
     ---
     layout: post
     title: #{title}
-    date: #{Time.new.strftime('%Y-%m-%d %H:%M')}
+    date: #{Time.new.strftime('%Y-%m-%d')}
     categories:
     ---
 
@@ -25,12 +25,12 @@ task :post, :title do |t, args|
   end
 
   # Automatically open the post in SublimeText
-  system ("subl #{filename}")
+  system ("open -a MacDown #{filename}")
 end
 
 # usage: rake draft['my new draft']
 desc 'create a new draft post'
-task :draft, :title do |t, args|
+task :draft, :title do |_, args|
   if args.title
     title = args.title
   else
@@ -44,15 +44,37 @@ task :draft, :title do |t, args|
     ---
     layout: post
     title: #{title}
-    date: #{Time.new.strftime('%Y-%m-%d %H:%M')}
+    date: #{Time.new.strftime('%Y-%m-%d')}
     categories:
     ---
 
     EOS
   end
 
-# Uncomment the line below if you want the draft to automatically open in your default text editor
-# system ("#{ENV['EDITOR']} #{filename}")
+  # Automatically open the post in SublimeText
+  system ("open -a MacDown #{filename}")
+end
+
+desc 'move a draft into the posts'
+task :publish, :file do |_, args|
+  files = nil
+  if args.file
+    file = args.file
+    file = "#{drafts_dir}/#{args.file}" unless file.start_with?("#{drafts_dir}/")
+    file = "#{file}.md" unless file.end_with?('.md')
+    files = [file]
+  else
+    files = Dir.glob("#{drafts_dir}/*.md")
+  end
+
+  files.each do |file|
+    if file && File.exist?(file)
+      new_file = "#{posts_dir}/#{Time.now.strftime('%Y-%m-%d')}-#{File.basename(file)}"
+      mv file, new_file
+    else
+      puts "File #{file} not found"
+    end
+  end
 end
 
 desc 'preview the site with drafts'
