@@ -54,7 +54,7 @@ func isMultiple(multiplier: Int) -> (Int -> Bool) {
 }
 ```
 
-Here the inner function "captures" the `multiplier` parameter privided by the outer function to generate a taylored function and return it.
+Here the inner function "captures" the `multiplier` parameter provided by the outer function to generate a tailored function and return it.
 
 But the more common (and compact) way is to use closures instead. In Swift, functions and closures are interchangeable, so let's directly return a closure of type `Int -> Bool`:
 
@@ -70,7 +70,7 @@ func isMultiple(multiplier: Int) -> (Int -> Bool) {
 
 There is actually a third way to achieve that: using _currying_. [Currying](https://en.wikipedia.org/wiki/Currying) is the idea of transforming a function that takes multiple parameters into a function that takes one parameter and returns another function (which in turn takes the next parameter and return a function… until all parameters have been consumed and it returns the final value). This technique allows you to do partial application of a function, which can be very powerful and useful in some cases.
 
-In Swift, we can very easily change a method with mulitple parameters into a currying method, by replacing commas separating the parameters with a closing parenthesis immediately followed by a reopening one. So let's reuse our very first implementation of `isMultiple` but transform that into a currying function:
+In Swift, we can very easily change a method with multiple parameters into a currying method, by replacing commas separating the parameters with a closing parenthesis immediately followed by a reopening one. So let's reuse our very first implementation of `isMultiple` but transform that into a currying function:
 
 ```swift
 func isMultiple(multiplier: Int)(value: Int) -> Bool {
@@ -122,7 +122,7 @@ func || (lhs: Int->Bool, rhs: Int->Bool) -> (Int->Bool) {
 }
 ```
 
-We could also do the same for `&&`. Let's use a more compat syntax for this one, using implicit `$0` parameters, to vary the examples:
+We could also do the same for `&&`. Let's use a more compact syntax for this one, using implicit `$0` parameters, to vary the examples:
 
 ```swift
 func && (lhs: Int->Bool, rhs: Int->Bool) -> (Int->Bool) {
