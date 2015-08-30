@@ -50,8 +50,8 @@ But hey, why not also make an `UIImage` constructor as well?
 
 ```swift
 extension UIImage {
-  convenience init?(asset: ImageAsset) {
-    self.init(named: asset.rawValue)
+  convenience init(asset: ImageAsset) {
+    self.init(named: asset.rawValue)!
   }
 }
 ```
