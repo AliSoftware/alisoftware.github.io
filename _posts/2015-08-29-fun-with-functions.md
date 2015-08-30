@@ -9,7 +9,7 @@ Today's article is about doing some fun with Swift functions, like functions ret
 
 ## Functions basics
 
-Today we'll write functions that takes a `Int` and return a `Bool` telling if it matches a certain criteria. This kind of functions can then be used with `filter` to filter an array of integers.
+In this post we'll use functions that takes a `Int` and return a `Bool` telling if it matches a certain criteria. This kind of functions can then be used with `filter` to filter an array of integers.
 
 So let's start with a simple one, a function that tells if a number is positive:
 
