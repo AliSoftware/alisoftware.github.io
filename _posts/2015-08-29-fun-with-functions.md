@@ -164,6 +164,6 @@ And this works like expected, even if those are functions, thanks to our overloa
 
 So with those simple tricks, you learned how having functions returning functions can be useful, how we could imagine some operators to combine functions returning `Bool` the same way we would've combined `Bool` directly, and were introduced to the concept of currying.
 
-There is a lot more fun we could have with function. We could have made those overload of `&&`,`||` and `!` generic, so that if would work with any `T->Bool` functions whatever the type of `T` is for example. I could even talk about using currying to its full power, go crazy with Functional Programming and all (but a lot of other articles do that already, so no need for another one here I guess), but I think that'll be enough for today!
+There is a lot more fun we could have with function. We could have made those overload of `&&`,`||` and `!` generic, so that it would work with any `T->Bool` functions whatever the type of `T` is for example. I could even talk about using currying to its full power, go crazy with Functional Programming and all (but a lot of other blogs do that already, so no need for another one here I guess), but I think that'll be enough for today!
 
 Happy Swifting all!
