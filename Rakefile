@@ -81,7 +81,8 @@ desc 'preview the site with drafts'
 task :preview do
   puts "## Generating site"
   puts "## Stop with ^C ( <CTRL>+C )"
-  system "(sleep 2 && open 'http://0.0.0.0:4000')&"
+  url = 'http://0.0.0.0:4000'
+  system "(until curl -sI #{url} 1>/dev/null; do sleep 0.5; done; open #{url})&"
   system "jekyll serve --watch --drafts"
 end
 
