@@ -9,7 +9,7 @@ But the hardest thing when starting to code in Swift is not the syntax, but chan
   
 In this article series, we'll take an example of ObjC code and walk thru converting it to Swift, introducing more and more concepts along the way.
 
-> Part 1 of this article talks about: optionals, Forced-unwrapped optionals, ponies, `if let`, `guard`, and 🍰.
+> Part 1 of this article talks about: optionals, forced-unwrapped optionals, ponies, `if let`, `guard`, and 🍰.
 
 
 ## The ObjC code
@@ -44,7 +44,7 @@ Ok, pretty standard ObjC code here.
 
 ## A direct translation into Swift
 
-Now imagine how any newbie Swifter would basically translate that code into Swift:
+Now imagine how any Swift new-comer would basically translate that code into Swift:
 
 ```swift
 class ListItem {
@@ -71,9 +71,9 @@ Someone with a little Swift experience should already see a lot of code smell he
 
 ## What can go wrong?
 
-The first thing that would make me have an heart attack in the above example is a very bad habit that a newcomer to Swift often fall into: using implicitly-unwrapped optionals (`value!`), force-casts (`value as! String`) and force-try (`try!`) everywhere.
+The first thing that looks like code smell in the above example is a very bad habit that a newcomer to Swift often fall into: using implicitly-unwrapped optionals (`value!`), force-casts (`value as! String`) and force-try (`try!`) everywhere.
 
-**Optionals are your friends**: they are good because they force you to think about these cases when your values are `nil`, and think about what you should do in such scenarios. Like "what should I display if I don't have any icon? Should I use a placeholder in my TableViewCell? Or use a totally different cell tempalte?).
+**Optionals are your friends**: they are good because they force you to think about these cases when your values are `nil`, and think about what you should do in such scenarios. Like "what should I display if I don't have any icon? Should I use a placeholder in my TableViewCell? Or use a totally different cell template?".
 
 These are use cases that we often forget to take into account when writing our ObjC code, but Swift help us not forget about them, so **it would be a shame to throw that advantage away by force-unwrapping them and make your code crash** when they were actually `nil`.
 
@@ -192,6 +192,6 @@ So of course ObjC was shorter: that's because we simply forgot to handle all tho
 
 Swift is designed to be safer. Don't disregard optionals by force-unwrapping all the things: when you see a `!` in your Swift code, you should always think it's probably a code smell and something could go wrong.
 
-In the upcoding part 2 of this article, we'll see how to make this Swift code thinner and continue thinking in Swift by migrate away from `for` loops and `if-let` and `map` and `flatMap` instead.
+In the upcoding part 2 of this article, we'll see how to make this Swift code thinner and continue thinking in Swift by migrate away from `for` loops and `if-let` using `map` and `flatMap` instead.
 
 In the meantime, drive safe and, yes, save ponies! 🐴
