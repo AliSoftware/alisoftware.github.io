@@ -4,13 +4,15 @@ title: "Thinking in Swift, Part 2: Using map & flatMap"
 categories: swift
 ---
 
-In [part 1 of this article](/swift/2015/09/06/thinking-in-swift-1), we saw how to avoid force-unwrapping optionals, save ponies 🐴 and avoid crashes by doing so. In this part 2, we'll refine our Swift code to make it smaller and Swift-er, using `map` and `flatMap`.
+In [part 1 of this article series](/swift/2015/09/06/thinking-in-swift-1), we saw how to avoid force-unwrapping optionals, save ponies 🐴 and avoid crashes by doing so. In this part 2, we'll refine our Swift code to make it smaller and Swift-er, using `map` and `flatMap`.
+
+> Today's article will talk about `map` and `flatMap`
 
 ## Previously, in Thinking in Swift[^tvshow-intro]
 
 [^tvshow-intro]: insert opening credits of some bad*ss TV Show here.
 
-If you haven't read [part 1 of this article](/swift/2015/09/06/thinking-in-swift-1), you should start with that first. As a reminder, here is the code as we left it the last time:
+Ok, so, back to Part 2. As a reminder, here is the code as we left it the last time:
 
 ```
 class ListItem {
@@ -47,9 +49,11 @@ class ListItem {
 }
 ```
 
+And the aim is now to adopt more and more Swift-er patterns and syntax to make that code better and thinner.
+
 ## Introducing Map
 
-Another thing that's hard whe migrating from ObjC to Swift is to think Swift, and know those Swift ways that ObjC doesn't offer. For example, instead of creating a temporary `NSMutableArray` and using a `for` loop, Swift has a way better feature to deal with this typical example: `map()`.
+One of the hardest thing when migrating from ObjC to Swift is to think in Swift, and know those new Swift ways that ObjC doesn't offer. For example, instead of creating a temporary `NSMutableArray` and using a `for` loop, Swift has a way better feature to deal with this typical example: `map()`.
 
 `map()` is a method on `Array` that takes a function as a parameter, applies that function on every item of the array, and return a new array with the transformed items.
 
