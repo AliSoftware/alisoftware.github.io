@@ -26,7 +26,7 @@ So even if they _have_ to be optional (as they won't be initialized during `init
 
 `UIImage(named: …)`, `UIStoryboard(name:bundle:)`, `UIStoryboard.instanciateViewControllerWithIdentifier:`, `UITableView.dequeueReusableCellWithIdentifier:forIndexPath:`, and similar stuff are initialized using names and identifiers which are meant to be constants.
 
-For those use cases, you may _want_ your code to crash if you misspelled the name/indentifier, because it would be a developer error (cause by a missing image in your bundle or a storyboard that you failed to include in your target, etc), and you probably want to detect it early at development stage to fix it ASAP. 
+For those use cases, you may _want_ your code to crash if you misspelled the name/indentifier, because it would be a developer error (caused by a missing image in your bundle or a storyboard that you failed to include in your target, etc), and you probably want to detect it early at development stage to fix it ASAP. 
 
 That's also why you'd want to use tricks like the ones I discussed in [enums as constants](/swift/enum/constants/2015/07/19/enums-as-constants/) and would want to use [SwiftGen](https://github.com/AliSoftware/SwiftGen) to avoid those possibilities of identifier misspellings and crashes 😉.
 
@@ -40,4 +40,4 @@ So yes, there are cases where it makes sense to use `!`. But still, my advice in
 
 See you soon for the next parts of this article series, talking about `map`, `flatMap`, `??`, optional chaining, and avoiding data inconsistencies.
 
-[^all-the-things]: Insert a "Force-Unwrap all the Things" meme here — that I was tool lazy to create and include.
+[^all-the-things]: Insert a "Force-Unwrap all the Things" meme here — that I was too lazy to create and include.
