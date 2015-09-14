@@ -7,6 +7,8 @@ categories: swift function operator
 
 Today's article is about doing some fun with Swift functions, like functions returning functions, currying and operators on functions.
 
+🇨🇳 _This article is also [available in Chinese here](http://swift.gg/2015/09/11/fun_with_functions/) — thanks to the SwiftGG translation team._
+
 ## Functions basics
 
 In this post we'll use functions that takes a `Int` and return a `Bool` telling if it matches a certain criteria. This kind of functions can then be used with `filter` to filter an array of integers.
