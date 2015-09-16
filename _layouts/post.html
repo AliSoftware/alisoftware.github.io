@@ -9,9 +9,9 @@ layout: default
 
 <div class="post-header mb2">
   <h1>{{ page.title }}</h1>
-  <span class="post-meta">{{ page.date | date: site.date_format }}</span><br>
+  <span class="post-meta">{{ page.date | date: site.date_format }}</span><br/>
   {% if page.update_date %}
-    <span class="post-meta">Updated: {{ page.update_date | date: site.date_format }}</span><br>
+    <span class="post-meta">Updated: {{ page.update_date | date: site.date_format }}</span><br/>
   {% endif %}
   <span class="post-meta small">
   {% if page.minutes %}
@@ -20,6 +20,21 @@ layout: default
     {{ minutes }} minute read
   {% endif %}
   </span>
+  {% if page.translations %}
+  <br/>
+  <span class="post-meta small">
+    Also available in: 
+    {% for translation in page.translations %}
+      {% if translation.author %}
+        {% assign tooltip = " translation — Thanks to " | prepend: translation.lang | append: translation.author" %}
+      {% else %}
+        {% assign tooltip = " translation" | prepend: translation.lang %}
+      {% endif %}
+      <a href="{{ translation.url }}" title="{{ tooltip }}">{{ translation.flag }} {{ translation.lang }}</a>
+      {% unless forloop.last %}, {% endunless %}
+    {% endfor %}
+  </span>
+  {% endif %}
 </div>
 
 <article class="post-content">

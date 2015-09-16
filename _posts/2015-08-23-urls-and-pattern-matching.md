@@ -3,6 +3,11 @@ layout: post
 title: URLs and Pattern Matching
 date: 2015-08-23
 categories: swift pattern-matching
+translations:
+  - lang: Chinese
+    flag: 🇨🇳
+    author: the SwiftGG team
+    url: http://swift.gg/2015/09/15/urls-and-pattern-matching/
 ---
 
 Today's goal is to parse URLs like `http://mywebsite.org/customers/:cid/orders/:oid` so that we can determine it's a customer's order request and extract the order #`oid` and customer #`cid` from it.  

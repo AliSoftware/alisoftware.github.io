@@ -3,11 +3,14 @@ layout: post
 title: Fun with Functions
 date: 2015-08-28
 categories: swift function operator
+translations:
+  - lang: Chinese
+    flag: 🇨🇳
+    author: the SwiftGG team
+    url: http://swift.gg/2015/09/11/fun_with_functions/
 ---
 
 Today's article is about doing some fun with Swift functions, like functions returning functions, currying and operators on functions.
-
-🇨🇳 _This article is also [available in Chinese here](http://swift.gg/2015/09/11/fun_with_functions/) — thanks to the SwiftGG translation team._
 
 ## Functions basics
 
