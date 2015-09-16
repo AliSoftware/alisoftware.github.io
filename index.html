@@ -16,6 +16,20 @@ layout: default
             {{ post.excerpt }}
           {% endif %}
         </p>
+        <p class="post-meta small">
+          {% if post.translations %}
+            Also available in: 
+            {% for translation in post.translations %}
+              {% if translation.author %}
+                {% assign tooltip = " translation — Thanks to " | prepend: translation.lang | append: translation.author" %}
+              {% else %}
+                {% assign tooltip = " translation" | prepend: translation.lang %}
+              {% endif %}
+              <a href="{{ translation.url }}" title="{{ tooltip }}">{{ translation.flag }} {{ translation.lang }}</a>
+              {% unless forloop.last %}, {% endunless %}
+            {% endfor %}
+          {% endif %}
+        </p>
       </div>
     {% endfor %}
   </div>

@@ -21,19 +21,19 @@ layout: default
   {% endif %}
   </span>
   {% if page.translations %}
-  <br/>
-  <span class="post-meta small">
-    Also available in: 
-    {% for translation in page.translations %}
-      {% if translation.author %}
-        {% assign tooltip = " translation — Thanks to " | prepend: translation.lang | append: translation.author" %}
-      {% else %}
-        {% assign tooltip = " translation" | prepend: translation.lang %}
-      {% endif %}
-      <a href="{{ translation.url }}" title="{{ tooltip }}">{{ translation.flag }} {{ translation.lang }}</a>
-      {% unless forloop.last %}, {% endunless %}
-    {% endfor %}
-  </span>
+    <br/>
+    <span class="post-meta small">
+      Also available in: 
+      {% for translation in page.translations %}
+        {% if translation.author %}
+          {% assign tooltip = " translation — Thanks to " | prepend: translation.lang | append: translation.author" %}
+        {% else %}
+          {% assign tooltip = " translation" | prepend: translation.lang %}
+        {% endif %}
+        <a href="{{ translation.url }}" title="{{ tooltip }}">{{ translation.flag }} {{ translation.lang }}</a>
+        {% unless forloop.last %}, {% endunless %}
+      {% endfor %}
+    </span>
   {% endif %}
 </div>
 
