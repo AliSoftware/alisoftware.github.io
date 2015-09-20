@@ -24,7 +24,7 @@ $code-string: #c41a15;
 $code-constant: #2e0d6d;
 $code-preproc: #63381f;
 
-.highlight .language-swift {
+.highlight .language-swift, .highlight .language-objc {
   .hll { background-color: #ffffcc }
   .c   { color: $code-comment } /* Comment */
   .err { color: $code-generic } /* Error */
