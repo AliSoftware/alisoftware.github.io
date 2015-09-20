@@ -57,23 +57,26 @@ end
 
 desc 'move a draft into the posts'
 task :publish, :file do |_, args|
-  files = nil
-  if args.file
-    file = args.file
-    file = "#{drafts_dir}/#{args.file}" unless file.start_with?("#{drafts_dir}/")
-    file = "#{file}.md" unless file.end_with?('.md')
-    files = [file]
-  else
+  file = args.file
+  unless file
     files = Dir.glob("#{drafts_dir}/*.md")
-  end
-
-  files.each do |file|
-    if file && File.exist?(file)
-      new_file = "#{posts_dir}/#{Time.now.strftime('%Y-%m-%d')}-#{File.basename(file)}"
-      mv file, new_file
-    else
-      puts "File #{file} not found"
+    loop do
+      files.each_with_index { |filename,idx| puts "#{idx+1} - #{filename}" }
+      print "Post to publish: "
+      choice = $stdin.gets.chomp.to_i
+      file = files[choice-1] if choice > 0 && choice <= files.count
+      break unless file.nil?
     end
+  end
+  
+  file = "#{drafts_dir}/#{args.file}" unless file.start_with?("#{drafts_dir}/")
+  file = "#{file}.md" unless file.end_with?('.md')
+
+  if file && File.exist?(file)
+    new_file = "#{posts_dir}/#{Time.now.strftime('%Y-%m-%d')}-#{File.basename(file)}"
+    mv file, new_file
+  else
+    puts "File #{file} not found"
   end
 end
 
