@@ -79,6 +79,8 @@ It may seem like a simple change but it allows us to concentrate on the question
 
 One problem with the code we used so far is that we still create a `ListItem` (and include it in the final array) even if we have incorrect input data. So if some of those `NSDictionary` entries are invalid, we end up corrupting our output array too by still having those empty `ListItem()` objects in it that don't really mean anything.
 
+More importantly, we are still killing some ponies 🐴 as we are still using `NSURL!` and our code path still allows us to create `ListItem` instances that don't have an `NSURL` (`item.url` not affected if we don't have a valid `"url"` key) and that would crash our code if we try to access such an invalid `NSURL!`.
+
 To solve this, we can instead make our transform return a `nil` `ListItem` if the input is invalid, which we seem more appropriate than a corrupted/empty `ListItem`.
 
 ```swift
@@ -100,7 +102,7 @@ That's where `flatMap()` comes to the rescue.
 
 Semantically, you can see this `flatMap` as if you were applying `map`, then "flatten" the result (hence the method's name) to remove the `nil` values from the output array.
 
-[^other-signatures]: There are plenty of other signatures for `flatMap`, like one transforming an array of arrays of `T` into a flat array of `T` (`[[T]] -> [T]`) for example. Be today we'll only focus on the method on `Array` converting a `[T]` into a `[U]` using a `T->U?` transform.
+[^other-signatures]: There are plenty of other signatures for `flatMap`, like one transforming an array of arrays of `T` into a flat array of `T` (`[[T]] -> [T]`) for example. But today we'll only focus on the method on `Array` converting a `[T]` into a `[U]` using a `T->U?` transform.
 
 Applying this to our example gives us the following code:
 
@@ -120,19 +122,21 @@ return jsonItems.flatMap { (itemDesc: NSDictionary) -> ListItem? in
 }
 ```
 
-Here we're only returning a real `ListItem` if all the keys are present[^optional-icon] and valid. Otherwise (`guard` statement), we return `nil` early, tell `flatMap` not to add that element to the returned array.
+Here we're only returning a real `ListItem` if all the keys are present[^optional-icon] and valid (including that `NSURL` that we ensured would be non-`nil`). Otherwise (`guard` statement), we return `nil` early, telling `flatMap` not to add that element to the returned array.
 
 [^optional-icon]: Note that we made our code still accept a `NSDictionary` without the `"icon"` key, as we decided that it's ok/valid for a `ListItem` not to have any icon. But the other keys are still mandatory.
 
-That's much better and safer, right? And we eliminated the risk of having dummy, invalid `ListItem` elements in our array altogether in case of bad input.
+That's much better and safer, right? And we eliminated the problem of data corruption and the risk of having dummy, invalid `ListItem` elements in our array altogether in case of bad input.
 
 
 ## Conclusion
 
-That's it for today. We still have a lot of work to do, but I'm gonna keep some for the next parts of this article series.
+That's it for today: we learned how to replace a `for` loop with a `map` or `flatMap`, and we secured our code a bit more by avoiding the generation of inconsistent output when our input data is invalid.
+
+We still have a lot of work to do, but I'm gonna keep some for the next parts of this article series.
 
 In the upcoming episodes, we'll see how converting our `ListItem` as a `struct` could help us, and explore other uses of `map` and `flatMap` — especially on `Optionals`.
 
-In the meantime, take time to discover the power of `map()` and `flatMap` on arrays. I know they can be scary or complex at first, but once you get it, you'll want to use them everywhere!
+In the meantime, take time to discover the power of `map()` and `flatMap()` on arrays. I know they can be scary or complex at first, but once you get it, you'll want to use them everywhere!
 
 <center>![map-everywhere](/assets/map-everywhere.jpg)</center>
