@@ -55,7 +55,7 @@ The aim is to adopt more and more Swift-er patterns and syntax to make that code
 
 `map()` is a method on `Array` that takes a function as a parameter, which explains how to *transform* each item of the array into a new one. This allows to transform an array `[X]` into `[Y]` by just explaining how to transform `X -> Y`, without the need to create a temporary mutable array.
 
-So in our case instead of looping with a `for` as we did before, we could apply `map` to `jsonItems` — our JSON array of `NSDictionary` — and provide a transform to convert each `NSDictionary` into a `ListItem` instance:
+So in our case, instead of looping with a `for` as we did before, we could apply `map` to `jsonItems` — our JSON array of `NSDictionary` — and provide a transform to convert each `NSDictionary` into a `ListItem` instance:
 
 ```swift
 return jsonItems.map { (itemDesc: NSDictionary) -> ListItem in
@@ -81,7 +81,7 @@ One problem with the code we used so far is that we still create a `ListItem` (a
 
 More importantly, we are still killing some ponies 🐴 as we are still using `NSURL!` and our code path still allows us to create `ListItem` instances that don't have an `NSURL` (`item.url` not affected if we don't have a valid `"url"` key) and that would crash our code if we try to access such an invalid `NSURL!`.
 
-To solve this, we can instead make our transform return a `nil` `ListItem` if the input is invalid, which we seem more appropriate than a corrupted/empty `ListItem`.
+To solve this, we can instead make our transform return a `nil` `ListItem` if the input is invalid, which seems more appropriate than a corrupted/empty `ListItem`.
 
 ```swift
 return jsonItems.map { (itemDesc: NSDictionary) -> ListItem? in
@@ -122,7 +122,7 @@ return jsonItems.flatMap { (itemDesc: NSDictionary) -> ListItem? in
 }
 ```
 
-Here we're only returning a real `ListItem` if all the keys are present[^optional-icon] and valid (including that `NSURL` that we ensured would be non-`nil`). Otherwise (`guard` statement), we return `nil` early, telling `flatMap` not to add that element to the returned array.
+Now we only return a real `ListItem` if all the keys are present[^optional-icon] and valid (including that `NSURL` that we ensured would be non-`nil`). Otherwise (`guard` statement), we return `nil` early, telling `flatMap` not to add that invalid element to the returned array.
 
 [^optional-icon]: Note that we made our code still accept a `NSDictionary` without the `"icon"` key, as we decided that it's ok/valid for a `ListItem` not to have any icon. But the other keys are still mandatory.
 
@@ -131,9 +131,9 @@ That's much better and safer, right? And we eliminated the problem of data corru
 
 ## Conclusion
 
-That's it for today: we learned how to replace a `for` loop with a `map` or `flatMap`, and we secured our code a bit more by avoiding the generation of inconsistent output when our input data is invalid.
+We still have a lot of work to do, but that will be all for today (let's keep some material for the next parts of this article series!)
 
-We still have a lot of work to do, but I'm gonna keep some for the next parts of this article series.
+So in this episode we learned how to replace a `for` loop with a `map` or `flatMap`, and we secured our code a bit more by avoiding the generation of inconsistent output when our input data is invalid. That's quite a nice improvement already.
 
 In the upcoming episodes, we'll see how converting our `ListItem` as a `struct` could help us, and explore other uses of `map` and `flatMap` — especially on `Optionals`.
 
