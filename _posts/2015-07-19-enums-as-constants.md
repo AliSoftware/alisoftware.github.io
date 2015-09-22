@@ -58,13 +58,13 @@ extension UIImage {
 
 And now you can go use `UIImage(asset: .GreenApple)` too!
 
-_Given that this enum is actually so linked with `UIImage`, I like to add those enums inside an `UIImage` extension instead of declaring it at the global scope._
+_Given that this enum is actually so linked with `UIImage`, I like to declare it inside an `UIImage` extension instead of declaring it at the global scope._
 
 Pretty cool, right?
 
 ## Enums for your UIColors
 
-But wait, why stop at `UIImage`? There is a lot of other stuff where you could apply that pattern too. For example, you typically have custom `UIColors` that you use everywhere in your code and that are taylored to your client's corporate identity.
+But wait, why stop at `UIImage`? There is a lot of other stuff where you could apply that pattern too. For example, you typically have custom `UIColors` which you use everywhere in your code and that are tailored to your client's corporate identity.
 
 ### An `enum` of type `UIColor`?!
 
