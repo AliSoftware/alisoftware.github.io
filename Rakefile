@@ -7,7 +7,7 @@ task :post, :title do |_, args|
   if args.title
     title = args.title
   else
-    puts "Please try again. Remember to include the filename."
+    abort "Please try again. Remember to include the filename."
   end
   mkdir_p "#{posts_dir}"
   filename = "#{posts_dir}/#{Time.now.strftime('%Y-%m-%d')}-#{title.downcase.gsub(/[^\w]+/, '-')}.md"
