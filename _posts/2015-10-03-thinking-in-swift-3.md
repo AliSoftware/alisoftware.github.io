@@ -63,7 +63,7 @@ In our case, a `struct` seems more appropriate because it carries values, and is
 
 Also, the advantage of migrating to a `struct` here is that they have an implicit constructor by default if you don't define any: so we can easily build a `ListItem` using its default constructor `ListItem(icon: …, title: …, url: …)`.
 
-Last but not least, as we now can't create a bogus `ListItem` because we eliminated the problem of data corruption above, we can eliminate the default value `""` for `title`, but more importantly **we can save that last pony** 🐴 by transforming `NSURL!` into `NSURL`[^about-time].
+Last but not least, as we now can't create a bogus `ListItem` because we eliminated the problem of data corruption above, we can eliminate the default value `""` for `title`, but more importantly **we can [save that last pony](http://alisoftware.github.io/swift/2015/09/06/thinking-in-swift-1/)** 🐴 by transforming `NSURL!` into `NSURL`[^about-time].
 
 [^about-time]: That `NSURL!` was bogging me for some time now, and was still there only because I was too lazy creating a proper `init` method for our `ListItem` class, and didn't want to clobber the sample code before by dealing with it as I knew we'd get rid of it eventually. It's about time we saved that last pony!
 
