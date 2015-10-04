@@ -25,7 +25,7 @@ task :post, :title do |_, args|
   end
 
   # Automatically open the post in SublimeText
-  system ("open -a MacDown #{filename}")
+  sh ("open -a MacDown #{filename}")
 end
 
 # usage: rake draft['my new draft']
@@ -52,7 +52,7 @@ task :draft, :title do |_, args|
   end
 
   # Automatically open the post in SublimeText
-  system ("open -a MacDown #{filename}")
+  sh ("open -a MacDown #{filename}")
 end
 
 desc 'move a draft into the posts'
@@ -85,8 +85,8 @@ task :preview do
   puts "## Generating site"
   puts "## Stop with ^C ( <CTRL>+C )"
   url = 'http://0.0.0.0:4000'
-  system "(until curl -sI #{url} 1>/dev/null; do sleep 0.5; done; open #{url})&"
-  system "jekyll serve --watch --drafts"
+  sh "(until curl -sI #{url} 1>/dev/null; do sleep 0.5; done; open #{url})&"
+  sh "jekyll serve --watch --drafts"
 end
 
 
@@ -102,7 +102,7 @@ task :icons, :source do |_, args|
   }
   sizes_list.each do |prefix, sizes|
     sizes.each do |size|
-      system "sips -z #{size} #{size} #{args.source} --out #{prefix}-#{size}x#{size}.png"
+      sh "sips -z #{size} #{size} #{args.source} --out #{prefix}-#{size}x#{size}.png"
     end
   end
 end
