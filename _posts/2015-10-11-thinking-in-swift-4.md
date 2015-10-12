@@ -96,7 +96,7 @@ item.icon = iconName.flatMap { imageName in UIImage(named: imageName) }
 So here's what `flatMap` does in practice:
 
 * If `iconName` is `nil`, it returns `nil` directly (but typed as `UIImage?`)
-* If `iconName` isn't `nil`, it applies the `transform` on the inner value, thus trying to build an `UIImage` using that `String`, and return the result — which is alredy a `UIImage?` and thus which can be `nil` if the `UIImage` initializer failed.
+* If `iconName` isn't `nil`, it applies the `transform` on the inner value, thus trying to build an `UIImage` using that `String`, and return the result — which is already a `UIImage?` and thus which can be `nil` if the `UIImage` initializer failed.
 
 In short, `item.icon` will only have a non-`nil` value if `itemDesc["icon"] as? String` is non-`nil` AND `UIImage(named: imageName)` succeeded.
 
@@ -159,7 +159,7 @@ Especially, in that Swift code we learned to use `guard`, `try?` and `as?` that 
 
 ## Conclusion
 
-With this article series, I hope you realize that you shouldn't try to translate your ObjC code to Swift directly. Instead, try re-thinking your code, and reimagining it. It's often better to start from a clean state and rewrite your code with the Swift idioms in mind than to try to translate ObjC code direct.
+With this article series, I hope you realize that you shouldn't try to translate your ObjC code to Swift directly. Instead, try re-thinking your code, and reimagining it. It's often better to start from a clean state and rewrite your code with the Swift idioms in mind than to try to translate ObjC code directly.
 
 I'm not saying that it's easy. Changing your way of thinking when you're already used to code in ObjC and used to its patterns and ways to write code may take some time. But it's definitely for the better.
 
