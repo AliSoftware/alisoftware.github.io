@@ -117,7 +117,10 @@ Wow! so much magic!
 
 <center>![magic](/assets/magic.gif)</center>
 
-Ok, that being said, I find this harder to read and personally prefer using an explicit closure here, to make the code more clear and less ambiguous. But that's just a matter of personal preference, and that's always good to know that's possible!
+Ok, that being said:
+
+* I find this harder to read and personally prefer using an explicit closure here, to make the code more clear and less ambiguous. But that's just a matter of personal preference, and that's always good to know that's possible!
+* As pointed out in the comments, this actually compile but doesn't seem to work as expected — I'm guessing the Swift compiler maps `UIImage.init` to `{ UIImage(contentsOfFile:$0) }` instead of using the expected `{ UIImage(named:$0) }`. One more reason to prefer explicit closures there.
 
 ## Our final Swift code
 
@@ -125,9 +128,9 @@ So here is this last lesson applied to our previous code.
 
 ```swift
 struct ListItem {
-    var icon: UIImage?
-    var title: String
-    var url: NSURL
+    let icon: UIImage?
+    let title: String
+    let url: NSURL
     
     static func listItemsFromJSONData(jsonData: NSData?) -> [ListItem] {
         guard let jsonData = jsonData,
