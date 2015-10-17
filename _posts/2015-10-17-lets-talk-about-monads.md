@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Monads
+title: Let's talk about Monads
 categories: swift
 ---
 
