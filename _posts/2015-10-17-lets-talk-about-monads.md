@@ -18,7 +18,7 @@ You may have heard about the terms _Monad_ (and maybe also _Functor_) on the web
 
 **A functor** is a type that:
 
-* wraps another inner type (like `Array<T>` or `Optional<T>` that wrap some `T`)
+* wraps another inner type (like `Array<T>` or `Optional<T>` are wrapping some `T`)
 * has a method `map` with the signature `(T->U) -> Type<U>`
 
 **A monad** is a type that:
@@ -57,7 +57,7 @@ anOptional .flatMap( transform: T -> Optional<U> ) -> Optional<U>
 
 ## Chaining map() & flatMap()
 
-What makes them powerful is generally that you can chain them too. Like you can take an initial `Array<T>`, apply it a `transform` using `map` to get an `Array<U>`, then apply another `transform` by chaining another `map` to transform that `Array<U>` into an `Array<Z>`, etc. That makes your code look like it takes an initial value, makes it pass thru a bunch of processing black boxes, and return the final product, like in a production chain. And that's when you can say you're doing _Functional Programming_!
+What makes them powerful is generally that you can chain them too. Like you can take an initial `Array<T>`, apply a `transform` to it using `map` to get an `Array<U>`, then apply another `transform` by chaining another `map` to transform that `Array<U>` into an `Array<Z>`, etc. That makes your code look like it takes an initial value, makes it pass thru a bunch of processing black boxes, and return the final product, like in a production chain. And that's when you can say you're doing _Functional Programming_!
 
 Below is a dummy example demonstrating how we can apply multiple transforms as a chain of `map` and `flatMap` calls. We start with a string, we split it into words, then we apply transforms in turn to:
 
