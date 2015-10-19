@@ -24,9 +24,26 @@ So even if they _have_ to be optional (as they won't be initialized during `init
 
 ### 2. UIImage, UIStoryboard, UITableViewCell
 
-`UIImage(named: …)`, `UIStoryboard(name:bundle:)`, `UIStoryboard.instanciateViewControllerWithIdentifier:`, `UITableView.dequeueReusableCellWithIdentifier:forIndexPath:`, and similar stuff are initialized using names and identifiers which are meant to be constants.
+All the methods below are initialized using names and identifiers which are meant to be constants:
+
+```swift
+UIImage(named: …)
+UIStoryboard(name:,bundle:)
+UIStoryboard.instantiateViewControllerWithIdentifier(_:)
+UITableView.dequeueReusableCellWithIdentifier(_:, forIndexPath:)
+// and some other similar stuff…
+```
 
 For those use cases, you may _want_ your code to crash if you misspelled the name/indentifier, because it would be a developer error (caused by a missing image in your bundle or a storyboard that you failed to include in your target, etc), and you probably want to detect it early at development stage to fix it ASAP. 
+
+Note that for those cases, you may also prefer sometimes to use the `guard let else fatalError()` pattern, to provide a more accurate exception message in case you hit that developer error case:
+
+```swift
+guard let cell = tableView.dequeueReusableCellWithIdentifier("foo", forIndexPath:indexPath) as? MyCustomCell else {
+  fatalError("cell with identifier 'foo' and class 'MyCustomCell' not found. "
+    + "Check that your XIB/Storyboard is configured properly.")
+}
+```
 
 That's also why you'd want to use tricks like the ones I discussed in [enums as constants](/swift/enum/constants/2015/07/19/enums-as-constants/) and would want to use [SwiftGen](https://github.com/AliSoftware/SwiftGen) to avoid those possibilities of identifier misspellings and crashes 😉.
 
