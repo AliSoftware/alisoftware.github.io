@@ -19,9 +19,9 @@ You may have heard about the terms _Monad_ (and maybe also _Functor_) on the web
 **A functor** is a type that:
 
 * wraps another inner type (like `Array<T>` or `Optional<T>` are wrapping some `T`)
-* has a method `map` with the signature `(T->U) -> Type<U>`
+* has a method `map` with the signature of `(T->U) -> Type<U>`
 
-**A monad** is a type that:
+**A monad** is a type, denoted by `Type<T>`, that:
 
 * is a functor (so it has an inner type `T` and a proper `map` method)
 * also has a method `flatMap` with the signature `(T->Type<U>) -> Type<U>`
