@@ -16,15 +16,15 @@ You may have heard about the terms _Monad_ (and maybe also _Functor_) on the web
 
 **But in fact, monads and functors are really simple**. Here is what it boils down to:
 
-**A functor** is a type that:
+**A functor** is a type, denoted by `Type<T>`, that:
 
 * wraps another inner type (like `Array<T>` or `Optional<T>` are wrapping some `T`)
 * has a method `map` with the signature of `(T->U) -> Type<U>`
 
-**A monad** is a type, denoted by `Type<T>`, that:
+**A monad** is a type that:
 
 * is a functor (so it has an inner type `T` and a proper `map` method)
-* also has a method `flatMap` with the signature `(T->Type<U>) -> Type<U>`
+* also has a method `flatMap` with the signature of `(T->Type<U>) -> Type<U>`
 
 And that's all there is to know for _Monads_ and _Functors_!
 **A _Monad_ is simply a type that has a `flatMap` method, and a _Functor_ is simply a type that has a `map` method**. Pretty simple, right?
