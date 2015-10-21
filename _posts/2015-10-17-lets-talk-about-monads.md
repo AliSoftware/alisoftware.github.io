@@ -16,7 +16,7 @@ You may have heard about the terms _Monad_ (and maybe also _Functor_) on the web
 
 **But in fact, monads and functors are really simple**. Here is what it boils down to:
 
-**A functor** is a type that:
+**A functor** is a type, denoted by `Type<T>`, that:
 
 * wraps another inner type (like `Array<T>` or `Optional<T>` are wrapping some `T`)
 * has a method `map` with the signature `(T->U) -> Type<U>`
