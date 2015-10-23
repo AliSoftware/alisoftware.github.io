@@ -2,6 +2,11 @@
 layout: post
 title: "Thinking in Swift, Part 4: map all the things!"
 categories: swift
+translations:
+  - lang: Chinese
+    flag: 🇨🇳
+    author: the SwiftGG team
+    url: http://swift.gg/2015/10/22/thinking-in-swift-4/
 ---
 
 In [previous articles of this series](/swift/2015/09/20/thinking-in-swift-2/), we learned about using `map` and `flatMap` on arrays. Today we'll discover `map` and `flatMap` also exists on Optionals. And on plenty of other types.

@@ -2,6 +2,11 @@
 layout: post
 title: "Thinking in Swift, Part 1: Saving ponies"
 categories: swift
+translations:
+  - lang: Chinese
+    flag: 🇨🇳
+    author: the SwiftGG team
+    url: http://swift.gg/2015/09/29/thinking-in-swift-1/
 ---
 
 I often see newcomers to Swift try to translate their ObjC code into Swift.

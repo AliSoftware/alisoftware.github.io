@@ -2,6 +2,11 @@
 layout: post
 title: "Thinking in Swift, Part 2: map those arrays"
 categories: swift
+translations:
+  - lang: Chinese
+    flag: 🇨🇳
+    author: the SwiftGG team
+    url: http://swift.gg/2015/10/09/thinking-in-swift-2/
 ---
 
 In [part 1 of this article series](/swift/2015/09/06/thinking-in-swift-1), we saw how to avoid force-unwrapping optionals, save ponies 🐴 and avoid crashes by doing so. In this part 2, we'll refine our code to make it Swift-er, introducing `map()` and `flatMap()`.

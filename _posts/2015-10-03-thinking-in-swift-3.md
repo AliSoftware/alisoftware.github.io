@@ -2,6 +2,11 @@
 layout: post
 title: "Thinking in Swift, Part 3: Struct vs. Class"
 categories: swift
+translations:
+  - lang: Chinese
+    flag: 🇨🇳
+    author: the SwiftGG team
+    url: http://swift.gg/2015/10/20/thinking-in-swift-3/
 ---
 
 Continuing my "Thinking in Swift" article series, today we'll do a simple change that will simplify our code again: using a `struct`.
