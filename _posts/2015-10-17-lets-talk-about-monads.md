@@ -43,16 +43,16 @@ See the resemblance? _(spaces added for ease of comparison)_
 
 ```swift
 // Array, Optional, Promise, Result are all Functors
-   anArray     .map( transform: T ->          U  ) ->    Array<U>
-anOptional     .map( transform: T ->          U  ) -> Optional<U>
- aPromise     .then( transform: T ->          U  ) ->  Promise<U>
-   aResult     .map( transform: T ->          U  ) ->   Result<U>
+   Array<T> ➜ func     map( transform: T ->          U  ) ->    Array<U>
+Optional<T> ➜ func     map( transform: T ->          U  ) -> Optional<U>
+ Promise<T> ➜ func    then( transform: T ->          U  ) ->  Promise<U>
+  Result<T> ➜ func     map( transform: T ->          U  ) ->   Result<U>
     
 // Array, Optional, Promise, Result are all Monads
-   anArray .flatMap( transform: T ->    Array<U> ) ->    Array<U>
-anOptional .flatMap( transform: T -> Optional<U> ) -> Optional<U>
-  aPromise    .then( transform: T ->  Promise<U> ) ->  Promise<U>
-   aResult .flatMap( transform: T ->   Result<U> ) ->   Result<U>
+   Array<T> ➜ func flatMap( transform: T ->    Array<U> ) ->    Array<U>
+Optional<T> ➜ func flatMap( transform: T -> Optional<U> ) -> Optional<U>
+ Promise<T> ➜ func    then( transform: T ->  Promise<U> ) ->  Promise<U>
+  Result<T> ➜ func flatMap( transform: T ->   Result<U> ) ->   Result<U>
 ```
 
 ## Chaining map() & flatMap()
