@@ -9,7 +9,7 @@ translations:
     url: http://swift.gg/2015/10/30/lets-talk-about-monads/
 ---
 
-In [the last article](/swift/2015/10/11/thinking-in-swift-4/), we played a lot with `map` and `flatMap`, methods on the `Optional` and `Array` types. But what you probably didn't realised is that you were manipulating Monads without knowing. But what is a Monad?
+In [the last article](/swift/2015/10/11/thinking-in-swift-4/), we played a lot with `map` and `flatMap`, methods on the `Optional` and `Array` types. What you probably didn't realise is that you were manipulating Monads without knowing. But what is a Monad?
 
 ## What are Functors and Monads
 
