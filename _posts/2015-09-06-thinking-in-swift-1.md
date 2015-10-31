@@ -37,7 +37,7 @@ So let's say you want to create a list of items (e.g. to display in a TableView 
         ListItem* item = [ListItem new];
         item.icon = [UIImage imageNamed:itemDesc[@"icon"]];
         item.title = itemDesc[@"title"];
-        item.url = [NSURL URLWithString:itemDesc[@"title"]];
+        item.url = [NSURL URLWithString:itemDesc[@"url"]];
         [items addObject:item];
     }
     return [items copy];
