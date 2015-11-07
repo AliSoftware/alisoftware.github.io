@@ -8,6 +8,8 @@ categories: [swift, protocol]
 When coming from an Object-Oriented Programming language like ObjC, inheritence is often used to share code between multiple classes. But that solution is not always the best, and have some issues.  
 In today's article, we'll see how Swift's Protocol Extensions and their usage as "Mixins" can change the deal.
 
+> _TL;DR: You can download [the Swift Playground containing all the code of that article here](/assets/Mixins.playground.zip)._
+
 ## The problem with Inheritance
 
 Say you have an app with a lot of `UIViewController` classes that share the same behavior, for example they all have a Burger Menu. You don't want to reimplement the Burger Menu logic (setting up the `leftBarButtonItem`, opening and closing the menu when the button is tapped, etc) in every View Controllers of your app of course.
