@@ -354,7 +354,7 @@ The Mixins & Traits approach allows you to describe types by **what they can do 
 
 Back at the first example, you can for example create a `protocol BurgerMenuManager` with a default implementation, then simply make your View Controllers (whether they are `UIViewController`, `UITableViewController` or whatnot) conform to that protocol so it will automatically gain those abilities and features from `BurgerMenuManager` for free, without worrying about the parent class of the `UIViewController`!
 
-<center>![I don't wanna go](/assets/I-dont-wanna-go.gif)</center>
+<center>![I don't wanna go](/assets/i-dont-wanna-go.gif)</center>
 
 There's a lot more to say about Protocol Extensions, and I'm tempted to continue that article to tell you a lot more about them, as they can improve your code in a lot more ways. But hey, that post is already long enough, and let's keep some more for future blog posts, hoping to so see you there!
 
