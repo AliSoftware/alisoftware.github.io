@@ -344,11 +344,15 @@ So, one solution to this is to make everything a Protocol and get rid of the inh
 
 I've included [a Swift Playground that you can download here](/assets/Mixins.playground.zip) that contains the code shown in that blog post, and demonstrate in Page 2 of the Playground a solution with everything made a Protocol and Structs, with no inheritance at all. Don't hesitate to take a look!
 
+Of course that doesn't mean that you have to get rid of inheritance at all cost (don't listen too much to that Dalek, they lack feelings after all 😉). Inheritance is still useful and can still make sense — e.g. it still feels logical that a `UILabel` is a _subclass_ of `UIView`. But that gives you a taste of what Mixins & Protocols with Default Implementations can offer.
+
 ## Conclusion
 
-When practicing Swift, you'll realize that it's is really a Protocols-Oriented language, and that using a Protocol is more common and more powerful in Swift that it was in Objective-C.
+When practicing Swift, you'll realize that it's really a Protocols-Oriented language, and that using a Protocol is more common and more powerful in Swift that it was in Objective-C. After all, protocols like `Equatable`, `CustomStringConvertible` and any protocol in `-able` in the Swift Standard Library can actually be seen as Mixins!
 
-With Swift Protocols and Protocols Default Implementations, you can implement Mixins & Traits, but you can also implement something similar to Abstract Classes and more, and make your code way more flexible.
+With Swift Protocols and Protocols Default Implementations, you can implement Mixins & Traits, but you can also implement something similar to Abstract Classes[^future-post] and more, and make your code way more flexible.
+
+[^future-post]: That's probably gonna be a topic for a future blog post.
 
 The Mixins & Traits approach allows you to describe types by **what they can do rather than what they are**, and more importantly, to opt-in capabilities into your types. It's like doing your shopping and **pick the capabilities you want for your type, whatever the class they inherit**, if any.
 
