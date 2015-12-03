@@ -64,7 +64,7 @@ I won't start a big post here about using `struct` and value types vs `class` an
 
 ## Converting our class to a struct
 
-In our case, a `struct` seems more appropriate because it carries values, and is not intended to be mutated (and rather copied than referenced). We're gonna use them as sources for a menu for example, and they are not intended to be modifined once created anyway, so this is one case where it makes sense.
+In our case, a `struct` seems more appropriate because it carries values, and is not intended to be mutated (and rather copied than referenced). We're gonna use them as sources for a menu for example, and they are not intended to be modified once created anyway, so this is one case where it makes sense.
 
 Also, the advantage of migrating to a `struct` here is that they have an implicit constructor by default if you don't define any: so we can easily build a `ListItem` using its default constructor `ListItem(icon: …, title: …, url: …)`.
 
