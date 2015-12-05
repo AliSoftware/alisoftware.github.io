@@ -39,12 +39,12 @@ The thing to remember here is: don't do OpenSource projects just to be the popul
 
 ## Don't be afraid to contribute
 
-After a while, I wanted to give more to the community. As I used [CocoaPods](https://cocoapods.org/about) a lot in my development projects, I wanted to help on that front.
+After a while, I wanted to give back to the community. As I used [CocoaPods](https://cocoapods.org/about) a lot in my development projects, I wanted to help on that front.
 
 I can't find back the first Pull Request I did on CocoaPods, but I remember quite well that at that time I was not really confident because:
 
 * CocoaPods seems like a huge project and I was kinda lost in it, and didn't know where to start
-* I didn't know how to do Ruby _at all_. I was thinking that my code would probably look ridiculous compared to the Grand Masters working on CocoaPods
+* **I didn't know how to do Ruby _at all_**. I was thinking that my code would probably look ridiculous compared to the Grand Masters working on CocoaPods
 
 So what I did is I started small, with Pull Requests about documentation typos, and helping improve the Guides using my experience as a CocoaPods user, to give feedback and avoid other people to have the same issues that I had when I first started using CocoaPods. It didn't seem much, but at least I was helping.
 
@@ -62,6 +62,8 @@ Those first contributions were very welcomed by the team. **Seriously. The Cocoa
 But instead of telling me my code was not good, **they told me how to improve my Ruby skills and how I could improve my code in better ways**. They even helped my setting up my Ruby environment (as I had problems running the Unit Tests and understanding how this was organized at first)! It was very heartening and encouraging and made me want to do more.
 
 > When working on an OpenSource project, the community is very important. A welcoming community that follows a nice code of conduct and helps newcomers changes everything. Understanding that not everybody has the same skills has you but wants to improve is way better.
+
+As a matter of fact, I literally learned to do Ruby by contributing to CocoaPods, learning along by doing Pull Requests.
 
 ## All about people
 
@@ -98,13 +100,13 @@ Once I was familiar with the CocoaPods project, I did also help newcomers to Coc
 
 But then I started having new projects of my own gaining popularity, like [SwiftGen](https://github.com/AliSoftware/SwiftGen) and [Dip](https://github.com/AliSoftware/Dip), and that now takes me quite some time (that's probably why I started spending less time on CocoaPods lately).
 
-That's also when I saw the other good side of OpenSource. To my surprise, Newsletters and Tweets started to talk about those projects quite quicly, and those projects also gained popularity quite fast, generating a lot of demand and issues submitting ideas to improve those. I wasn't able to keep up alone.
+That's also when I saw the other good side of OpenSource. To my surprise, Newsletters and Tweets started to talk about those projects quite quickly, and those projects also gained popularity quite fast, generating a lot of demand and issues submitting ideas to improve those. I wasn't able to keep up alone.
 
-That's when [Ilya](https://github.com/ilyapuchka) started to contribute a lot to `Dip`, adding a lot of Pull Requests that fixed bugs or add a lot of nice features, and I decided to give him Push Access to my repository.
+That's when [Ilya](https://github.com/ilyapuchka) started to [contribute a lot to Dip](https://github.com/AliSoftware/Dip/graphs/contributors), adding a lot of Pull Requests that fixed bugs or add a lot of nice features, and I decided to give him Push Access to my repository.
 
 That was the first time I gave someone I didn't know the push access to one of my public repositories. That might be frightening at first, because you never know if other people have the same idea as you about the project, if they won't mess it up, or if they have other coding habits and a way of writing code that don't match yours, and more importantly you don't want them to break everything.
 
-But I don't regret that decision at all, and given my background in OpenSource I actually didn't even hesitate much to give them push access. It felt really great to trust someone, and in the end Ilya is doing an amazing job and brings way more features in `Dip` that I ever would've.
+But I don't regret that decision at all, and given my background in OpenSource I actually didn't even hesitate much to give them push access. It felt really great to trust someone, and in the end Ilya is doing an amazing job and brings way more features in `Dip` that I ever would've. And it's always interesting to have a fresh perspective on your code and what you're building!
 
 > Trusting people on your project is also important and very heartwarming. You'll rarely be disappointed by trusting people in OSS as it's all about sharing and helping each other.
 
@@ -113,9 +115,11 @@ But I don't regret that decision at all, and given my background in OpenSource I
 * Open Source is wonderful
 * Gives you opportunity to meet wonderful people
 * Sharing is very gratifying
-* Don't be ashamed or shy to participate on an OpenSource project
+* Don't be ashamed by your skills or shy to participate on an OpenSource project
 * Every little PR or issue counts, Documentations PRs and well documented issues with ways to reproduce are as important as code contributions.
 * Nice things happen when being nice
 * You should all do [Open Source by Default](https://code.dblock.org/2015/02/09/becoming-open-source-by-default.html)
 
 Well, now that I've talked about my experience in entering the OpenSource world, I hope I made you want to do more OpenSource and participate!
+
+_Of course I'd welcome your contribution of one of my own OpenSource project, especially on [SwiftGen](https://github.com/AliSoftware/SwiftGen/) where there is tons of great ideas to implement to improve the tool_ 😉
