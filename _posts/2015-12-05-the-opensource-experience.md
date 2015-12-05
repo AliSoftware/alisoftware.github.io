@@ -5,8 +5,8 @@ date: 2015-12-05
 categories: oss
 ---
 
-As you all know, [Swift just went OpenSource earlier this week](https://swift.org). That's huge news for the community, and there have been plenty of posts about that already explainging what a game changer that is.  
-And now for something completely different™, today I'll take this opportunity to talk about my own experience with OpenSource and how contributing to OSS can be a very enlighting for everybody.
+As you all know, [Swift just went OpenSource earlier this week](https://swift.org). That's huge news for the community, and there have been plenty of posts about that already explaining what a game changer that is.  
+And now for something completely different™, today I'll take this opportunity to talk about my own experience with OpenSource and how contributing to OSS can be very enlighting for everybody.
 
 ## Introduction: The big deal with Swift OSS
 
@@ -29,7 +29,7 @@ Then came my first real libraries that I put on GitHub to really share with othe
 
 ## Share some love
 
-So here is how it all started: after reading [a blog post about `NSURLProtocol`](http://www.infinite-loop.dk/blog/2011/09/using-nsurlprotocol-for-injecting-test-data/) I wanted once again to toy around and see how we could generalize the idea by making it customizable. By the time I wrote the first lines of that GitHub project, that was still a Proof of Concept. But then I improved it, transforming it into a stand-alone component… and people started to start the GitHub repository 🌟
+So here is how it all started for me: after reading [a blog post about `NSURLProtocol`](http://www.infinite-loop.dk/blog/2011/09/using-nsurlprotocol-for-injecting-test-data/) I wanted once again to toy around and see how we could generalize the idea by making it customizable. By the time I wrote the first lines of that GitHub project, that was still a Proof of Concept. But then I improved it, transforming it into a stand-alone component… and people began to star the GitHub repository 🌟
 
 I really didn't see the success of `OHHTTPStubs` coming, and **that brought me a nice feeling and some confidence**. Seeing that repository becoming more and more popular was heartwarming, realizing that this code helped people and that they actually use it in their projects made me very happy. That was not just a toy project anymore, I was helping the community.
 
@@ -59,9 +59,9 @@ Back after I first contributed to CocoaPods, it was time for me to try and fix s
 
 Those first contributions were very welcomed by the team. **Seriously. The CocoaPods Team is really awesome** and made me feel welcome even if I wasn't totally confident at first about the modifications I did in their code.
 
-But instead of telling me my code was not good, **they told me how to improve my Ruby skills and how I could improve my code in better ways**. They even helped my setting up my Ruby environment (as I had problems running the Unit Tests and understanding how this was organized at first)! It was very heartening and encouraging and made me want to do more.
+But instead of telling me my code was not good, **they told me how to improve my Ruby skills and how I could improve my code in better ways**. They even helped me setting up my Ruby environment (as I had problems running the Unit Tests and understanding how this was organized at first)! It was very heartening and encouraging and made me want to do more.
 
-> When working on an OpenSource project, the community is very important. A welcoming community that follows a nice code of conduct and helps newcomers changes everything. Understanding that not everybody has the same skills has you but wants to improve is way better.
+> When working on an OpenSource project, the community is very important. A welcoming community — that follows a nice code of conduct and helps newcomers — changes everything. Understanding that not everybody has the same skills as you but wants to improve is way better.
 
 As a matter of fact, I literally learned to do Ruby by contributing to CocoaPods, learning along by doing Pull Requests.
 
@@ -86,7 +86,7 @@ But participating in a community is sometimes hard. In GitHub everybody can crea
 * The OpenSource project is brought to you free of charge
 * It's maintained by people taking on their own free time to write the code and improve it
 * Time is not infinite and people working on OSS can't test every configuration out there, even if we try to cover as much as possible
-* Being harsh doesn't help. Providing a way to reproduce the issue and explaining what you tried helped.
+* Being harsh doesn't help. Providing a way to reproduce the issue and explaining what you tried helps.
 
 Orta would say, [Being Nice is Nice](https://realm.io/news/altconf-orta-therox-being-nice-in-open-source/). And that's also why Code of Conducts are important, to let people know how to be nice with people but more importantly that you are welcoming to everyone — as long as they are nice to each other.
 
@@ -122,4 +122,4 @@ But I don't regret that decision at all, and given my background in OpenSource I
 
 Well, now that I've talked about my experience in entering the OpenSource world, I hope I made you want to do more OpenSource and participate!
 
-_Of course I'd welcome your contribution of one of my own OpenSource project, especially on [SwiftGen](https://github.com/AliSoftware/SwiftGen/) where there is tons of great ideas to implement to improve the tool_ 😉
+_Of course I'd welcome your contribution on one of my own OpenSource project, especially on [SwiftGen](https://github.com/AliSoftware/SwiftGen/) where there is tons of great ideas to implement to improve the tool_ 😉
