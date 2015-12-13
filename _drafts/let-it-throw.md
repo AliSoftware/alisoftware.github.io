@@ -66,11 +66,11 @@ catch {
 
 ## The failure never bothered me anyway
 
-You can see that `someFunctionWitchCanFail` returns a plain `String`, which is the type returned when everything was ok. It makes it easy to call the function "normally", first thinking (in the `do { … }` block) about the **good** path, to handle the case when nothing wrong happen.
+You can see that `someFunctionWitchCanFail` returns a plain `String`, which is the type returned when everything was ok. It makes it easy to call the function "normally", first thinking (in the `do { … }` block) about the **happy** path, to handle the case where nothing wrong happens.
 
 The only reminder that those methods can fail is the `try` keyword that the compiler enforces you to add in front of that call, otherwise it's like a non-throwing function call. And then, you only write the code to handle errors in a separate place (inside the `catch`)
 
-Note that you can write more than one line (and `try`-call more than one throwing function) in that `do` block. If everything is successful, it will execute them as expected, but as soon as one of them fail it will jump out of the `do` block into the `catch` statement instead. That's very handy as well for long runs of code with multiple potential points of failure, as you'll be able to only care about one error path at the end.
+Note that you can write more than one line (and `try`-call more than one throwing function) in that `do` block. If everything is successful, it will execute them as expected, but as soon as one of them fails it will jump out of the `do` block into the `catch` statement instead. That's very handy as well for long runs of code with multiple potential points of failure, as you can handle them all in a single error path at the end.
 
 ## NSError is a bit of a fixer-upper
 
@@ -137,32 +137,32 @@ func doTheActualCall() throws {
 }
 ```
 
-Here when `doFail` is called, the potential error is not caught by `doTheActualCall` (there is no `do…catch` capturing it), so it propagates up to the calling `test()` function. Because it doesn't catch all errors, `doTheActuallCall` must also be marked as `throws`: even if it doesn't throw errors by itself, it can still propagates some. It can't keep the error to itself, it has to… let it go to the upper level.
+Here when `doFail` is called, the potential error is not caught by `doTheActualCall` (there is no `do…catch` capturing it), so it propagates up to the calling `test()` function. Because it doesn't catch all errors, `doTheActuallCall` must also be marked as `throws`: even if it doesn't throw errors by itself, it can still propagates some. It can't keep the error to itself, it has to… _let it go_ to the upper level.
 
-On the other end, `test()` catches all errors internally so even if it calls a throwing function (`try doTheActualCall()`), all errors thrown by that function are catched by `do…catch` and `test()` itself can't throw from the outside.
+On the other end, `test()` catches all errors internally so even if it calls a throwing function (`try doTheActualCall()`), all errors thrown by that function are caught in the `do…catch` block. The `test()` function itself doesn't throw, so callers don't need to know about this internal behavior.
 
 ## Conceal, don't feel, don't let them know
 
-You may have wondered by now how to know which kind of error each method throw. Indeed, functions are marked with `throws` but what `ErrorType` can this function actually throw, can it throw `KristoffErrors`, `JSONErrors`, other? Which ones do I need to catch?
+You may have wondered by now how to know which kind of error each method throws. Indeed, functions are marked with `throws` but what `ErrorType` can this function actually throw? Can it throw `KristoffErrors`, `JSONErrors`, other? Which ones do I need to catch?
 
 Well that's a problem. Currently, due to some ABI and resilience concerns[^resilience], this is not possible. The only way to know is using the documentation of your code.
 
 [^resilience]: Swift 2.0 doesn't support typed throws, but [there is a discussion about adding that feature in [the swift-evolution Mailing List](https://lists.swift.org/pipermail/swift-evolution/2015-December/000076.html) where Chris Lattner explains why this was not possible in Swift 2 and why we need the resilience model of Swift 3.0 to be able to make that feature consistent.
 
-But that's also a good thing. for example, imagine you use two libraries, `MyLibA` containing a function `funcA` that `throws` errors of type `MyLibAError`, and `MyLibB` with a function `funcB` that `throws` errors of type `MyLibBError`. 
+But that's also a good thing. for example, imagine you use two libraries, `MyLibA` containing a function `funcA` that `throws` errors of type `MyLibAError`, and `MyLibB` with a function `funcB` that `throws` errors of type `MyLibBError`.
 
 Then you want to create your own library, a wrapper around those two libraries, with a function `funcC` that calls both `MyLibA.funcA()` and `MyLibB.funcB()`. Then the resulting function `funcC` might throw either error of type `MyLibAError` or `MyLibBError`. And if you add another level of abstraction, it gets worse, with more and more error types being able to be thrown. If we had to list them all, and the call site would need to catch them all, that would make a quite verbose signature
 
 ## Don't let them in, don't let them see
 
-For that reason, but also to avoid your internal errors to bleed across your library boundaries and to limite the number of error types to handle by your user, I suggest that you keep your error types scoped to each level of abstraction.
+For that reason, but also to prevent your internal errors from bleeding across your library boundaries and to limit the number of error types that must be handled by your users, I suggest that you keep your error types scoped to each level of abstraction.
 
-In the example above, instead of making `funcC` directly propagade both `MyLibAErrors` and `MyLibBErrors`, you should instead throw `MyLibCErrors`. I suggest that for two reasons, both related to abstraction:
+In the example above, instead of making `funcC` directly propagate both `MyLibAErrors` and `MyLibBErrors`, you should instead throw `MyLibCErrors`. I suggest this for two reasons, both related to abstraction:
 
-* The first one is because your user shouldn't have to know which internal library you're using. If some day in the future you decide to switch your implementation to use `SomeOtherPopularLibA` instead of `MyLibA`, which will obviously not throw exactly the same errors, the caller of your own `MyLibC` framework should care, that's what abstraction is all about.
-* The second one is because the caller shouldn't have to handle all the errors. Surely you can catch some of those error and consider them internal: not all errors thrown by `MyLibA` do make sense to be exposed publically to your user, for example a `FrameworkConfigurationError` error mentionning that you misused the `MyLibA` framework and forgot to call its `setup()` method or whatever should not make its way to the user, as the user can't do much about it, that kind of error is your fault, not his.
+1. Your users shouldn't have to know which internal library you're using. If some day in the future you decide to switch your implementation to use `SomeOtherPopularLibA` instead of `MyLibA`, which will obviously not throw exactly the same errors, the caller of your own `MyLibC` framework shouldn't need to know or care. That's what abstraction is all about.
+1. The caller shouldn't have to handle all the errors. Surely you can catch some of those errors and consider them internal: not all errors thrown by `MyLibA` make sense to be exposed publicly to your users, for example a `FrameworkConfigurationError` error mentioning that you misused the `MyLibA` framework and forgot to call its `setup()` method or whatever should not make its way to the user, as the user can't do much about it. That kind of error is your fault, not his/hers.
 
-So instead, your `funcC` should probably catch all `MyLibAErrors` and `MyLibBErrors` and wrap them / re-interpret them and expose them as `MyLibCErrors` instead. That way, the user of your framework doesn't have to know what you're using under the hood, you can switch your internal implementation and libs used at any time, and you expose to the user only the errors they might care for.
+So instead, your `funcC` should probably catch all `MyLibAErrors` and `MyLibBErrors`, wrap them / re-interpret them and expose them as `MyLibCErrors` instead. That way, the users of your framework don't have to know what you're using under the hood. You can switch your internal implementation and libs used at any time, and you expose to the user only the errors they might care for.
 
 ## We finish each others sandwiches[^ref]
 
@@ -170,6 +170,4 @@ So instead, your `funcC` should probably catch all `MyLibAErrors` and `MyLibBErr
 
 There is a lot more to tell about `throw` and the Swift 2.0 error model. I could talk about `try?` and `try!`, about the `rethrows` keyword for high-order functions.
 
-I won't have time to talk about every subject about error handling there, that would have made that post way tool long; but [other interesting blog posts](http://robnapier.net/re-throws) might help you finish your exploration in the world of Swift error handling.
-
-
+I won't have time to talk about every subject about error handling there, that would have made that post way too long; but [other interesting blog posts](http://robnapier.net/re-throws) might help you finish your exploration in the world of Swift error handling.
