@@ -1,3 +1,13 @@
+> _Notes_: talk about
+> 
+> * `try?` and `try!` (with guard, killing ponies and all)
+> * using `throw` in closures, and `rethrows`
+> * introduction to `Result` (before Swift 2.0 error handling, FP + Monads)
+> * `Result` as an alternative for async error handling
+> * Using `try` and `throw`-able functions for JSON parsing (see `Decodable`)
+
+
+
 ## As a Result…
 
 When Swift and its new approach arrived back in Swift 1.0, people started to handle errors in a better way. As Swift borrowed a lot of features from the functional programming world, it was logical that people used the `Result` pattern in Swift to better handle errors(^1)

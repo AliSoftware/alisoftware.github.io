@@ -10,7 +10,7 @@ Because let's be honest, that makes a fun post title for the season ❄️☃️
 
 ## Objective-C and the NSError of its ways
 
-Remember Objective-C? Back then, the main and official way for a method to tell that something went wrong was to take a `NSError*` by reference.
+Remember Objective-C? Back then[^nshipster], the main and official way for a method to tell that something went wrong was to take a `NSError*` by reference.
 
 ```objc
 NSError* error;
@@ -24,6 +24,8 @@ if (!ok) {
 ```
 
 Man that was painful. To the point that many people were tempted to not even bother to check for errors and simply pass `NULL` there. Not very responsible and safe.
+
+[^nshipster]: For more info about how the old way to handle errors in Objective-C work, see [this great article by NSHipster](http://nshipster.com/nserror/). But today's article is about Swift and the new way, so let's not lose too much time about that old beast.
 
 ## Do you want to build a throw, man?
 
@@ -170,4 +172,8 @@ So instead, your `funcC` should probably catch all `MyLibAErrors` and `MyLibBErr
 
 There is a lot more to tell about `throw` and the Swift 2.0 error model. I could talk about `try?` and `try!`, about the `rethrows` keyword for high-order functions.
 
-I won't have time to talk about every subject about error handling there, that would have made that post way too long; but [other interesting blog posts](http://robnapier.net/re-throws) might help you finish your exploration in the world of Swift error handling.
+I won't have time to talk about every subject about error handling there, that would have made that post way too long; but other interesting blog posts might help you finish your exploration in the world of Swift error handling, including (but not limited to) those:
+
+* [Throw that don't throw](http://robnapier.net/throw-what-dont-throw) and [Re…throws?](http://robnapier.net/re-throws) by Rob Napier
+* [Error Handling](https://littlebitesofcocoa.com/108-error-handling) by Little Bites of Cocoa
+* [What we learned from rewriting our robotic control software in Swift](http://www.sunsetlakesoftware.com/2015/11/03/what-we-learned-rewriting-our-robotic-control-software-swift), by Brad Larson
