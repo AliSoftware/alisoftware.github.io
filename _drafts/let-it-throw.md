@@ -177,3 +177,5 @@ I won't have time to talk about every subject about error handling there, that w
 * [Throw that don't throw](http://robnapier.net/throw-what-dont-throw) and [Re…throws?](http://robnapier.net/re-throws) by Rob Napier
 * [Error Handling](https://littlebitesofcocoa.com/108-error-handling) by Little Bites of Cocoa
 * [What we learned from rewriting our robotic control software in Swift](http://www.sunsetlakesoftware.com/2015/11/03/what-we-learned-rewriting-our-robotic-control-software-swift), by Brad Larson
+
+Let me finish this article by wishing you all happy holidays ☃️❄️ and see you soon for the next post!
