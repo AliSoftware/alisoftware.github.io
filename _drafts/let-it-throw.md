@@ -29,6 +29,8 @@ Man that was painful. To the point that many people were tempted to not even bot
 
 ## Do you want to build a throw, man?
 
+<center>![Frozen-Illustration-1](/assets/frozen-throw-man.jpg)</center>
+
 With Swift 2.0, Apple decided to introduce a different way to handle errors: using `throw` [^not-exception].
 
 [^not-exception]: Despite its name, `throw` is not about throwing _exceptions_ like in Java or C++ or even ObjC. But the way to use it is so similar that Apple decided to keep the same wording so that people used to exceptions find it natural.
@@ -68,6 +70,8 @@ catch {
 
 ## The failure never bothered me anyway
 
+<center>![Frozen-Illustration-2](/assets/frozen-failure.jpg)</center>
+
 You can see that `someFunctionWitchCanFail` returns a plain `String`, which is the type returned when everything was ok. It makes it easy to call the function "normally", first thinking (in the `do { … }` block) about the **happy** path, to handle the case where nothing wrong happens.
 
 The only reminder that those methods can fail is the `try` keyword that the compiler enforces you to add in front of that call, otherwise it's like a non-throwing function call. And then, you only write the code to handle errors in a separate place (inside the `catch`)
@@ -75,6 +79,8 @@ The only reminder that those methods can fail is the `try` keyword that the comp
 Note that you can write more than one line (and `try`-call more than one throwing function) in that `do` block. If everything is successful, it will execute them as expected, but as soon as one of them fails it will jump out of the `do` block into the `catch` statement instead. That's very handy as well for long runs of code with multiple potential points of failure, as you can handle them all in a single error path at the end.
 
 ## NSError is a bit of a fixer-upper
+
+<center>![Frozen-Illustration-3](/assets/frozen-fixer-upper.jpg)</center>
 
 Ok, but with this example we still have to handle errors using `NSError`, which is a pain. Comparing domains and error codes with `==` and make a list of domain and code constants, just to know which error we got and handle it properly… ouch.
 
@@ -122,6 +128,8 @@ That also makes better errors with clear names as constants and associated value
 
 ## I can't hold it back anymore
 
+<center>![Frozen-Illustration-4](/assets/frozen-cant-hold-it-back.jpg)</center>
+
 When you call a `throw`-ing function, the error it throws can be caught in the calling function using a `do…catch`. But if it isn't, then it propagates to the upper level:
 
 ```swift
@@ -145,6 +153,8 @@ On the other end, `test()` catches all errors internally so even if it calls a t
 
 ## Conceal, don't feel, don't let them know
 
+<center>![Frozen-Illustration-5](/assets/frozen-conceal-dont-feel.jpg)</center>
+
 You may have wondered by now how to know which kind of error each method throws. Indeed, functions are marked with `throws` but what `ErrorType` can this function actually throw? Can it throw `KristoffErrors`, `JSONErrors`, other? Which ones do I need to catch?
 
 Well that's a problem. Currently, due to some ABI and resilience concerns[^resilience], this is not possible. The only way to know is using the documentation of your code.
@@ -157,6 +167,8 @@ Then you want to create your own library, a wrapper around those two libraries, 
 
 ## Don't let them in, don't let them see
 
+<center>![Frozen-Illustration-5](/assets/frozen-dont-let-them-in.jpg)</center>
+
 For that reason, but also to prevent your internal errors from bleeding across your library boundaries and to limit the number of error types that must be handled by your users, I suggest that you keep your error types scoped to each level of abstraction.
 
 In the example above, instead of making `funcC` directly propagate both `MyLibAErrors` and `MyLibBErrors`, you should instead throw `MyLibCErrors`. I suggest this for two reasons, both related to abstraction:
@@ -168,6 +180,8 @@ So instead, your `funcC` should probably catch all `MyLibAErrors` and `MyLibBErr
 
 ## We finish each others sandwiches[^ref]
 
+<center>![Frozen-Illustration-6](/assets/frozen-sandwiches.jpg)</center>
+
 [^ref]: Ok, promise, that was my last shameful _Frozen_ reference.
 
 There is a lot more to tell about `throw` and the Swift 2.0 error model. I could talk about `try?` and `try!`, about the `rethrows` keyword for high-order functions.
@@ -177,5 +191,8 @@ I won't have time to talk about every subject about error handling there, that w
 * [Throw that don't throw](http://robnapier.net/throw-what-dont-throw) and [Re…throws?](http://robnapier.net/re-throws) by Rob Napier
 * [Error Handling](https://littlebitesofcocoa.com/108-error-handling) by Little Bites of Cocoa
 * [What we learned from rewriting our robotic control software in Swift](http://www.sunsetlakesoftware.com/2015/11/03/what-we-learned-rewriting-our-robotic-control-software-swift), by Brad Larson
+* … _(Don't hesitate to share more links in the comments section!)_
 
 Let me finish this article by wishing you all happy holidays ☃️❄️ and see you soon for the next post!
+
+<center>![Happy Holidays](/assets/frozen-olaf-holidays.jpg)</center>
