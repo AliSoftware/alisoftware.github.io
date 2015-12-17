@@ -87,7 +87,7 @@ Ok, but with this example we still have to handle errors using `NSError`, which 
 But we can fix this fixer-upper… up with a little bit of love! What if we used what we learned in my [Enums as Constants](http://alisoftware.github.io/swift/enum/constants/2015/07/19/enums-as-constants/) article and use `enums` to represent errors instead?
 
 Well, Good news, everyone!™, that's exactly what Apple intended in this new error handling model!
-In fact, when a function `throw`, it can throw any object which conforms to `ErrorType`. `NSError` is one of those types, but you can make your own, and it's even recommended!
+In fact, when a function `throws`, it can throw any object which conforms to `ErrorType`. `NSError` is one of those types, but you can make your own, and it's even recommended!
 
 The best fit for an `ErrorType` type is an `enum`, which can even have associated values if needs be. For example:
 
@@ -159,11 +159,11 @@ You may have wondered by now how to know which kind of error each method throws.
 
 Well that's a problem. Currently, due to some ABI and resilience concerns[^resilience], this is not possible. The only way to know is using the documentation of your code.
 
-[^resilience]: Swift 2.0 doesn't support typed throws, but [there is a discussion about adding that feature in [the swift-evolution Mailing List](https://lists.swift.org/pipermail/swift-evolution/2015-December/000076.html) where Chris Lattner explains why this was not possible in Swift 2 and why we need the resilience model of Swift 3.0 to be able to make that feature consistent.
+[^resilience]: Swift 2.0 doesn't support typed throws, but there is a discussion about adding that feature in [the swift-evolution Mailing List](https://lists.swift.org/pipermail/swift-evolution/2015-December/000076.html) where Chris Lattner explains why this was not possible in Swift 2 and why we need the resilience model of Swift 3.0 to be able to make that feature consistent.
 
 But that's also a good thing. For example, imagine you use two libraries, `MyLibA` containing a function `funcA` that `throws` errors of type `MyLibAError`, and `MyLibB` with a function `funcB` that `throws` errors of type `MyLibBError`.
 
-Then you want to create your own library, a wrapper around those two libraries, with a function `funcC` that calls both `MyLibA.funcA()` and `MyLibB.funcB()`. Then the resulting function `funcC` might throw either error of type `MyLibAError` or `MyLibBError`. And if you add another level of abstraction, it gets worse, with more and more error types being able to be thrown. If we had to list them all, and the call site would need to catch them all, that would make a quite verbose signature.
+Then you want to create your own library `MyLibC`, a wrapper around those two libraries, with a function `funcC()` calling both `MyLibA.funcA()` and `MyLibB.funcB()`. So the resulting function `funcC` might throw either errors of type `MyLibAError` or `MyLibBError`. And if you add another level of abstraction, it gets worse, with more and more error types being able to be thrown. If we had to list them all, and the call site would need to catch them all, that would make a quite verbose signature and `catch` code.
 
 ## Don't let them in, don't let them see
 
