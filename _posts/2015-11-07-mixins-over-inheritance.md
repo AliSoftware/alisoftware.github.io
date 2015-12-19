@@ -308,7 +308,7 @@ let amy = Human(name: "Amelia Pond", countryOfOrigin: "UK")
 class Astraunaut: Human, SpaceTraveler {}
 let neilArmstrong = Astraunaut(name: "Neil Armstrong", countryOfOrigin: "USA")
 let laika = Astraunaut(name: "Laïka", countryOfOrigin: "Russia")
-// Wait, Leïka is a Dog, right?
+// Wait, Laïka is a Dog, right?
 
 class MilleniumFalconPilot: Human, SpaceTraveler {}
 let hanSolo = MilleniumFalconPilot(name: "Han Solo")
