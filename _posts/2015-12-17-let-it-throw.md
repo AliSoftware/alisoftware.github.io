@@ -111,7 +111,7 @@ func loveKristoff() throws -> Void {
 }
 
 do {
-  loveKristoff()
+  try loveKristoff()
 }
 catch KristoffError.NotWashedSince(let days) {
   print("Ewww, he hasn't had a shower since \(days) days!")
