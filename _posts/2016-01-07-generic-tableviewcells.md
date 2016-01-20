@@ -61,7 +61,10 @@ As `UITableViewCells` and `UICollectionViewCells` might be registered either usi
 
 ## The code
 
-Here is the actual code I use in my projects:
+Here is the actual code I use in my projects
+
+> _[EDIT 20/01/2016]_  
+> The code is now [available on GitHub](https://github.com/AliSoftware/Reusable)!
 
 ```swift
 import UIKit
@@ -200,7 +203,7 @@ But that also forces you to add more implementations on `UITableView` & `UIColle
 
 ## Addendum: Now available on Cocoapods 🎉
 
-_[Added on 20 Jan 2015]_
+_[Added on 20 Jan 2016]_
 
 The code is now [available on GitHub](https://github.com/AliSoftware/Reusable) and published as a Swift Package and [as a CocoaPod](https://cocoapods.org/pods/Reusable) — so you can now easily add it to your Swift projects!
 
