@@ -198,6 +198,14 @@ This allows you to have a default implementation for nib-based cells too — ins
 
 But that also forces you to add more implementations on `UITableView` & `UICollectionView` (one for each of the two protocols), so… that's up to you to choose where you want to put the balance ⚖😉
 
+## Addendum: Now available on Cocoapods 🎉
+
+_[Added on 20 Jan 2015]_
+
+The code is now [available on GitHub](https://github.com/AliSoftware/Reusable) and published as a Swift Package and [as a CocoaPod](https://cocoapods.org/pods/Reusable) — so you can now easily add it to your Swift projects!
+
+Feel free to make PRs to improve it 😉
+
 ----
 
 Hope you enjoyed this trick, and see you next time! 🎉
