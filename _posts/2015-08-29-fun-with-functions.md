@@ -71,11 +71,13 @@ func isMultiple(multiplier: Int) -> (Int -> Bool) {
 }
 ```
 
-## Currying
+## Currying[^deprecated]
 
 There is actually a third way to achieve that: using _currying_. [Currying](https://en.wikipedia.org/wiki/Currying) is the idea of transforming a function that takes multiple parameters into a function that takes one parameter and returns another function (which in turn takes the next parameter and return a function… until all parameters have been consumed and it returns the final value). This technique allows you to do partial application of a function, which can be very powerful and useful in some cases.
 
-In Swift, we can very easily change a method with multiple parameters into a currying method, by replacing commas separating the parameters with a closing parenthesis immediately followed by a reopening one. So let's reuse our very first implementation of `isMultiple` but transform that into a currying function:
+In Swift, we can very easily change a method with multiple parameters into a currying method, by replacing commas separating the parameters with a closing parenthesis immediately followed by a reopening one[^deprecated]. So let's reuse our very first implementation of `isMultiple` but transform that into a currying function:
+
+[^deprecated]: [EDIT] This syntax using `(x:T)(y:U)` will be deprecated in Swift 3.0, so you should not use it anymore.
 
 ```swift
 func isMultiple(multiplier: Int)(value: Int) -> Bool {
@@ -92,6 +94,9 @@ func isMultiple(multiplier: Int) -> (value: Int) -> Bool {
 ```
 
 But in the end it's up to you to use the syntax you prefer.
+
+> **[EDIT on 01 Feb. 2016]**  
+> 🚨 _A proposition to [remove this currying syntax in Swift 3.0](https://github.com/apple/swift-evolution/blob/master/proposals/0002-remove-currying.md) has been accepted since this blog post, so this `(x: T)(y: U)` syntax will no longer be valid soon. One more reason not to use it and to prefer using `(x: T) -> (y: U)` instead!_
 
 ## Combining functions
 
