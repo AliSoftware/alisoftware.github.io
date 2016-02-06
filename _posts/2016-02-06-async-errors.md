@@ -65,12 +65,11 @@ typealias UserBuilder = Void throws -> User
 func fetchUser(completion: UserBuilder -> Void) {
   let url = …
   NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) -> Void in
-    let userBuilder = { UserBuilder in
+    completion({ UserBuilder in
       if let error = error { throw error }
       guard let data = data else { throw UserError.NoData }
       return try User(fromData: data)
-    }
-    completion(userBuilder)
+    })
   }.resume()
 }
 
@@ -100,29 +99,31 @@ enum Result<T> {
 
 [^1]: This is only one possible implementation for `Result`. E.g. other implementations might allow to also specify a more specific error type.
 
-The `Result` type is actually quite simple: it simply represents either a success — which has an associated value representing the successful result — or a failure — with an associated error. Perfect to represent operations which can potentially fail.
+The `Result` type is actually quite simple: it represents either a success — which has an associated value representing the successful result — or a failure — with an associated error. Perfect to represent operations which can potentially fail.
 
-Then how do we use it? That's actually quite simple: build either a `Result.Success` or a `Result.Failure` and call `completion` with the resulting `Result`:
+Then how do we use it? Just build either a `Result.Success` or a `Result.Failure` and call `completion` with the resulting `Result`[^return]:
 
 ```swift
 func fetchUser(completion: Result<User> -> Void) {
   let url = …
   NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) -> Void in
     if let error = error {
+      return completion( Result.Failure(error) )
+    }
+    guard let data = data else {
+      return completion( Result.Failure(UserError.NoData) )
+    }
+    do {
+      let user = try User(fromData: data)
+      completion( Result.Success(user) )
+    } catch {
       completion( Result.Failure(error) )
-    } else if let data = data {
-      do {
-        let user = try User(fromData: data)
-        completion( Result.Success(user) )
-      } catch {
-        completion( Result.Failure(error) )
-      }
-    } else {
-      completion( Result.Failure(UserError.NoData) )
     }
   }.resume()
 }
 ```
+
+[^return]: Here I use a little trick by calling `return completion(…)` in this code instead of calling `completion(…)` then `return` to exit the function scope. This works because `completion` returns a `Void` and `fetchUser` returns a `Void` too (returns nothing), and because `return Void` is equivalent to just `return`. It's a matter of taste, but I think it's nice to be able to write this as a one-liner.
 
 ## Remember monads?
 
@@ -161,14 +162,14 @@ let userResult = readFile("me.json")
   .flatMap(buildUser)
 ```
 
-What is cool in that expression is that if one of the method (say `toJSON` for example) fails and return a `.Failure`, then the failure will be propagated to the end without even trying to apply the `extractUserDict` and `buildUser` methods. This somehow allows the error to "take a shortcut".
+What is cool in that expression is that if one of the method (say `toJSON` for example) fails and return a `.Failure`, then the failure will be propagated to the end without even trying to apply the `extractUserDict` and `buildUser` methods.
 
-No need for you to handle intermediate failures at each stage like you did before, you will get it at the end eventually, meaning that you can manage all your error cases in one point instead of repeating the error-handling code at each intermediate stage. Isn't that cool?
+This somehow allows the error to "take a shortcut": exactly like with `do…catch`, you can process all your error cases together in one point at the end of the chain instead of handling errors at each intermediate stage. Isn't that cool?
 
 
-## From Result to `throw` and back
+## From `Result` to `throw` and back
 
-Problem is, `Result` is not built in th Swift standard library, and a lot of functions use `throw` to report synchronous errors anyway. Like in practice, to build a `User` from a `NSDictionary` we might have a `init(dict: NSDictionary) throws` constructor instead of a `NSDictionary -> Result<User>` function.
+Problem is, `Result` is not built in the Swift standard library, and a lot of functions use `throw` to report synchronous errors anyway. Like in practice, to build a `User` from a `NSDictionary` we might have a `init(dict: NSDictionary) throws` constructor instead of a `NSDictionary -> Result<User>` function.
 
 So how to mix both those worlds? Easy: let's extend `Result` just for that[^noescape]!
 
@@ -194,9 +195,9 @@ extension Result {
 }
 ```
 
-[^noescape]: In this code, the `@noescape` keyword means that the `throwingExpr` closure is guaranteed to be used directly in the scope of the `init` function before the `init` function finished — in contrast of being stored in a property and used later — which will allow the compiler not to force you in using `self.` or `[weak self]` at call site when passing the closure, and be ensured it avoids retain cycles.
+[^noescape]: In this code, the `@noescape` keyword means that the `throwingExpr` closure is guaranteed to be used directly in the scope of the `init` function before the `init` function returns — in contrast of being stored in a property and used later. This allows the compiler not to force you in using `self.` or `[weak self]` at call site when passing the closure, and be ensured retain cycles are avoided.
 
-And now we can convert easily convert our throwing initializer to a closure returning a `Result`:
+And now we can easily convert our throwing initializer to a closure returning a `Result`:
 
 ```swift
 func buildUser(userDict: NSDictionary) -> Result<User> {
@@ -219,7 +220,9 @@ func fetch(url: NSURL, completion: Result<NSData> -> Void) {
 }
 ```
 
-Which also calls the `completion` block by passing a `Result` object built from a throwing closure.
+Which also calls the `completion` block by passing a `Result` object built from a throwing closure[^like-builder].
+
+[^like-builder]: Take a pause for a second there. See how this code looks really like the one we wrote using `UserBuilder` at the beginning of that article? Feels like we were on the right path 😉
 
 Then we can chain it all using `flatMap`, and/or go back in the `do…catch` world, depending on our needs:
 
@@ -244,23 +247,23 @@ fetch(someURL) { (resultData: Result<NSData>) in
 
 `Result` is cool, but given they are mainly useful in asynchronous functions (since we already have `throw` for synchronous function), why not make it so it also manage the asynchronicity?
 
-Well actually, there is a type for that™. It's called `Promise` (some might have heard of the same concept by the name of `Future`, the two are very alike).
+Well actually, there is a type for that™. It's called `Promise` (and sometimes `Future`, the two terms are very alike).
 
 `Promise` is a type which kinda brings both the `Result` type (which can succeed or fail) and the asynchronicity together. A `Promise<T>` can either _fulfill_ with a successful value of type `T` when that value becomes available later (hence the async aspect of it), or be _rejected_ if an error occurred.
 
-A `Promise` is also a monad. But usually instead of calling the monadic functions by the usual name `map` and `flatMap`, both are called `then`:
+A `Promise` is also a monad. But usually instead of calling the monadic functions by the usual name `map` and `flatMap`, both are called `then` by convention:
 
 ```swift
 class Promise<T> {
-  // the momnadic equivalent of "map", which is usually called "then" in the Promise type
+  // the monadic equivalent of "map", which is usually called "then" in the Promise type
   func then(f: T->U) -> Promise<U>
-  // the momnadic equivalent of "flatMap", which is usually called "then" too
+  // the monadic equivalent of "flatMap", which is usually called "then" too
   func then(f: T->Promise<U>) -> Promise<U>
 }
 ```
 
 And errors are unwrapped using `.error` or `.recover`.
-At call site, it can mainly be used the same way you'd use a Result. They are both monads after all:
+At call site, it can mainly be used the same way you'd use a `Result`. They are both monads after all:
 
 ```swift
 fetch(someURL) // returns a `Promise<NSData>`
@@ -268,14 +271,14 @@ fetch(someURL) // returns a `Promise<NSData>`
   .then(extractUserDict) // assuming extractUserDict is now a `NSDictionary -> Promise<NSDictionary>`
   .then(buildUser) // assuming buildUser is now a `NSDictionary -> Promise<User>`
   .then {
-    updateUR(user: user
+    updateUI(user: user
   }
   .error { err in
     print("Error: \(err)")
   }
 ```
 
-See how smooth and readable this looks? It's all about a stream of small processing steps chained together nicely. And it does all the heavy lifting of handling both the asynchronicity and the errors for you. If an error happens during the process, e.g. in `extractUserDict`, it jumps directly into the `error` block. Like with a `do…catch`. or like with `Result`.
+See how smooth and readable this looks? It's all about a stream of small processing steps chained together nicely. And it does all the heavy lifting of handling both the asynchronicity and the errors for you. If an error happens during the process, e.g. in `extractUserDict`, it jumps directly into the `error` block. Like with a `do…catch`. Or like with `Result`.
 
 The implementation of `fetch` to use a `Promise` — instead of a completion block and a `Result` — would probably look something like this:
 
@@ -290,11 +293,14 @@ func fetch(url: NSURL) -> Promise<NSData> {
 }
 ```
 
-This `fetch` method will return immediately, so no `completionBlock` necessary. But it will return a `Promise` object, which will only execute the closure given via the `then` when the promise is _fulfilled_ and the data (asynchronously) arrives later.
+This `fetch` method will return immediately, so there is no `completionBlock` necessary. But it will return a `Promise` object, which will only execute the closure — given via the `then` — when the promise is _fulfilled_ and the data (asynchronously) arrives later.
 
 ## Observe and be Reactive
 
 `Promises` are cool. But there is another concept which allows both that stream of small processing steps, handling asynchronicity, and handling and propagating errors whenever and wherever they occur during that stream.
 
 This other concept is called Reactive Programming.
-Some of you might already know ReactiveCocoa (RAC in short), or `RxSwift`. Even if it's sharing some concepts with `Promises` (asynchronicity, propagation of failure, …) that's the next level beyond Futures & Promises and Rx is way lot richer. So that's gonna be an exploration for another day!
+Some of you might already know `ReactiveCocoa` (RAC in short), or `RxSwift`.
+Even if it's sharing some concepts with `Promises` (asynchronicity, error propagation, …), that's the next level beyond `Futures` & `Promises`: `Rx` allows multiple values to be emitted during time (instead of just one return value), and is a lot richer with tons of other features.
+
+But that's a whole new subject, which is gonna be an exploration for another day!
