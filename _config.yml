@@ -48,6 +48,8 @@ share_hackernews: false
 markdown:     kramdown
 kramdown:
   input: GFM
+  syntax_highlighter: rouge
+highlighter:  rouge
 permalink:    pretty
 gems:         [jekyll-paginate]
 paginate:     5
