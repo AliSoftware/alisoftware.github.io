@@ -26,13 +26,24 @@ You may have heard about the terms _Monad_ (and maybe also _Functor_) on the web
 * wraps another inner type (like `Array<T>` or `Optional<T>` are wrapping some `T`)
 * has a method `map` with the signature `(T->U) -> Type<U>`
 
+```swift
+Type<T> ➜ func     map ( T ->      U  ) -> Type<U>
+```
+
 **A monad** is a type that:
 
 * is a functor (so it has an inner type `T` and a proper `map` method)
 * also has a method `flatMap` with the signature `(T->Type<U>) -> Type<U>`
 
+```swift
+Type<T> ➜ func flatMap ( T -> Type<U> ) -> Type<U>
+```
+
 And that's all there is to know for _Monads_ and _Functors_!
 **A _Monad_ is simply a type that has a `flatMap` method, and a _Functor_ is simply a type that has a `map` method**. Pretty simple, right?
+
+_✍️ [EDIT]
+Well strictly speaking, to be truly a Monad, the type must also respect three specific laws (left identity, right identity, and associativity), but those laws seem so obvious that I won't list them here. See links at the end of this article for more info._
 
 ## All kind of Monads
 
@@ -103,6 +114,9 @@ But anyway, you can see that this is a nice way to describe a processing flow. I
 Despite the fact that they may seem scary, Monads are quite simple.
 
 But in fact, it doesn't really matter how you call them. As long as you realize there are `map` and `flatMap` methods on those types that can be really useful to you to transform one inner type into another, that's all that matter.
+
+_✍️ [EDIT]
+This article was intended to explain the core concept of Monads in the simplest explanation possible. But if you want to know more about Monads, like the monad laws I taked about earlier, you can also read [Rui Peres' article](http://codeplease.io/2015/08/05/monads/) explaining them a bit deeper._
 
 ---
 
