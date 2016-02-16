@@ -3,6 +3,11 @@ layout: post
 title: Mixins over Inheritance
 date: 2015-11-08
 categories: [swift, protocol]
+translations:
+  - lang: Chinese
+    flag: 🇨🇳
+    author: the SwiftGG team
+    url: http://swift.gg/2015/12/15/mixins-over-inheritance/
 ---
 
 When coming from an Object-Oriented Programming language like ObjC, inheritence is often used to share code between multiple classes. But that solution is not always the best, and have some issues.  
