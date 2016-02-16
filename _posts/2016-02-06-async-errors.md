@@ -3,6 +3,11 @@ layout: post
 title: Asynchronous error handling
 date: 2016-02-06
 categories: swift async error
+translations:
+  - lang: Chinese
+    flag: 🇨🇳
+    author: the SwiftGG team
+    url: http://swift.gg/2016/02/16/async-errors/
 ---
 
 In a previous article, I talked about [error handling in Swift using `throw`](http://alisoftware.github.io/2015/12/17/let-it-throw/). But what happens when you deal with asynchronous workflows, where `throw` can't really fit?
