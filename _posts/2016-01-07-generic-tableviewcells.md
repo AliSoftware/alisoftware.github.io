@@ -3,6 +3,11 @@ layout: post
 title: Using Generics to improve TableView cells
 date: 2016-01-06
 categories: swift generics
+translations:
+  - lang: Chinese
+    flag: 🇨🇳
+    author: the SwiftGG team
+    url: http://swift.gg/2016/01/27/generic-tableviewcells/
 ---
 
 Happy New Year everybody 🎇🎉🎊🎆! My first post of 2016 will be a useful trick I want to share, which will demonstrate the power of Swift's generics and how they can be really handy when dealing with `UITableViewCells` and `UICollectionViewCells`.
