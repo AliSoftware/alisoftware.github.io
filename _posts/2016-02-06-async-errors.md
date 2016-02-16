@@ -271,7 +271,7 @@ fetch(someURL) // returns a `Promise<NSData>`
   .then(extractUserDict) // assuming extractUserDict is now a `NSDictionary -> Promise<NSDictionary>`
   .then(buildUser) // assuming buildUser is now a `NSDictionary -> Promise<User>`
   .then {
-    updateUI(user: user
+    updateUI(user: user)
   }
   .error { err in
     print("Error: \(err)")
