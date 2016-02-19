@@ -27,7 +27,7 @@ func inverse(x: Float) throws -> Float {
 do {
   let y = try inverse(5.0)
 } catch {
-  print("Woops: \(error)")
+  print("Whoops: \(error)")
 }
 ```
 
@@ -48,14 +48,14 @@ fetchUser() { (user: User?) in
 }
 ```
 
-How can you `throw` in this situation in case the request failed?
+How can you `throw` in case where the request failed?
 
-* It doesn't make sense to make the `fetchUser` function itself to `throw`, because this function returns immediately, but the network error would only happen later. So when the error occurs, it would be too late to `throw` an error as the result of the `fetchUser` function call itself.
-* Maybe you can mark the `completion` as `throws`? But the code doing the call to that `completion(user)` method is inside the `fetchUser`, it's not at call site. So the one receiving and facing to handle the error would be the code inside `fetchUser` itself, not the call site. So that doesn't solve it either. 😢
+* It doesn't make sense to make the `fetchUser` function itself to `throw`, because this function returns immediately and the network error would only happen later. So, when the error occurs, it would be too late to `throw` an error as the result of the `fetchUser` function call itself.
+* Maybe you can mark the `completion` as `throws`? But the code doing the call to that `completion(user)` method is inside the `fetchUser`, it's not at call site. So the one receiving and forced to handle the error would be the code inside `fetchUser` itself, not the call site. So that doesn't solve it either. 😢
 
 ## Hacking it
 
-One way of working around this limitation is to make the `completion` return not directly a `User?`, but a throwing function `Void throws -> User` instead, itself returning a `User` (let's call this a `UserBuilder`). This way, we can use `throw` again.
+One way of working around this limitation is to make the `completion` not return a `User?` to the caller directly, but a throwing function `Void throws -> User` instead, itself returning a `User` (let's call this a `UserBuilder`). This way, we can use `throw` again.
 
 Then when the completion returns the `userBuilder` func, we'll then need to call `try userBuilder()` to access the `User`… or have it `throw` on error.
 
@@ -87,9 +87,9 @@ fetchUser { (userBuilder: UserBuilder) in
 }
 ```
 
-This way the completion does not directly return a `User` but a function returning a `User`… or throwing. And then you have your error handling again.
+This way, the `completion` does not directly return a `User` but a function returning a `User`… or throwing. And then you have your error handling again.
 
-But let's be honest, that's not the prettiest and most readable solution, having to return a `Void throws -> User` instead of returning a `User?` directly. So what are our other alternatives?
+But, let's be honest, that's not the prettiest and most readable solution, having to return a `Void throws -> User` instead of returning a `User?` directly. So what are our other alternatives?
 
 ## Introducing Result
 
@@ -176,7 +176,7 @@ This somehow allows the error to "take a shortcut": exactly like with `do…catc
 
 Problem is, `Result` is not built in the Swift standard library, and a lot of functions use `throw` to report synchronous errors anyway. Like in practice, to build a `User` from a `NSDictionary` we might have a `init(dict: NSDictionary) throws` constructor instead of a `NSDictionary -> Result<User>` function.
 
-So how to mix both those worlds? Easy: let's extend `Result` just for that[^noescape]!
+How can we mix both those worlds? Easy: let's extend `Result` just for that[^noescape]!
 
 ```swift
 extension Result {
@@ -200,7 +200,7 @@ extension Result {
 }
 ```
 
-[^noescape]: In this code, the `@noescape` keyword means that the `throwingExpr` closure is guaranteed to be used directly in the scope of the `init` function before the `init` function returns — in contrast of being stored in a property and used later. This allows the compiler not to force you in using `self.` or `[weak self]` at call site when passing the closure, and be ensured retain cycles are avoided.
+[^noescape]: In this code, the `@noescape` keyword means that the `throwingExpr` closure is guaranteed to be used directly in the scope of the `init` function before the `init` function returns — in contrast of being stored in a property and used later. This allows the compiler not to force you in using `self.` or `[weak self]` at the call site when passing the closure, and be ensured retain cycles are avoided.
 
 And now we can easily convert our throwing initializer to a closure returning a `Result`:
 
@@ -211,7 +211,7 @@ func buildUser(userDict: NSDictionary) -> Result<User> {
 }
 ```
 
-And if we wrap `NSURLSession` into a function asynchronously returning a `Result`, we can balance between the two world however we like, for example:
+And, if we wrap `NSURLSession` into a function asynchronously returning a `Result`, we can balance between the two worlds however we like. For example:
 
 ```swift
 func fetch(url: NSURL, completion: Result<NSData> -> Void) {
@@ -225,11 +225,11 @@ func fetch(url: NSURL, completion: Result<NSData> -> Void) {
 }
 ```
 
-Which also calls the `completion` block by passing a `Result` object built from a throwing closure[^like-builder].
+This also calls the `completion` block by passing a `Result` object built from a throwing closure[^like-builder].
 
 [^like-builder]: Take a pause for a second there. See how this code looks really like the one we wrote using `UserBuilder` at the beginning of that article? Feels like we were on the right path 😉
 
-Then we can chain it all using `flatMap`, and/or go back in the `do…catch` world, depending on our needs:
+Now we can chain it all using `flatMap`, and/or go back in the `do…catch` world, depending on our needs:
 
 ```swift
 fetch(someURL) { (resultData: Result<NSData>) in
@@ -302,7 +302,7 @@ This `fetch` method will return immediately, so there is no `completionBlock` ne
 
 ## Observe and be Reactive
 
-`Promises` are cool. But there is another concept which allows both that stream of small processing steps, handling asynchronicity, and handling and propagating errors whenever and wherever they occur during that stream.
+`Promises` are cool, but there is another concept which allows for a stream of small processing steps, handling asynchronicity, as well as handling and propagating errors whenever and wherever they occur during that stream.
 
 This other concept is called Reactive Programming.
 Some of you might already know `ReactiveCocoa` (RAC in short), or `RxSwift`.
