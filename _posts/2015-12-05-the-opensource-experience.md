@@ -3,6 +3,11 @@ layout: post
 title: The OpenSource Experience
 date: 2015-12-05
 categories: oss
+translations:
+  - lang: Chinese
+    flag: 🇨🇳
+    author: the SwiftGG team
+    url: http://swift.gg/2016/02/24/the-opensource-experience/
 ---
 
 As you all know, [Swift just went OpenSource earlier this week](https://swift.org). That's huge news for the community, and there have been plenty of posts about that already explaining what a game changer that is.  
