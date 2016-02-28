@@ -7,6 +7,12 @@ blockquote {
   padding-bottom: 0;
 }
 
+.footnotes {
+  border-top: 2px solid lightgray;
+  padding-top: 20px;
+  li, li p {  font-size: 0.7rem; }
+}
+
 .share-links a.fa {
   margin-left: 10px;
   margin-right: 10px;
