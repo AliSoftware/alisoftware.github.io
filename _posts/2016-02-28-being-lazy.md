@@ -210,7 +210,7 @@ That's way more efficient! This can change everything especially with big sequen
 
 ## Chaining lazy sequences
 
-One last nice thing with lazy sequences is that you can of course combine the calls to high-order functions like you'd do with a Monad. For example you can call `map` and `flatMap` on a lazy sequence like this:
+One last nice thing with lazy sequences is that you can of course combine the calls to high-order functions like you'd do with a Monad. For example you can call `map` or `flatMap` on a lazy sequences, like this:
 
 ```swift
 func double(x: Int) -> Int {
@@ -221,9 +221,9 @@ let doubleArray = array.lazy.map(increment).map(double)
 print(doubleArray[3])
 ```
 
-And this will only compute `double(increment(array[3]))` when this entry is accessed entry, and only for this one!
+And this will only compute `double(increment(array[3]))` when this entry is accessed, not before, and only for this one!
 
-Whereas using `array.map(increment).map(double)[3]` instead (without `lazy`) would have computed all the output values of the whole `array` sequence, and only once all values have been computed, extract the 4th one. What a was of computational time for all those other 999 values!
+_Whereas using `array.map(increment).map(double)[3]` instead (without `lazy`) would have computed all the output values of the whole `array` sequence, and only once all values have been computed, extract the 4th one. What a was of computational time for all those other 999 values!_
 
 ## Conclusion
 
