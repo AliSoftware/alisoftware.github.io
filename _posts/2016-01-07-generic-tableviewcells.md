@@ -56,7 +56,8 @@ Now thanks to Swift's type inference, **this method will use the call-site conte
 
 Isn't that beautiful?
 
-<center>![It's magic](/assets/magic.gif)</center>
+![It's magic](/assets/magic.gif)
+{: style="text-align: center"}
 
 ## Going further
 

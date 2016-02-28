@@ -184,7 +184,8 @@ The `guard` statement is really nice because it concentrate the code checking if
 
 ## Wasn't Swift supposed to be more compact than ObjC?
 
-<center>![the cake is a lie](/assets/the-cake-is-a-lie.png)</center>
+![the cake is a lie](/assets/the-cake-is-a-lie.png)
+{: style="text-align: center"}
 
 Well ok, yes the code seems more complex than the ObjC counterpart. But don't worry, we'll make it way more compact in the upcoming part 2 of this article.
 

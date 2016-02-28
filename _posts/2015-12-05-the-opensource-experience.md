@@ -24,7 +24,8 @@ Instead of talking about what Swift being OpenSource can bring to all of us — 
 
 ## Hello GitHub
 
-<center>![Hello GitHub](https://avatars3.githubusercontent.com/u/583231?v=3&s=100)</center>
+![Hello GitHub](https://avatars3.githubusercontent.com/u/583231?v=3&s=100)
+{: style="text-align: center"}
 
 So, my first experience with OpenSource was just writing some iOS libraries and publishing some code on GitHub, probably like a lot of you already. At first, I didn't really think "I'm doing OpenSource", but just "hey, I have written some nice code, let's push it on GitHub because that's nice and easy to share".
 

@@ -29,7 +29,8 @@ Man that was painful. To the point that many people were tempted to not even bot
 
 ## Do you want to build a throw, man?
 
-<center>![Frozen-Illustration-1](/assets/frozen-throw-man.jpg)</center>
+![Frozen-Illustration-1](/assets/frozen-throw-man.jpg)
+{: style="text-align: center"}
 
 With Swift 2.0, Apple decided to introduce a different way to handle errors: using `throw` [^not-exception].
 
@@ -70,7 +71,8 @@ catch {
 
 ## The failure never bothered me anyway
 
-<center>![Frozen-Illustration-2](/assets/frozen-failure.jpg)</center>
+![Frozen-Illustration-2](/assets/frozen-failure.jpg)
+{: style="text-align: center"}
 
 You can see that `someFunctionWitchCanFail` returns a plain `String`, which is the type returned when everything was ok. It makes it easy to call the function "normally", first thinking (in the `do { … }` block) about the **happy** path, to handle the case where nothing wrong happens.
 
@@ -80,7 +82,8 @@ Note that you can write more than one line (and `try`-call more than one throwin
 
 ## NSError is a bit of a fixer-upper
 
-<center>![Frozen-Illustration-3](/assets/frozen-fixer-upper.jpg)</center>
+![Frozen-Illustration-3](/assets/frozen-fixer-upper.jpg)
+{: style="text-align: center"}
 
 Ok, but with this example we still have to handle errors using `NSError`, which is a pain. Comparing domains and error codes with `==` and make a list of domain and code constants, just to know which error we got and handle it properly… ouch.
 
@@ -128,7 +131,8 @@ That also makes better errors with clear names as constants and associated value
 
 ## I can't hold it back anymore
 
-<center>![Frozen-Illustration-4](/assets/frozen-cant-hold-it-back.jpg)</center>
+![Frozen-Illustration-4](/assets/frozen-cant-hold-it-back.jpg)
+{: style="text-align: center"}
 
 When you call a `throw`-ing function, the error it throws can be caught in the calling function using a `do…catch`. But if it isn't, then it propagates to the upper level:
 
@@ -153,7 +157,8 @@ On the other end, `test()` catches all errors internally so even if it calls a t
 
 ## Conceal, don't feel, don't let them know
 
-<center>![Frozen-Illustration-5](/assets/frozen-conceal-dont-feel.jpg)</center>
+![Frozen-Illustration-5](/assets/frozen-conceal-dont-feel.jpg)
+{: style="text-align: center"}
 
 You may have wondered by now how to know which kind of error each method throws. Indeed, functions are marked with `throws` but what `ErrorType` can this function actually throw? Can it throw `KristoffErrors`, `JSONErrors`, other? Which ones do I need to catch?
 
@@ -167,7 +172,8 @@ Then you want to create your own library `MyLibC`, a wrapper around those two li
 
 ## Don't let them in, don't let them see
 
-<center>![Frozen-Illustration-5](/assets/frozen-dont-let-them-in.jpg)</center>
+![Frozen-Illustration-5](/assets/frozen-dont-let-them-in.jpg)
+{: style="text-align: center"}
 
 For that reason, but also to prevent your internal errors from bleeding across your library boundaries and to limit the number of error types that must be handled by your users, I suggest that you keep your error types scoped to each level of abstraction.
 
@@ -180,7 +186,8 @@ So instead, your `funcC` should probably catch all `MyLibAErrors` and `MyLibBErr
 
 ## We finish each others sandwiches[^ref]
 
-<center>![Frozen-Illustration-6](/assets/frozen-sandwiches.jpg)</center>
+![Frozen-Illustration-6](/assets/frozen-sandwiches.jpg)
+{: style="text-align: center"}
 
 [^ref]: Ok, promise, that was my last shameful _Frozen_ reference.
 
@@ -195,4 +202,5 @@ I won't have time to talk about every subject about error handling there, that w
 
 Let me finish this article by wishing you all happy holidays ☃️❄️ and see you soon for the next post!
 
-<center>![Happy Holidays](/assets/frozen-olaf-holidays.jpg)</center>
+![Happy Holidays](/assets/frozen-olaf-holidays.jpg)
+{: style="text-align: center"}

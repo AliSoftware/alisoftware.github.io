@@ -144,4 +144,5 @@ In the upcoming episodes, we'll see how converting our `ListItem` as a `struct` 
 
 In the meantime, take time to discover the power of `map()` and `flatMap()` on arrays. I know they can be scary or complex at first, but once you get it, you'll want to use them everywhere!
 
-<center>![map-everywhere](/assets/map-everywhere.jpg)</center>
+![map-everywhere](/assets/map-everywhere.jpg)
+{: style="text-align: center"}
