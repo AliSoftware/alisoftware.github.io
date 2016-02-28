@@ -10,7 +10,7 @@ Swift enums are way more powerful than C/ObjC enums. For example, they are not l
 That new feature opens a broad new usage for them, especially using them as specialized constants that produce types which were not possible to use as constants before. Let's see some interesting use for that.
 
 
-> TL;DR: <a href="https://github.com/AliSoftware/SwiftGen">here is a nice tool to generate enums for all your constants</a>, provided with a Playground to see the below examples in action.
+> TL;DR: [here is a nice tool to generate enums for all your constants](https://github.com/AliSoftware/SwiftGen), provided with a Playground to see the below examples in action.
 
 <!--more-->
 

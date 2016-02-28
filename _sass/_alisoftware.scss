@@ -7,6 +7,12 @@ blockquote {
   padding-bottom: 0;
 }
 
+.footnotes {
+  border-top: 2px solid lightgray;
+  padding-top: 20px;
+  li, li p {  font-size: 0.7rem; }
+}
+
 .share-links a.fa {
   margin-left: 10px;
   margin-right: 10px;
@@ -24,7 +30,7 @@ $code-string: #c41a15;
 $code-constant: #2e0d6d;
 $code-preproc: #63381f;
 
-.highlight .language-swift, .highlight .language-objc {
+.highlighter-rouge .highlight {
   .hll { background-color: #ffffcc }
   .c   { color: $code-comment } /* Comment */
   .err { color: $code-generic } /* Error */

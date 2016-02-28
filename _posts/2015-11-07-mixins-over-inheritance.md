@@ -96,7 +96,8 @@ But having to write `superman.flyingEngine.fly()` instead of just `superman.fly(
 
 ## Mixins & Traits
 
-<center>![Long Live and Mixin](/assets/long-live-and-mixin.png)</center>
+![Long Live and Mixin](/assets/long-live-and-mixin.png)
+{: style="text-align: center"}
 
 That's where the concept of Mixins & Traits[^diff] comes into play.
 
@@ -293,7 +294,8 @@ extension TimeLord: SpaceTraveler {}
 extension Superman: SpaceTraveler {}
 ```
 
-<center>![Great Scott!](/assets/great-scott.gif)</center>
+![Great Scott!](/assets/great-scott.gif)
+{: style="text-align: center"}
 
 Yes, that's all it takes to add this ability/trait to the existing classes! And just like that, they can now `travelTo()` any place! Pretty neat, right?
 
@@ -345,7 +347,8 @@ If `Human` and `Alien` were `protocols` instead of `classes`, we'd have a lot of
 
 So, one solution to this is to make everything a Protocol and get rid of the inheritance completely. After all, we don't care _what_ our characters are, what define heroes is the _abilities_ they have!
 
-<center>![Exterminate Inheritance!](/assets/dalek-exterminate-inheritance.png)</center>
+![Exterminate Inheritance!](/assets/dalek-exterminate-inheritance.png)
+{: style="text-align: center"}
 
 I've included [a Swift Playground that you can download here](/assets/Mixins.playground.zip) that contains the code shown in that blog post, and demonstrate in Page 2 of the Playground a solution with everything made a Protocol and Structs, with no inheritance at all. Don't hesitate to take a look!
 
@@ -363,7 +366,8 @@ The Mixins & Traits approach allows you to describe types by **what they can do 
 
 Back at the first example, you can for example create a `protocol BurgerMenuManager` with a default implementation, then simply make your View Controllers (whether they are `UIViewController`, `UITableViewController` or whatnot) conform to that protocol so it will automatically gain those abilities and features from `BurgerMenuManager` for free, without worrying about the parent class of the `UIViewController`!
 
-<center>![I don't wanna go](/assets/i-dont-wanna-go.gif)</center>
+![I don't wanna go](/assets/i-dont-wanna-go.gif)
+{: style="text-align: center"}
 
 There's a lot more to say about Protocol Extensions, and I'm tempted to continue that article to tell you a lot more about them, as they can improve your code in a lot more ways. But hey, that post is already long enough, and let's keep some more for future blog posts, hoping to so see you there!
 

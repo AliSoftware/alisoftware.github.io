@@ -120,7 +120,8 @@ item.icon = iconName.flatMap(UIImage.init)
 
 Wow! so much magic!
 
-<center>![magic](/assets/magic.gif)</center>
+![magic](/assets/magic.gif)
+{: style="text-align: center"}
 
 Ok, that being said:
 
@@ -178,4 +179,5 @@ That concludes the last part of the Thinking in Swift series[^epilogue]. It's ti
 [^epilogue]: I'll just post an upcomming epilogue very soon to drop a word about _Monads_ and really conclude all this series. But don't worry, there are still a lot articles on Swift to come after that!
 
 Happy Swifting, and…  
-<center>![map-everywhere](/assets/map-all-the-things.jpg)</center>
+![map-everywhere](/assets/map-all-the-things.jpg)
+{: style="text-align: center"}
