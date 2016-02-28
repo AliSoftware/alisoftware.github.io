@@ -5,7 +5,8 @@ date: 2016-02-28
 categories: swift
 ---
 
-Today we're gonna see how we can be more efficient ⚡️ by… being la💤y 😴.
+Today we're gonna see how we can be more efficient ⚡️ by… being la💤y 😴.  
+In particular, we'll talk about `lazy var` and `LazySequence`. And cats 😸.
 
 ![Lazy cat](/assets/lazy-cat.jpg){: height="200px" }
 {: style="text-align: center"}
@@ -52,7 +53,7 @@ class Avatar {
       if _smallImage == nil {
         _smallImage = largeImage.resizedTo(Avatar.defaultSmallSize)
       }
-      return _smallImage! // 🐴😵
+      return _smallImage! // 🐴
     }
     set {
       _smallImage = newValue
@@ -75,7 +76,7 @@ That is exactly what we want. But that's also a lot of code to write. And imagin
 ![Lazy cat on keyboard](/assets/lazy-cat-keyboard.jpg){: height="200px" }
 {: style="text-align: center"}
 
-But thanks to Swift, we can now avoid all of this glue code above and do some lazy coding by… just declare our `smallImage` variable to be a `lazy` stored property!
+But thanks to Swift, we can now avoid all of this glue code above and do some lazy coding… by just declare our `smallImage` variable to be a `lazy` stored property!
 
 ```swift
 class Avatar {
@@ -92,7 +93,7 @@ class Avatar {
 
 And just like that, using this `lazy` keyword, we achieve the exact same behavior with way less code to write!
 
-* If we access the `smallImage` lazy var without affecting a specific value to it beforehand, then _and only then_ will the default value be computed
+* If we access the `smallImage` lazy var without affecting a specific value to it beforehand, then _and only then_ will the default value be computed then returned. Then if we access the property later again, the value will already have been computed once so it will just return that stored value.
 * If we gave `smallImage` and explicit value before accessing it, then the computational-intensive default value will never be computed, and the explicit value we gave will be returned instead
 * If we never access the `smallImage` property ever, its default value won't be computed either!
 
@@ -121,6 +122,12 @@ class Avatar {
 }
 ```
 
+But because this is a `lazy` property, **you can reference `self` in there!** (note that this is true even if you don't use a closure, like in the previous example).
+
+The fact that the property is `lazy` means that the default value will only be computed later, at a time when `self` will already be fully initialized, that's why it's ok to access `self` there — contrary to when you give default values to non-`lazy` properties which gets evaluated during the init phase.
+
+ℹ️ _According to my experimentations, closures used for default values of `lazy` variables don't seem to strongly capture `self`, so there's no need to use `[unowned self]` in that closure to avoid a reference cycle._
+
 ## lazy let?
 
 You **can't** create `lazy let` instance property in Swift to provide constants that would only be computed if accessed 😢. That's due to the implementation details of `lazy` which requires the property to be modifiable because it's somehow initialized without a value and then _change_ the value when it's accessed[^lazy-let].
@@ -148,7 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 }
 ```
-This code will print `Hello`, `Initialized`, `42` then `Bye`, demonstrating that the `foo` value is only created when accessed, not before.
+This code will print `Hello` first, then `Initialized` and `42`, then `Bye`; demonstrating that the `foo` value is only created when accessed, not before.
 
 ![Lazy cat on leash](/assets/lazy-cat-on-leash.gif){: height="200px" }
 {: style="text-align: center" }
