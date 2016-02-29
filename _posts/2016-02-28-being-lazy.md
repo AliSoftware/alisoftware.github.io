@@ -180,7 +180,7 @@ print("Result:")
 print(incArray[0], incArray[4])
 ```
 
-With this code, **even before** we access the `incArray` values, **all output values are computed**. So you're gonna see 1000 of those `Computing next value of …` lines even before the first `print` gets executed! Even if we only read values for `[0]` and `[4]` entries, and never care about the others… imagine if we used a more computationally intensive function than this simple `increment` one!
+With this code, **even before** we access the `incArray` values, **all output values are computed**. So you're gonna see 1,000 of those `Computing next value of …` lines even before the first `print` gets executed! Even if we only read values for `[0]` and `[4]` entries, and never care about the others… imagine if we used a more computationally intensive function than this simple `increment` one!
 
 ## Lazy sequences
 
@@ -217,7 +217,7 @@ That's way more efficient! This can change everything especially with big sequen
 
 ## Chaining lazy sequences
 
-One last nice thing with lazy sequences is that you can of course combine the calls to high-order functions like you'd do with a Monad. For example you can call `map` or `flatMap` on a lazy sequences, like this:
+One last nice thing with lazy sequences is that you can of course combine the calls to high-order functions like you'd do with a [monad](/swift/2015/10/17/lets-talk-about-monads/). For example you can call `map` or `flatMap` on a lazy sequences, like this:
 
 ```swift
 func double(x: Int) -> Int {
@@ -230,7 +230,7 @@ print(doubleArray[3])
 
 And this will only compute `double(increment(array[3]))` when this entry is accessed, not before, and only for this one!
 
-_Whereas using `array.map(increment).map(double)[3]` instead (without `lazy`) would have computed all the output values of the whole `array` sequence, and only once all values have been computed, extract the 4th one. What a was of computational time for all those other 999 values!_
+Whereas using `array.map(increment).map(double)[3]` instead (without `lazy`) would have computed all the output values of the whole `array` sequence first, and only once all values have been computed, extract the 4th one. But worse than that, **it would have iterated on the array twice**, one for each application of `map`! What a waste of computational time it would have been!
 
 ## Conclusion
 
