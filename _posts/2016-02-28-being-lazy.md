@@ -37,7 +37,7 @@ class Avatar {
 
 The problem with this code is that we compute the `smallImage` during `init`, because the compiler enforces us to initialize every property of `Avatar` in `init`.
 
-But maybe we won't even use this default values, because we'll provide the small version of the user's Avatar ourselves. So we'd have computed this default value, using a computational-intensive image-scaling algorithm, all for nothing!
+But maybe we won't even use this default value, because we'll provide the small version of the user's Avatar ourselves. So we'd have computed this default value, using a computational-intensive image-scaling algorithm, all for nothing!
 
 ## Possible solution
 
@@ -130,11 +130,11 @@ The fact that the property is `lazy` means that the default value will only be c
 
 ## lazy let?
 
-You **can't** create `lazy let` instance property in Swift to provide constants that would only be computed if accessed 😢. That's due to the implementation details of `lazy` which requires the property to be modifiable because it's somehow initialized without a value and then _change_ the value when it's accessed[^lazy-let].
+You **can't** create `lazy let` instance properties in Swift to provide constants that would only be computed if accessed 😢. That's due to the implementation details of `lazy` which requires the property to be modifiable because it's somehow initialized without a value and then _change_ the value when it's accessed[^lazy-let].
 
 [^lazy-let]: Some discussion are still ongoing in the Swift mailing lists about how to fix that and allow `lazy let` to be possible, but for now in Swift 2 that's how it is.
 
-But as we're talking about `let`, one interesting feature about it is that `let` constants declared **at global scope** (and not as properties inside a type) are are automatically lazy (and also thread-safe)[^not-in-playground]:
+But as we're talking about `let`, one interesting feature about it is that `let` constants declared **at global scope** (and not as properties inside a type) are automatically lazy (and thread-safe)[^not-in-playground]:
 
 [^not-in-playground]: Note that in a playground or in the REPL, as the code is evaluated like big `main()` function, declaring `let foo: Int` at top-level will not be considered a global constant and thus you won't observe this behavior. Don't get the special case of playgrounds or REPL fool you, in a real project those `let` global constants are really lazy.
 
@@ -180,7 +180,7 @@ print("Result:")
 print(incArray[0], incArray[4])
 ```
 
-With this code, **even before** we access the `incArray` values, **all output values are computed**. So you're gonna see 1,000 of those `Computing next value of …` lines even before the first `print` gets executed! Even if we only read values for `[0]` and `[4]` entries, and never care about the others… imagine if we used a more computationally intensive function than this simple `increment` one!
+With this code, **even before** we access the `incArray` values, **all output values are computed**. So you're gonna see 1,000 of those `Computing next value of …` lines even before the `print("Result:")` gets executed! Even if we only read values for `[0]` and `[4]` entries, and never care about the others… imagine if we used a more computationally intensive function than this simple `increment` one!
 
 ## Lazy sequences
 
@@ -202,7 +202,7 @@ print("Result:")
 print(incArray[0], incArray[4])
 ```
 
-Now this code only print this, demonstrating that it only apply the `increment` function when the values are accessed, and not when the call to `map` appears, and only apply them to the values being accessed, not all the one thousand values of the entire array!
+Now this code only print this…
 
 ```
 Result:
@@ -211,13 +211,15 @@ Computing next value of 4…
 1 5
 ```
 
+…demonstrating that it only apply the `increment` function when the values are accessed, and not when the call to `map` appears, and only apply them to the values being accessed, not all the one thousand values of the entire array! 🎉
+
 That's way more efficient! This can change everything especially with big sequences (like this one with 1,000 items) and for computationally-intensive closures.[^each-time]
 
 [^each-time]: But beware then — that according to my experimentations at least — the computed value isn't cached (no memoization); so if you request `incArray[0]` again it will compute the result again. We can't have it all… (yet?)
 
 ## Chaining lazy sequences
 
-One last nice thing with lazy sequences is that you can of course combine the calls to high-order functions like you'd do with a [monad](/swift/2015/10/17/lets-talk-about-monads/). For example you can call `map` or `flatMap` on a lazy sequences, like this:
+One last nice trick with lazy sequences is that you can of course combine the calls to high-order functions like you'd do with a [monad](/swift/2015/10/17/lets-talk-about-monads/). For example you can call `map` (or `flatMap`) on a lazy sequences, like this:
 
 ```swift
 func double(x: Int) -> Int {
@@ -230,7 +232,7 @@ print(doubleArray[3])
 
 And this will only compute `double(increment(array[3]))` when this entry is accessed, not before, and only for this one!
 
-Whereas using `array.map(increment).map(double)[3]` instead (without `lazy`) would have computed all the output values of the whole `array` sequence first, and only once all values have been computed, extract the 4th one. But worse than that, **it would have iterated on the array twice**, one for each application of `map`! What a waste of computational time it would have been!
+On the contrary using `array.map(increment).map(double)[3]` instead (without `lazy`) would have computed all the output values of the whole `array` sequence first, and only once all values have been computed, extract the 4th one. But worse than that, **it would have iterated on the array twice**, one for each application of `map`! What a waste of computational time it would have been!
 
 ## Conclusion
 
