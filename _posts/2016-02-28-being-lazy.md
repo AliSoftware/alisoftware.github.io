@@ -134,28 +134,39 @@ You **can't** create `lazy let` instance properties in Swift to provide constant
 
 [^lazy-let]: Some discussion are still ongoing in the Swift mailing lists about how to fix that and allow `lazy let` to be possible, but for now in Swift 2 that's how it is.
 
-But as we're talking about `let`, one interesting feature about it is that `let` constants declared **at global scope** (and not as properties inside a type) are automatically lazy (and thread-safe)[^not-in-playground]:
+But as we're talking about `let`, one interesting feature about it is that `let` constants declared **at global scope** or declared **as a type property** (using `static let`, not as instance properties) are automatically lazy (and thread-safe)[^not-in-playground]:
 
 [^not-in-playground]: Note that in a playground or in the REPL, as the code is evaluated like big `main()` function, declaring `let foo: Int` at top-level will not be considered a global constant and thus you won't observe this behavior. Don't get the special case of playgrounds or REPL fool you, in a real project those `let` global constants are really lazy.
 
 ```swift
 // Global variable. Will be created lazily (and in a thread-safe way)
 let foo: Int = {
-  print("Initialized")
+  print("Global constant initialized")
   return 42
 }()
+
+class Cat {
+  static let defaultName: String = {
+    print("Type constant initialized")
+    return "Felix"
+  }()
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     print("Hello")
-    print("Instance is: \(foo)")
+    print(foo)
+    print(Cat.defaultName)
     print("Bye")
     return true
   }
 }
 ```
-This code will print `Hello` first, then `Initialized` and `42`, then `Bye`; demonstrating that the `foo` value is only created when accessed, not before.
+
+This code will print `Hello` first, then `Global constant initialized` and `42`, then `Type constant initialized` and `Felix`, then `Bye`; demonstrating that the `foo` and `Cat.defaultName` constants are only created when accessed, not before.[^singleton].
+
+[^singleton]: By the way, the use of a `static let` inside a `class` is the recommended way to create singletons in Swift (even if you should avoid them 😉), as `static let` is both lazy, thread-safe, and only created once.
 
 ![Lazy cat on leash](/assets/lazy-cat-on-leash.gif){: height="200px" }
 {: style="text-align: center" }
