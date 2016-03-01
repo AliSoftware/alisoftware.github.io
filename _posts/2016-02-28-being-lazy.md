@@ -41,7 +41,7 @@ But maybe we won't even use this default value, because we'll provide the small 
 
 ## Possible solution
 
-In Objective-C for similar cases we were used to use an intermediate private variable, in a technique which could be translate like this in Swift:
+In Objective-C for similar cases we were used to use an intermediate private variable, in a technique which could be translated like this in Swift:
 
 ```swift
 class Avatar {
@@ -93,8 +93,8 @@ class Avatar {
 
 And just like that, using this `lazy` keyword, we achieve the exact same behavior with way less code to write!
 
-* If we access the `smallImage` lazy var without affecting a specific value to it beforehand, then _and only then_ will the default value be computed then returned. Then if we access the property later again, the value will already have been computed once so it will just return that stored value.
-* If we gave `smallImage` and explicit value before accessing it, then the computational-intensive default value will never be computed, and the explicit value we gave will be returned instead
+* If we access the `smallImage` lazy var without assigning a specific value to it beforehand, then _and only then_ will the default value be computed then returned. Then if we access the property later again, the value will already have been computed once so it will just return that stored value.
+* If we gave `smallImage` an explicit value before accessing it, then the computational-intensive default value will never be computed, and the explicit value we gave will be returned instead.
 * If we never access the `smallImage` property ever, its default value won't be computed either!
 
 So that's a great and easy way to avoid useless initialization while still providing a default value and without the use of intermediate private variables! 🎉
@@ -130,13 +130,13 @@ The fact that the property is `lazy` means that the default value will only be c
 
 ## lazy let?
 
-You **can't** create `lazy let` instance properties in Swift to provide constants that would only be computed if accessed 😢. That's due to the implementation details of `lazy` which requires the property to be modifiable because it's somehow initialized without a value and then _change_ the value when it's accessed[^lazy-let].
+You **can't** create `lazy let` instance properties in Swift to provide constants that would only be computed if accessed 😢. That's due to the implementation details of `lazy` which requires the property to be modifiable because it's somehow initialized without a value and then later _changed_ to the value when it's accessed[^lazy-let].
 
 [^lazy-let]: Some discussion are still ongoing in the Swift mailing lists about how to fix that and allow `lazy let` to be possible, but for now in Swift 2 that's how it is.
 
 But as we're talking about `let`, one interesting feature about it is that `let` constants declared **at global scope** or declared **as a type property** (using `static let`, not as instance properties) are automatically lazy (and thread-safe)[^not-in-playground]:
 
-[^not-in-playground]: Note that in a playground or in the REPL, as the code is evaluated like big `main()` function, declaring `let foo: Int` at top-level will not be considered a global constant and thus you won't observe this behavior. Don't get the special case of playgrounds or REPL fool you, in a real project those `let` global constants are really lazy.
+[^not-in-playground]: Note that in a playground or in the REPL, as the code is evaluated like big `main()` function, declaring `let foo: Int` at top-level will not be considered a global constant and thus you won't observe this behavior. Don't let the special case of playgrounds or REPL fool you, in a real project those `let` global constants are really lazy.
 
 ```swift
 // Global variable. Will be created lazily (and in a thread-safe way)
@@ -177,7 +177,7 @@ _⚠️ don't confuse that case with instance properties inside a class or struc
 
 Let's take another example, this time using a sequence / `Array` and some high-order function[^hof] like `map`:
 
-[^hof]: "high-order functions" are funtions that either take another function as a parameter, or return a function (or both). Example of high-order functions are `map`, `flatMap`, `filter`, etc.
+[^hof]: "high-order functions" are functions that either take another function as a parameter, or return a function (or both). Example of high-order functions are `map`, `flatMap`, `filter`, etc.
 
 ```swift
 func increment(x: Int) -> Int {
