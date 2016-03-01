@@ -126,7 +126,7 @@ But because this is a `lazy` property, **you can reference `self` in there!** (n
 
 The fact that the property is `lazy` means that the default value will only be computed later, at a time when `self` will already be fully initialized, that's why it's ok to access `self` there — contrary to when you give default values to non-`lazy` properties which gets evaluated during the init phase.
 
-ℹ️ _Immdiately-applied closures, like the one used for the default values of `lazy` variables above, [are automatically `@noescape`](https://twitter.com/jckarter/status/704100315587477504). This means that there is no need to use `[unowned self]` in that closure: there won't even be a reference cycle here._
+ℹ️ _Immediately-applied closures, like the one used for the default values of `lazy` variables above, [are automatically `@noescape`](https://twitter.com/jckarter/status/704100315587477504). This means that there is no need to use `[unowned self]` in that closure: there won't even be a reference cycle here._
 
 ## lazy let?
 
