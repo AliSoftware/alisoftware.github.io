@@ -140,7 +140,7 @@ class SuperMan: Flyer {
 }
 
 class IronMan: Flyer {
-  // be we can also give a specific implementation if needs be
+  // but we can also give a specific implementation if needs be
   func fly() {
     thrusters.start()
   }
@@ -287,7 +287,7 @@ extension SpaceTraveler {
 }
 ```
 
-We can then use Swift's `extensions` to **add conformance to a protocol to an existing class**, so let's add those abilities to the characters we already have defined. If we omit that time when IronMan went to the portal above New York and briefely flew to space, then only The Doctor and Superman can actually Space Travel:
+We can then use Swift's `extensions` to **add conformance to a protocol to an existing class**, so let's add those abilities to the characters we already have defined. If we omit that time when IronMan went to the portal above New York and briefely flew into space, then only The Doctor and Superman can actually Space Travel:
 
 ```swift
 extension TimeLord: SpaceTraveler {}

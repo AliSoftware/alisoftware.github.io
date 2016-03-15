@@ -293,8 +293,8 @@ func fetch(url: NSURL) -> Promise<NSData> {
   return Promise { resolve in
     NSURLSession.sharedSession().dataTaskWithURL(url) { (data, _, error) -> Void in
       resolve(data, error)
-    })
-  }.resume()
+    }).resume()
+  }
 }
 ```
 
