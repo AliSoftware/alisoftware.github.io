@@ -2,6 +2,11 @@
 layout: post
 title: "Thinking in Swift, Part 1 — Addendum: Sacrificing ponies"
 categories: swift
+translations:
+  - lang: Chinese
+    flag: 🇨🇳
+    author: the SwiftGG team
+    url: http://swift.gg/2016/03/21/thinking-in-swift-1-addendum/
 ---
 
 After publishing [part 1 of my article series "Thinking in Swift"](/swift/2015/09/06/thinking-in-swift-1), I had some great feedback and reactions on Twitter. Today I wanted to build on those comments and talk about when it could be ok to use `!` and sacrifice a pony 🐴.
