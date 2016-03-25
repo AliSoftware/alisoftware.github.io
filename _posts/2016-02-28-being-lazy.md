@@ -3,6 +3,11 @@ layout: post
 title: Being Lazy
 date: 2016-02-28
 categories: swift
+translations:
+  - lang: Chinese
+    flag: 🇨🇳
+    author: the SwiftGG team
+    url: http://swift.gg/2016/03/25/being-lazy/
 ---
 
 Today we're gonna see how we can be more efficient ⚡️ by… being la💤y 😴.  
