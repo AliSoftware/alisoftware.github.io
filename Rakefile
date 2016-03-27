@@ -86,7 +86,7 @@ task :preview do
   puts "## Stop with ^C ( <CTRL>+C )"
   url = 'http://0.0.0.0:4000'
   sh "(until curl -sI #{url} 1>/dev/null; do sleep 0.5; done; open #{url})&"
-  sh "jekyll serve --watch --drafts"
+  sh "bundle exec jekyll serve --watch --drafts"
 end
 
 
