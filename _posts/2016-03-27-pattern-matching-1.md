@@ -1,11 +1,13 @@
 ---
 layout: post
-title: "Pattern Matching, Part 1: switch that enum"
+title: "Pattern Matching, Part 1: switch, enums & where clauses"
 date: 2016-03-27
 categories: swift
 ---
 
-From a simple `switch` to complex expressions, pattern matching in Swift can be quite powerful. Today we're gonna start exploring pattern matching by seing some advanced usages of `switch`, before going further in a later article.
+From a simple `switch` to complex expressions, pattern matching in Swift can be quite powerful. Today we're gonna start exploring it by seing some cool usages of `switch`, before going further in later articles with even more advanced pattern matching techniques.
+
+_This article serves as an introduction to the incomming articles about Pattern Matching._
 
 ## Switch Basics
 
@@ -108,7 +110,7 @@ Notice here that althrough we use `author` in the `case` patterns, we don't need
 
 ## Binding multiple patterns at once
 
-As per Swift 2.2, we can't bind multple patterns at once. So for example this isn't possible yet, because here we try to bind variables both if `self` matches `.Book` or `.Movie` , and bind a variable in both cases:
+As per Swift 2.2, we can't bind multple patterns at once. So for example this isn't possible yet, because here we try to declare variables both if `self` matches `.Book` or `.Movie` , and bind a variable in both cases:
 
 ```swift
 extension Media {
@@ -124,9 +126,10 @@ extension Media {
 }
 ```
 
-This is understandable in most cases, like what would you expect the code to do if you tried to write `case let .Book(title: aTitle, author: _, year: _), let .Movie(title: _, director: _, year: aYear)`? How would you be able to use the bound variables `aTitle` or `aYear` in your `case` code then? If it's a `.Book` then only `aTitle` would have been bound, so what about `aYear`? What if you tried to use that `aYear` variable in that `case`? Wouldn't probably make sense.
+This is understandable in most cases; like what would you expect the code to do if you tried to write `case let .Book(title: aTitle, author: _, year: _), let .Movie(title: _, director: _, year: aYear)`? How would you be able to use the bound variables `aTitle` or `aYear` in your `case` code then? If it's a `.Book` then only `aTitle` would have been bound, so what about `aYear`? What if you tried to use that `aYear` variable in the code of that `case`? Wouldn't probably make sense.
 
-But one might think that in the specific case when you try to bind variables of the same type and with the same name, that would still make sense to work, like in the example above where we try to bind with `aTitle` in both cases (`.Book` and `.Movie`). So why is this not possible in that specific case? Well fear not, [this Swift-Evolution Proposal SE-0043](https://github.com/apple/swift-evolution/blob/master/proposals/0043-declare-variables-in-case-labels-with-multiple-patterns.md) has been accepted and will fix that gap in Swift 3.
+But one might think that in the specific case when you try to bind variables of the **same type** and with the **same name**, that would still make sense to work, like in the example above where we try to bind with `aTitle` in both cases (`.Book` and `.Movie`). And that would be quite useful to avoid repeating code, right?
+So why is this not possible in that specific case? Well fear not, [this Swift-Evolution Proposal SE-0043](https://github.com/apple/swift-evolution/blob/master/proposals/0043-declare-variables-in-case-labels-with-multiple-patterns.md) has been accepted and allow this in Swift 3.
 
 ## Using tuples without argument labels
 
@@ -160,6 +163,14 @@ extension Media {
 }
 ```
 
+As an added bonus, not specifying the tuple at all is syntactic sugar for matching any associated values, so those 3 expressions are equivalent:
+
+```swift
+case .WebSite // not specifying the tuple at all
+case .WebSite(_) // matching a single tuple of associated values that we don't care about
+case .WebSite(_, _) // matching individual associated values that we don't care about either
+```
+
 ## Using Where
 
 Pattern matching allows way more powerful stuff than just comparing two enums. You can add conditions to the comparisons, using a `where` clause, like this:
@@ -176,6 +187,8 @@ extension Media {
   }
 }
 ```
+
+This will only match if both the left side of the pattern (like `let .Book(_, _, year)`) successfully matches, **and** the `where` condition is evaluated to `true`. This allows some powerful patterns that we'll dig into in later parts of this article series.
 
 ## What's next?
 
