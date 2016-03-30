@@ -1,9 +1,12 @@
 ---
 layout: post
 title: "Creating new types"
-date: 2016-03-20
+date: 2016-05-10
 categories: swift
 ---
+
+In this article we'll see how creating new types even for very simple values like a `Duration` or a `Currency` can be simple, useful, and provide additional safety to your code as well as a cleaner API.
+
 
 ```swift
 struct Duration {

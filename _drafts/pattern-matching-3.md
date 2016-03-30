@@ -1,26 +1,9 @@
 ---
 layout: post
 title: "Pattern Matching, Part 3: ranges & custom pattern matching"
-date: 2016-03-29
+date: 2016-04-20
 categories: swift
 ---
-
-## Ranges
-
-Using ranges
-
-```
-extension Book {
-  var century: String {
-    switch year {
-    case 1800..<1900: return "XIX"
-    case 1900..<2000: return "XX"
-    case 2000..<2100: return "XXI"
-    default: return "\(year/100)"
-    }
-  }
-}
-```
 
 ## Declaring our own pattern matching operator
 

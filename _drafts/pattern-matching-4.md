@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Pattern Matching, Part 4: if case, guard case, for case"
-date: 2016-03-30
+date: 2016-04-26
 categories: swift
 ---
 
