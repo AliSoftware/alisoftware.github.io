@@ -136,7 +136,7 @@ for medium in media {
   case let m as Movie:
     print("Movie released in \(m.year)")
   case is WebSite:
-    print("A WebSite")
+    print("A WebSite with no date")
   default:
     print("No year info for \(medium)")
   }
@@ -149,9 +149,9 @@ Notice we use `as` for `Book` and `Movie` here, because we want both to see if t
 
 On the other hand, we only used `is` for `WebSite` because we only want to check if `medium` can match the pattern of "being a `WebSite`". But if it does, we don't need to type-cast it and use the type-casted value (we don't use it in the `print` statement). That's a bit like if we did write `case let _ as WebSite`, as we don't care about the `WebSite` object as long as it's of that type.
 
-## Conclusion
+💡 _Note: having to use `as` and `is` like this in a `switch` might sometimes reveal a code-smell, e.g. in that particular use case it'd probably have been better to add a `var releaseInfo: String { get }` property to the `protocol Medium` instead of `switch`-ing over the various types._
 
-That's it for today.
+## What's next?
 
 In the upcoming parts we'll look at how to make your own types be directly usable for pattern matching, explore some more syntactic sugar, then look at some pattern matching usages outside of the `switch` statement and some even more complex pattern expressions… can't wait!
 
