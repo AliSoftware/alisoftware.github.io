@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pattern Matching, Part 2: tuples and type"
+title: "Pattern Matching, Part 2: tuples, ranges & types"
 date: 2016-03-30
 categories: swift
 ---
