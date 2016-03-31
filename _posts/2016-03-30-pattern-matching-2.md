@@ -43,7 +43,7 @@ But why stop at tuples? In Swift you can also `switch` to a lot of native types,
 ```swift
 let car: Character = "J"
 switch car {
-  case "A", "E", "I", "O", "U": print("Vowel")
+  case "A", "E", "I", "O", "U", "Y": print("Vowel")
   default: print("Consonant")
 }
 ```
@@ -77,7 +77,7 @@ Even if using `Int` for ranges is the most common case, we can also do that with
 ```swift
 func charType(car: Character) -> String {
   switch car {
-    case "A", "E", "I", "O", "U", "a", "e", "i", "o", "u":
+    case "A", "E", "I", "O", "U", "Y", "a", "e", "i", "o", "u", "y":
       return "Vowel"
     case "A"..."Z", "a"..."z":
       return "Consonant"
