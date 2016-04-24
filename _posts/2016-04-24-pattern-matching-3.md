@@ -107,7 +107,7 @@ Another useful syntactic sugar to know when dealing with `switch` is simply `x?`
 
 In this specific context, using `x?` is syntactic sugar for `.Some(x)`. This means that you can write stuff like this:
 
-```
+```swift
 let anOptional: Int? = 2
 switch anOptional {
 case 0?: print("Zero")
