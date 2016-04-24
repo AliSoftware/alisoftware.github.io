@@ -15,7 +15,7 @@ struct Duration {
     self.seconds = totalSeconds
   }
   init(hours: Int = 0, minutes: Int = 0, seconds: Int = 0) {
-    self.seconds = Double((hours * 60 + minutes) * 60+seconds)
+    self.seconds = Double((hours * 60 + minutes) * 60 + seconds)
   }
   var minutes: Double {
     return seconds/60

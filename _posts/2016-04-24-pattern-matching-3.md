@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Pattern Matching, Part 3: Custom pattern matching & syntactic sugar"
-date: 2016-04-20
+date: 2016-04-24
 categories: swift
 ---
 
