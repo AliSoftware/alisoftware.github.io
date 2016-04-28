@@ -3,6 +3,11 @@ layout: post
 title: "Pattern Matching, Part 2: tuples, ranges & types"
 date: 2016-03-30
 categories: swift
+translations:
+  - lang: Chinese
+    flag: 🇨🇳
+    author: the SwiftGG team
+    url: http://swift.gg/2016/04/27/pattern-matching-2/
 ---
 
 In [the previous article](http://alisoftware.github.io/swift/2016/03/27/pattern-matching-1/), we saw the basics of pattern matching using `switch` on `enums`. But what about using `switch` with anything other than `enum` types?

@@ -3,6 +3,11 @@ layout: post
 title: "Pattern Matching, Part 1: switch, enums & where clauses"
 date: 2016-03-27
 categories: swift
+translations:
+  - lang: Chinese
+    flag: 🇨🇳
+    author: the SwiftGG team
+    url: http://swift.gg/2016/04/26/pattern-matching-1/
 ---
 
 From a simple `switch` to complex expressions, pattern matching in Swift can be quite powerful. Today we're gonna start exploring it by seing some cool usages of `switch`, before going further in later articles with even more advanced pattern matching techniques.
