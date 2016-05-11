@@ -152,7 +152,7 @@ default: ()
 First of all, notice how the `switch` is done on an `Int` (`indexPath.row`) and then each `case` uses a `rawValue`. This is wrong for multiple reasons.
 
 * the first being that nothing prevents you to use any other value, like a copy/pasting could make you write `case FooBar.Baz.rawValue` and the compiler won't even complain. But you're dealing with `MenuItems`, so you should leverage the compiler to ensure you only deal with `MenuItems`, right?
-* the other problem is that this `switch` is not exhaustive by itself, this is why the `default` statement was necessary. I strongly recommand you to not use `default` when possible, and instead make your `switch` exhaustive, this way if you happen to add a now value to your `enum` you'll be forced to think about what to do with it instead of it being ignored or eaten up by the `default` without you realizing.
+* the other problem is that this `switch` is not exhaustive by itself, this is why the `default` statement was necessary. I strongly recommand you to not use `default` when possible, and instead make your `switch` exhaustive, this way if you happen to add a new value to your `enum` you'll be forced to think about what to do with it instead of it being ignored or eaten up by the `default` without you realizing.
 
 So instead of switching on `indexPath` and `case ….rawValue`, you should rathen build the enum from the `rawValue` first. This way you can then only switch over `cases` that use `MenuItem` enum cases, not anything else like `FooBar.Baz` or whatnot.
 
