@@ -2,7 +2,8 @@
 layout: post
 title: "Pattern Matching, Part 1: switch, enums & where clauses"
 date: 2016-03-27
-categories: swift
+categories: swift pattern-matching
+redirect_from: /swift/2016/03/27/pattern-matching-1/
 translations:
   - lang: Chinese
     flag: 🇨🇳

@@ -2,7 +2,8 @@
 layout: post
 title: "Pattern Matching, Part 3: Custom pattern matching & syntactic sugar"
 date: 2016-04-24
-categories: swift
+categories: swift pattern-matching
+redirect_from: /swift/2016/04/24/pattern-matching-3/
 translations:
   - lang: Chinese
     flag: 🇨🇳
@@ -10,7 +11,7 @@ translations:
     url: http://swift.gg/2016/04/28/pattern-matching-3/
 ---
 
-In parts [1](/swift/2016/03/27/pattern-matching-1/) and [2](/swift/2016/03/30/pattern-matching-2/) of this article series, we saw some usages of `switch` on a lot of things, including `tuples`, `Range`, `String`, `Character` and even type. But what if we can use pattern matching even with our own custom types?
+In parts [1](/swift/pattern-matching/2016/03/27/pattern-matching-1/) and [2](/swift/pattern-matching/2016/03/30/pattern-matching-2/) of this article series, we saw some usages of `switch` on a lot of things, including `tuples`, `Range`, `String`, `Character` and even type. But what if we can use pattern matching even with our own custom types?
 
 ## Switch and the pattern matching operator
 
