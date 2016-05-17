@@ -150,11 +150,11 @@ extension Media {
     }
   }
   var kind: String {
-    // Remember part 1 where we bind all the associated values in one single anonymous tuple `_`?
+    // Remember part 1 where we said we can omit the `(…)` associated values in the `case` if we don't care about any of them?
     switch self {
-    case .Book(_): return "Book"
-    case .Movie(_): return "Movie"
-    case .WebSite(_): return "Web Site"
+    case .Book: return "Book"
+    case .Movie: return "Movie"
+    case .WebSite: return "Web Site"
     }
   }
 }
