@@ -78,7 +78,7 @@ switch count {
 
 Here you see that we mixed `cases` with a single `Int` value and `cases` with `Range<Int>` values. That's not a problem as long as all possible cases are covered by your `switch`.
 
-Even if using `Int` for ranges is the most common case, we can also do that with other `ForwardIndexType`, including… `Character`! Remember the code above? The problem is that it printed "Consonant" even for ponctuation characters and anything other than `A-Z`. So let's solve that[^only-for-demo] (and also include lowercase vowels and consonants):
+Even if using `Int` for ranges is the most common case, we can also do that with other `ForwardIndexType`, including… `Character`! Remember the code above? The problem is that it printed "Consonant" even for punctuation characters and anything other than `A-Z`. So let's solve that[^only-for-demo] (and also include lowercase vowels and consonants):
 
 ```swift
 func charType(car: Character) -> String {

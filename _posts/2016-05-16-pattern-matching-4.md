@@ -13,7 +13,7 @@ Let's use what we saw in previous articles and apply them all to some advanced e
 
 The `case let x = y` pattern allows you to check if `y` does match the pattern `x`.
 
-Writing `if case let x = y { … }` is strictly equivalent of writing `switch y { case let x: … }`: it's just a more compact syntax which is useful when you only want to pattern-match against only one case — as opposed to a `switch` which is more adapted to multiple cases matching.
+Writing `if case let x = y { … }` is strictly equivalent of writing `switch y { case let x: … }`: it's just a more compact syntax which is useful when you only want to pattern-match against one case — as opposed to a `switch` which is more adapted to multiple cases matching.
 
 For example, let's use an `enum` similar to the one from the previous articles:
 
@@ -61,7 +61,7 @@ That can lead to quite powerful expressions that would otherwise need a complex 
 
 ## guard case let
 
-Of course, `guard case let` is similar from `if case let`. You can use `guard case let` and `guard case let … where …` to ensure something matches a pattern and a condition and exit otherwise.
+Of course, `guard case let` is similar to `if case let`. You can use `guard case let` and `guard case let … where …` to ensure something matches a pattern and a condition and exit otherwise.
 
 ```swift
 enum NetworkResponse {
