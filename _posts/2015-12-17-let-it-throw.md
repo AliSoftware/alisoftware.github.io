@@ -74,7 +74,7 @@ catch {
 ![Frozen-Illustration-2](/assets/frozen-failure.jpg)
 {: style="text-align: center"}
 
-You can see that `someFunctionWitchCanFail` returns a plain `String`, which is the type returned when everything was ok. It makes it easy to call the function "normally", first thinking (in the `do { … }` block) about the **happy** path, to handle the case where nothing wrong happens.
+You can see that `someFunctionWhichCanFail` returns a plain `String`, which is the type returned when everything was ok. It makes it easy to call the function "normally", first thinking (in the `do { … }` block) about the **happy** path, to handle the case where nothing wrong happens.
 
 The only reminder that those methods can fail is the `try` keyword that the compiler enforces you to add in front of that call, otherwise it's like a non-throwing function call. And then, you only write the code to handle errors in a separate place (inside the `catch`)
 
@@ -151,7 +151,7 @@ func doTheActualCall() throws {
 }
 ```
 
-Here when `doFail` is called, the potential error is not caught by `doTheActualCall` (there is no `do…catch` capturing it), so it propagates up to the calling `test()` function. Because it doesn't catch all errors, `doTheActuallCall` must also be marked as `throws`: even if it doesn't throw errors by itself, it can still propagate some. It can't keep the error to itself, it has to… _let it go_ to the upper level.
+Here when `doFail` is called, the potential error is not caught by `doTheActualCall` (there is no `do…catch` capturing it), so it propagates up to the calling `test()` function. Because it doesn't catch all errors, `doTheActualCall` must also be marked as `throws`: even if it doesn't throw errors by itself, it can still propagate some. It can't keep the error to itself, it has to… _let it go_ to the upper level.
 
 On the other end, `test()` catches all errors internally so even if it calls a throwing function (`try doTheActualCall()`), all errors thrown by that function are caught in the `do…catch` block. The `test()` function itself doesn't throw, so callers don't need to know about this internal behavior.
 
