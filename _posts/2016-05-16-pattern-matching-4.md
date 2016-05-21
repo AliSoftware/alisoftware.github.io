@@ -96,6 +96,7 @@ let mediaList: [Media] = [
   .Movie(title: "Harry Potter and the Chamber of Secrets", director: "Chris Columbus", year: 2002),
   .Book(title: "Harry Potter and the Prisoner of Azkaban", author: "J.K. Rowling", year: 1999),
   .Movie(title: "Harry Potter and the Prisoner of Azkaban", director: "Alfonso Cuarón", year: 2004),
+  .Movie(title: "J.K. Rowling: A Year in the Life", director: "James Runcie", year: 2007),
   .WebSite(urlString: "https://en.wikipedia.org/wiki/List_of_Harry_Potter-related_topics")
 ]
 
