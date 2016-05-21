@@ -16,6 +16,8 @@ In this article series, we'll take an example of ObjC code and walk thru convert
 
 > Part 1 of this article talks about: optionals, forced-unwrapped optionals, ponies, `if let`, `guard`, and 🍰.
 
+This post is part of an article series. You can read all the parts here: [part 1](/swift/2015/09/06/thinking-in-swift-1/), [part 1 addendum](/swift/2015/09/14/thinking-in-swift-1-addendum/), [part 2](/swift/2015/09/20/thinking-in-swift-2/), [part 3](/swift/2015/10/03/thinking-in-swift-3/), [part 4](/swift/2015/10/11/thinking-in-swift-4/)
+{: .note }
 
 ## The ObjC code
 

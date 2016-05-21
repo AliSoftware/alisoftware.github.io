@@ -11,6 +11,9 @@ translations:
 
 After publishing [part 1 of my article series "Thinking in Swift"](/swift/2015/09/06/thinking-in-swift-1), I had some great feedback and reactions on Twitter. Today I wanted to build on those comments and talk about when it could be ok to use `!` and sacrifice a pony 🐴.
 
+This post is part of an article series. You can read all the parts here: [part 1](/swift/2015/09/06/thinking-in-swift-1/), [part 1 addendum](/swift/2015/09/14/thinking-in-swift-1-addendum/), [part 2](/swift/2015/09/20/thinking-in-swift-2/), [part 3](/swift/2015/10/03/thinking-in-swift-3/), [part 4](/swift/2015/10/11/thinking-in-swift-4/)
+{: .note }
+
 ## Never ever kill a pony?
 
 So in my last article, I urged you not to use `!`. Some might have read it as "never use it, like ever". What I said was in fact more that « every time you add a ! **just to please the compiler**, you’re killing a pony 🐴 ». But sure, that 🐴 can keep living if you actually know what you're doing. Just don't do it without thinking and _only_ to please the compiler.

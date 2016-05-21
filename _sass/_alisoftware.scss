@@ -2,6 +2,19 @@
  * This is where I customize my CSS styles, to avoid overriding the ones copied from BASSCSS and Pixyll
  */
 
+p.note {
+  background-color: #eeeeee;
+  border: thin solid #cccccc;
+  font-size: 80%;
+  font-style: italic;
+  text-indent: -25px;
+  padding: 2px 32px;
+}
+p.note::before {
+  content: "\1F4A1  ";
+  font-style: normal;
+}
+
 blockquote {
   padding-top: 0;
   padding-bottom: 0;

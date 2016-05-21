@@ -13,6 +13,9 @@ In [part 1 of this article series](/swift/2015/09/06/thinking-in-swift-1), we sa
 
 > Today's article will talk about `map` and `flatMap` on `Arrays`.
 
+This post is part of an article series. You can read all the parts here: [part 1](/swift/2015/09/06/thinking-in-swift-1/), [part 1 addendum](/swift/2015/09/14/thinking-in-swift-1-addendum/), [part 2](/swift/2015/09/20/thinking-in-swift-2/), [part 3](/swift/2015/10/03/thinking-in-swift-3/), [part 4](/swift/2015/10/11/thinking-in-swift-4/)
+{: .note }
+
 ## Previously, in Thinking in Swift[^tvshow-intro]
 
 [^tvshow-intro]: Insert opening credits of some bad*ss TV Show here.

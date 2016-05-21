@@ -11,9 +11,12 @@ translations:
 
 Continuing my "Thinking in Swift" article series, today we'll do a simple change that will simplify our code again: using a `struct`.
 
+This post is part of an article series. You can read all the parts here: [part 1](/swift/2015/09/06/thinking-in-swift-1/), [part 1 addendum](/swift/2015/09/14/thinking-in-swift-1-addendum/), [part 2](/swift/2015/09/20/thinking-in-swift-2/), [part 3](/swift/2015/10/03/thinking-in-swift-3/), [part 4](/swift/2015/10/11/thinking-in-swift-4/)
+{: .note }
+
 ## Previously
 
-In [the previous article of this series](http://alisoftware.github.io/swift/2015/09/20/thinking-in-swift-2/), we learned about using `map` and `flatMap` on arrays, which avoid statefulness in the form of intermediate variables and make us use some functional programming instead[^fp].
+In [the previous article of this series](/swift/2015/09/20/thinking-in-swift-2/), we learned about using `map` and `flatMap` on arrays, which avoid statefulness in the form of intermediate variables and make us use some functional programming instead[^fp].
 
 [^fp]: Yes, you did some functional programming in the last article… probably even without knowing it already!
 
@@ -68,7 +71,7 @@ In our case, a `struct` seems more appropriate because it carries values, and is
 
 Also, the advantage of migrating to a `struct` here is that they have an implicit constructor by default if you don't define any: so we can easily build a `ListItem` using its default constructor `ListItem(icon: …, title: …, url: …)`.
 
-Last but not least, as we now can't create a bogus `ListItem` because we eliminated the problem of data corruption above, we can eliminate the default value `""` for `title`, but more importantly **we can [save that last pony](http://alisoftware.github.io/swift/2015/09/06/thinking-in-swift-1/)** 🐴 by transforming `NSURL!` into `NSURL`[^about-time].
+Last but not least, as we now can't create a bogus `ListItem` because we eliminated the problem of data corruption above, we can eliminate the default value `""` for `title`, but more importantly **we can [save that last pony](/swift/2015/09/06/thinking-in-swift-1/)** 🐴 by transforming `NSURL!` into `NSURL`[^about-time].
 
 [^about-time]: That `NSURL!` was bogging me for some time now, and was still there only because I was too lazy creating a proper `init` method for our `ListItem` class, and didn't want to clobber the sample code before by dealing with it as I knew we'd get rid of it eventually. It's about time we saved that last pony!
 

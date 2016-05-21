@@ -11,6 +11,9 @@ translations:
 
 In [previous articles of this series](/swift/2015/09/20/thinking-in-swift-2/), we learned about using `map` and `flatMap` on arrays. Today we'll discover `map` and `flatMap` also exists on Optionals. And on plenty of other types.
 
+This post is part of an article series. You can read all the parts here: [part 1](/swift/2015/09/06/thinking-in-swift-1/), [part 1 addendum](/swift/2015/09/14/thinking-in-swift-1-addendum/), [part 2](/swift/2015/09/20/thinking-in-swift-2/), [part 3](/swift/2015/10/03/thinking-in-swift-3/), [part 4](/swift/2015/10/11/thinking-in-swift-4/)
+{: .note }
+
 ## Array vs. Optional
 
 So, as a reminder, we learned in a previous article that the signature of the `map()` and `flatMap` functions on `Array<T>` are:
@@ -158,7 +161,7 @@ struct ListItem {
 
 ## A look back at our ObjC code
 
-Take a little time to compare the final above Swift code with [the original ObjC code](http://alisoftware.github.io/swift/2015/09/06/thinking-in-swift-1/#the-objc-code) we started with. We've adapted quite a lot of stuff from there!
+Take a little time to compare the final above Swift code with [the original ObjC code](/swift/2015/09/06/thinking-in-swift-1/#the-objc-code) we started with. We've adapted quite a lot of stuff from there!
 
 If you look closely at those two ObjC vs. Swift codes, you'll realize that the Swift code is not significantly smaller (5+15 LoC[^loc] for Objc vs. 19 LoC[^loc] for Swift), **but it's way safer**.
 

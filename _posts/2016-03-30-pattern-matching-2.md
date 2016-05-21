@@ -11,7 +11,10 @@ translations:
     url: http://swift.gg/2016/04/27/pattern-matching-2/
 ---
 
-In [the previous article](http://alisoftware.github.io/swift/pattern-matching/2016/03/27/pattern-matching-1/), we saw the basics of pattern matching using `switch` on `enums`. But what about using `switch` with anything other than `enum` types?
+In [the previous article](/swift/pattern-matching/2016/03/27/pattern-matching-1/), we saw the basics of pattern matching using `switch` on `enums`. But what about using `switch` with anything other than `enum` types?
+
+This post is part of an article series. You can read all the parts here: [part 1](/swift/pattern-matching/2016/03/27/pattern-matching-1/), [part 2](/swift/pattern-matching/2016/03/30/pattern-matching-2/), [part 3](/swift/pattern-matching/2016/04/24/pattern-matching-3/), [part 4](/swift/pattern-matching/2016/05/16/pattern-matching-4/)
+{: .note }
 
 ## Pattern matching with tuples
 

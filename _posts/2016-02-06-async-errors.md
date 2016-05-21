@@ -10,7 +10,7 @@ translations:
     url: http://swift.gg/2016/02/16/async-errors/
 ---
 
-In a previous article, I talked about [error handling in Swift using `throw`](http://alisoftware.github.io/2015/12/17/let-it-throw/). But what happens when you deal with asynchronous workflows, where `throw` can't really fit?
+In a previous article, I talked about [error handling in Swift using `throw`](/2015/12/17/let-it-throw/). But what happens when you deal with asynchronous workflows, where `throw` can't really fit?
 
 ## What's wrong with `throw` and async?
 
@@ -132,7 +132,7 @@ func fetchUser(completion: Result<User> -> Void) {
 
 ## Remember monads?
 
-The nice thing about `Result` is it can be turned into a Monad. Remember [Monads](http://alisoftware.github.io/swift/2015/10/17/lets-talk-about-monads/)? That simply means that we can add the high-order `map` and `flatMap` methods on `Result`, which will take a closure `f: T->U` or `f: T->Result<U>` and return a `Result<U>`.
+The nice thing about `Result` is it can be turned into a Monad. Remember [Monads](/swift/2015/10/17/lets-talk-about-monads/)? That simply means that we can add the high-order `map` and `flatMap` methods on `Result`, which will take a closure `f: T->U` or `f: T->Result<U>` and return a `Result<U>`.
 
 If the original `Result` was a `.Success(let t)` then we apply the closure to that `t` and return the resulting `f(t)`. If it was a `.Failure` then we simply pass the error along:
 

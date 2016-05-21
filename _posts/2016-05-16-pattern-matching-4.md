@@ -5,9 +5,12 @@ date: 2016-05-16
 categories: swift pattern-matching
 ---
 
-Now that we've revisited the various syntaxes for pattern matching in [part 1](http://alisoftware.github.io/swift/pattern-matching/2016/03/27/pattern-matching-1/), [part 2](http://alisoftware.github.io/swift/pattern-matching/2016/03/30/pattern-matching-2/) and [part 3](http://alisoftware.github.io/swift/pattern-matching/2016/04/24/pattern-matching-3/), let's finish this blog post series with some advanced syntax using `if case let`, `for case where` and all!
+Now that we've revisited the various syntaxes for pattern matching in [part 1](/swift/pattern-matching/2016/03/27/pattern-matching-1/), [part 2](/swift/pattern-matching/2016/03/30/pattern-matching-2/) and [part 3](/swift/pattern-matching/2016/04/24/pattern-matching-3/), let's finish this blog post series with some advanced syntax using `if case let`, `for case where` and all!
 
 Let's use what we saw in previous articles and apply them all to some advanced expressions.
+
+This post is part of an article series. You can read all the parts here: [part 1](/swift/pattern-matching/2016/03/27/pattern-matching-1/), [part 2](/swift/pattern-matching/2016/03/30/pattern-matching-2/), [part 3](/swift/pattern-matching/2016/04/24/pattern-matching-3/), [part 4](/swift/pattern-matching/2016/05/16/pattern-matching-4/)
+{: .note }
 
 ## if case let
 

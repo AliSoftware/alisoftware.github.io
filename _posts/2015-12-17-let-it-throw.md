@@ -2,7 +2,8 @@
 layout: post
 title: Let it throw, Let it throw!
 date: 2015-12-17
-categories:
+categories: swift error
+redirect_from: /2015/12/17/let-it-throw/
 ---
 
 Today's article will be about handling errors in Swift.  
@@ -87,7 +88,7 @@ Note that you can write more than one line (and `try`-call more than one throwin
 
 Ok, but with this example we still have to handle errors using `NSError`, which is a pain. Comparing domains and error codes with `==` and make a list of domain and code constants, just to know which error we got and handle it properly… ouch.
 
-But we can fix this fixer-upper… up with a little bit of love! What if we used what we learned in my [Enums as Constants](http://alisoftware.github.io/swift/enum/constants/2015/07/19/enums-as-constants/) article and use `enums` to represent errors instead?
+But we can fix this fixer-upper… up with a little bit of love! What if we used what we learned in my [Enums as Constants](/swift/enum/constants/2015/07/19/enums-as-constants/) article and use `enums` to represent errors instead?
 
 Well, Good news, everyone!™, that's exactly what Apple intended in this new error handling model!
 In fact, when a function `throws`, it can throw any object which conforms to `ErrorType`. `NSError` is one of those types, but you can make your own, and it's even recommended!

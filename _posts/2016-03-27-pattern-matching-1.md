@@ -15,6 +15,10 @@ From a simple `switch` to complex expressions, pattern matching in Swift can be 
 
 _This article serves as an introduction to the incomming articles about Pattern Matching._
 
+This post is part of an article series. You can read all the parts here: [part 1](/swift/pattern-matching/2016/03/27/pattern-matching-1/), [part 2](/swift/pattern-matching/2016/03/30/pattern-matching-2/), [part 3](/swift/pattern-matching/2016/04/24/pattern-matching-3/), [part 4](/swift/pattern-matching/2016/05/16/pattern-matching-4/)
+{: .note }
+
+
 ## Switch Basics
 
 The simplest and more common usage of pattern matching in Swift is via a `switch` statement. You hopfully already know their simplest form, e.g.:
