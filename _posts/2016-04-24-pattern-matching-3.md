@@ -188,3 +188,6 @@ But hey, it's good to know all the possible alternatives!
 ## Conclusion
 
 That's it for today. Next (and probably last) part of this article series will talk about using pattern matching in contexts other than `switch`, especially `if`, `guard`, but also `for` loops, and using these features in a whole new level. Can't wait!
+
+⏩ Read last part of this article series here: [part 4](/swift/pattern-matching/2016/05/16/pattern-matching-4/)
+{: .note }

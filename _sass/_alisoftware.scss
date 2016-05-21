@@ -5,14 +5,10 @@
 p.note {
   background-color: #eeeeee;
   border: thin solid #cccccc;
+  border-left-width: 3px;
   font-size: 80%;
   font-style: italic;
-  text-indent: -25px;
-  padding: 2px 32px;
-}
-p.note::before {
-  content: "\1F4A1  ";
-  font-style: normal;
+  padding: 3px; padding-left: 8px;
 }
 
 blockquote {

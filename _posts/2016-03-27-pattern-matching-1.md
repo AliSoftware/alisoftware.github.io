@@ -208,3 +208,6 @@ This article was pretty simple to remind you of the basics of pattern matching i
 * using pattern matching with other statements, including `if case`, `guard case`, `for case`, `=~`, …
 * Nested patterns, including ones containing `Optional` values
 * Combining them all to create some magic.
+
+⏩ Read next part of this article series here: [part 2](/swift/pattern-matching/2016/03/30/pattern-matching-2/)
+{: .note }
