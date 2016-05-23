@@ -84,7 +84,7 @@ Notice also the use of the wildcard pattern `_` in the above code, which basical
 
 ## Using fixed values
 
-Remember that `case`  is still about **pattern matching**, so it tries to **match** what you try to compare it with. This means that you can also use a constant values to check if it matches. For example:
+Remember that `case`  is still about **pattern matching**, so it tries to **match** what you try to compare it with. This means that you can also use constant values to check if it matches. For example:
 
 ```swift
 extension Media {
@@ -116,7 +116,7 @@ extension Media {
 book.checkAuthor("Jules Verne")
 ```
 
-Notice here that althrough we use `author` in the `case` patterns, we don't need to use `let` here (unlike in the preview paragraph). That's because in this case, we won't create a variable to bind a value to it . Instead, we use a constant which already has a value (provided by the function parameter) — not creating a new one that is gonna be bound to the value matched is `self`.
+Notice here that althrough we use `author` in the `case` patterns, we don't need to use `let` here (unlike in the preview paragraph). That's because in this case, we won't create a variable to bind a value to it. Instead, we use a constant which already has a value (provided by the function parameter) — not creating a new one that is gonna be bound to the value matched with `self`.
 
 ## Binding multiple patterns at once
 
