@@ -119,7 +119,7 @@ book.checkAuthor("Jules Verne")
 Notice here that althrough we use `author` in the `case` patterns, we don't need to use `let` here (unlike in the preview paragraph). That's because in this case, we won't create a variable to bind a value to it. Instead, we use a constant which already has a value (provided by the function parameter) — not creating a new one that is gonna be bound to the value matched with `self`.
 
 
-_[EDIT]_ Another great example of matching with constants have been [suggested by @ashfurrow on Twitter](https://twitter.com/ashfurrow/status/734868499441418240) is when dealing with HTTPStatus codes:
+_[EDIT]_ Another great example of matching with constants have been [suggested by @ashfurrow on Twitter](https://twitter.com/ashfurrow/status/734868499441418240) when dealing with HTTP status codes:
 {: .note }
 
 ```swift
@@ -136,7 +136,7 @@ switch response {
   …
 }
 
-// better than using stuff like `case .HTTPResponse(let code) where code == 200`, right?
+// cleaner than using stuff like `case .HTTPResponse(let code) where code == 200`, right?
 ```
 {: .note }
 
