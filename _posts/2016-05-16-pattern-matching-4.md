@@ -16,7 +16,7 @@ This post is part of an article series. You can read all the parts here: [part 1
 
 The `case let x = y` pattern allows you to check if `y` does match the pattern `x`.
 
-Writing `if case let x = y { … }` is strictly equivalent of writing `switch y { case let x: … }`: it's just a more compact syntax which is useful when you only want to pattern-match against one case — as opposed to a `switch` which is more adapted to multiple cases matching.
+Writing `if case let x = y { … }` is strictly equivalent to writing `switch y { case let x: … }`: it's just a more compact syntax which is useful when you only want to pattern-match against one case — as opposed to a `switch` which is more adapted to multiple cases matching.
 
 For example, let's use an `enum` similar to the one from the previous articles:
 
