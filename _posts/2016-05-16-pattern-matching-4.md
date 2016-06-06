@@ -3,6 +3,11 @@ layout: post
 title: "Pattern Matching, Part 4: if case, guard case, for case"
 date: 2016-05-16
 categories: swift pattern-matching
+translations:
+  - lang: Chinese
+    flag: 🇨🇳
+    author: the SwiftGG team
+    url: http://swift.gg/2016/06/06/pattern-matching-4/
 ---
 
 Now that we've revisited the various syntaxes for pattern matching in [part 1](/swift/pattern-matching/2016/03/27/pattern-matching-1/), [part 2](/swift/pattern-matching/2016/03/30/pattern-matching-2/) and [part 3](/swift/pattern-matching/2016/04/24/pattern-matching-3/), let's finish this blog post series with some advanced syntax using `if case let`, `for case where` and all!
