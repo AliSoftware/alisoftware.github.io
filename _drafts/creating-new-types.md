@@ -2,6 +2,7 @@
 layout: post
 title: "Creating new types"
 categories: swift types
+published: false
 ---
 
 In this article we'll see how creating new types even for very simple values like a `Duration` or a `Currency` can be simple, useful, and provide additional safety to your code as well as a cleaner API.

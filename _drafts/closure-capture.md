@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Closures Capturing Semantics"
+categories: swift closures
+published: false
+---
+
 Talk about the behavior of closures capturing values in Swift.
 
 * Behaves more like ObjC's `__block`
