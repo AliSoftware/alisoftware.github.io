@@ -4,6 +4,11 @@ title: Let it throw, Let it throw!
 date: 2015-12-17
 categories: swift error
 redirect_from: /2015/12/17/let-it-throw/
+translations:
+  - lang: Chinese
+    flag: 🇨🇳
+    author: the SwiftGG team
+    url: http://swift.gg/2016/06/12/let-it-throw/
 ---
 
 Today's article will be about handling errors in Swift.  
