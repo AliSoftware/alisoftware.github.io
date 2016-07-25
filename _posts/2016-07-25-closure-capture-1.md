@@ -42,7 +42,7 @@ Now, let's start with a simple example:
 
 ```swift
 func demo1() {
-  let pokemon = Pokemon(name: "MewTwo")
+  let pokemon = Pokemon(name: "Mewtwo")
   print("before closure: \(pokemon)")
   delay(1) {
     print("inside closure: \(pokemon)")
@@ -54,11 +54,11 @@ func demo1() {
 This might seem like a simple one, but it's interesting to note that the closure gets executed 1 second after the code from the `demo1()` function has finished executed and we exited the function's scope… yet the `Pokemon` is still alive when the block is executed that one second later!
 
 ```
-before closure: <Pokemon MewTwo>
+before closure: <Pokemon Mewtwo>
 bye
 🕑
-inside closure: <Pokemon MewTwo>
-<Pokemon MewTwo> escaped!
+inside closure: <Pokemon Mewtwo>
+<Pokemon Mewtwo> escaped!
 ```
 
 That's because the closure strongly captures the variable `pokemon`: as the Swift compiler sees that the closure references that `pokemon` variable inside the closure, it automatically captures it (strongly by default), so that this `pokemon` is alive as long as the closure itself is alive.
@@ -86,7 +86,7 @@ func demo2() {
   delay(1) {
     print("inside closure: \(pokemon)")
   }
-  pokemon = Pokemon(name: "MewTwo")
+  pokemon = Pokemon(name: "Mewtwo")
   print("after closure: \(pokemon)")
 }
 ```
@@ -96,17 +96,17 @@ Could you guess what gets printed? Here's the answer:
 ```
 before closure: <Pokemon Pikachu>
 <Pokemon Pikachu> escaped!
-after closure: <Pokemon MewTwo>
+after closure: <Pokemon Mewtwo>
 🕑
-inside closure: <Pokemon MewTwo>
-<Pokemon MewTwo> escaped!
+inside closure: <Pokemon Mewtwo>
+<Pokemon Mewtwo> escaped!
 ```
 
 Note that we change the `pokemon` object _after_ creating the closure, still when the closure executes 1 second later (while we already exited the scope of the `demo2()` function), we print the new `pokemon`, not the old one! That's because Swift captures variables by reference by default.
 
-So here, we initialize `pokemon` to Pikachu, then we change its value to MewTwo, so that Pikachu gets released — as no more variable retains it. Then one second later the closure gets executed and it prints the content of the variable `pokemon` that the closure captured by reference.
+So here, we initialize `pokemon` to Pikachu, then we change its value to Mewtwo, so that Pikachu gets released — as no more variable retains it. Then one second later the closure gets executed and it prints the content of the variable `pokemon` that the closure captured by reference.
 
-The closure didn't capture "Pikachu" (the pokemon we got at the time the closure was created), but more a reference to the `pokemon` variable — that now evaluates to "MewTwo" at the time the closure gets executed.
+The closure didn't capture "Pikachu" (the pokemon we got at the time the closure was created), but more a reference to the `pokemon` variable — that now evaluates to "Mewtwo" at the time the closure gets executed.
 
 What might seems odd is that this works for value types too, like `Int` for example:
 
@@ -213,7 +213,7 @@ func demo6() {
   delay(1) { [pokemonCopy = pokemon] in
     print("inside closure: \(pokemonCopy)")
   }
-  pokemon = Pokemon(name: "MewTwo")
+  pokemon = Pokemon(name: "Mewtwo")
   print("after closure: \(pokemon)")
 }
 ```
@@ -230,7 +230,7 @@ func demo6_equivalent() {
   delay(1) {
     print("inside closure: \(pokemonCopy)")
   }
-  pokemon = Pokemon(name: "MewTwo")
+  pokemon = Pokemon(name: "Mewtwo")
   print("after closure: \(pokemon)")
 }
 ```
@@ -241,8 +241,8 @@ Compare this `demo6()` — that uses `[pokemonCopy = pokemon] in …` — and `d
 
 ```
 before closure: <Pokemon Pikachu>
-after closure: <Pokemon MewTwo>
-<Pokemon MewTwo> escaped!
+after closure: <Pokemon Mewtwo>
+<Pokemon Mewtwo> escaped!
 🕑
 inside closure: <Pokemon Pikachu>
 <Pokemon Pikachu> escaped!
@@ -252,8 +252,8 @@ Here's what happens:
 
 * Pikachu is created;
 * then it is captured as a copy (capturing the **value** of the `pokemon` variable here) by the closure.
-* So when a few lines below we assign `pokemon` to a new Pokemon "MewTwo", then "Pikachu" is not released _just yet_, as it's still retained by the closure.
-* When we exit the `demo6` function's scope, MewTwo is released, as the `pokemon` variable itself — which was the only one strongly referencing it — is going out of scope.
+* So when a few lines below we assign `pokemon` to a new Pokemon "Mewtwo", then "Pikachu" is not released _just yet_, as it's still retained by the closure.
+* When we exit the `demo6` function's scope, Mewtwo is released, as the `pokemon` variable itself — which was the only one strongly referencing it — is going out of scope.
 * Then later, when the closure executes, it prints `"Pikachu"` because that was the Pokemon being captured at the closure creation's time by the capture list.
 * Then the closure is released by GCD, and so is the Pikachu pokemon which it was retaining.
 
@@ -261,10 +261,10 @@ On the contrary, back in the `demo2` code above:
 
 * Pickachu was created;
 * then the closure only captured a **reference** to the `pokemon` variable, not the actual Pickachu pokemon/value the variable contained.
-* So when `pokemon` was assigned a new value `"MewTwo"` later, Pikachu was not strongly referenced by anyone anymore and got released right away.
-* But the `pokemon` _variable_ (holding the `"MewTwo"` pokemon at that time) was still strongly referenced by the closure
+* So when `pokemon` was assigned a new value `"Mewtwo"` later, Pikachu was not strongly referenced by anyone anymore and got released right away.
+* But the `pokemon` _variable_ (holding the `"Mewtwo"` pokemon at that time) was still strongly referenced by the closure
 * So that's the pokemon that was printed when the closure was executed one second later
-* And that MewTwo pokemon was only released once the closure was executed then released by GCD.
+* And that Mewtwo pokemon was only released once the closure was executed then released by GCD.
 
 ## Mixing it all
 
@@ -284,7 +284,7 @@ func demo7() {
     print("closure 1 - pokemon has been now set to \(pokemon)")
   }
 
-  pokemon = Pokemon(name: "MewTwo")
+  pokemon = Pokemon(name: "Mewtwo")
   print("🔄 pokemon changed to \(pokemon)")
 
   delay(2) { [capturedPokemon = pokemon] in
@@ -305,18 +305,18 @@ Ok, here's the output from that code. Did you guess it right?
 
 ```
 ➡️ Initial pokemon is <Pokemon Mew>
-🔄 pokemon changed to <Pokemon MewTwo>
+🔄 pokemon changed to <Pokemon Mewtwo>
 🕑
 closure 1 — pokemon captured at creation time: <Pokemon Mew>
-closure 1 — variable evaluated at execution time: <Pokemon MewTwo>
+closure 1 — variable evaluated at execution time: <Pokemon Mewtwo>
 closure 1 - pokemon has been now set to <Pokemon Pikachu>
 <Pokemon Mew> escaped!
 🕑
-closure 2 — pokemon captured at creation time: <Pokemon MewTwo>
+closure 2 — pokemon captured at creation time: <Pokemon Mewtwo>
 closure 2 — variable evaluated at execution time: <Pokemon Pikachu>
 <Pokemon Pikachu> escaped!
 closure 2 - value has been now set to <Pokemon Charizard>
-<Pokemon MewTwo> escaped!
+<Pokemon Mewtwo> escaped!
 <Pokemon Charizard> escaped!
 ```
 
@@ -324,19 +324,19 @@ So, what did happen here? Being a bit complicated, let's explain each step in de
 
 1. ➡️ `pokemon` is initially set to `Mew`
 2. Then the closure 1 is created and the _value_ (`Mew` at that time) of `pokemon` is captured into a new `capturedPokemon` variable — which is local to that closure (and the reference to the `pokemon` variable is captured too, as both `capturedPokemon` and `pokemeon` are used in the closure's code)
-3. 🔄 Then `pokemon` is changed to `MewTwo`
-4. Then the closure 2 is created and the _value_ (`MewTwo` at that time) of `pokemon` is captured into a new `capturedPokemon` variable — which is local to that closure (and the reference to the `pokemon` variable is captured too, as both are used in that closure's code)
+3. 🔄 Then `pokemon` is changed to `Mewtwo`
+4. Then the closure 2 is created and the _value_ (`Mewtwo` at that time) of `pokemon` is captured into a new `capturedPokemon` variable — which is local to that closure (and the reference to the `pokemon` variable is captured too, as both are used in that closure's code)
 5. Now, the function `demo8()` has ended.
 6. 🕑 One second later, GCD executes the first closure.
   * In prints the _value_ `Mew` that it captured in `capturedPokemon` at the time that closure was created on step 2.
-  * It also evalutes the current value of the `pokemon` variable that it captured by reference, which is still `MewTwo` (as of when we left it before exiting the `demo8()` function on step 5)
+  * It also evalutes the current value of the `pokemon` variable that it captured by reference, which is still `Mewtwo` (as of when we left it before exiting the `demo8()` function on step 5)
   * Then it sets the `pokemon` variable to value `Pikachu` (again, the closure captured a _reference_ to the variable `pokemon` so that's the same variable as the one used in `demo8()`'s body as well as in the other closure that it assigns a value to)
-  * When the closure finished executing and is released by GCD, nobody retains `Mew` anymore, so it's deallocated. But `MewTwo` is still captured by the 2nd closure's `capturedPokemon` and `Pikachu` is still stored in the `pokemon` variable which is captured by reference by the 2nd closure too.
+  * When the closure finished executing and is released by GCD, nobody retains `Mew` anymore, so it's deallocated. But `Mewtwo` is still captured by the 2nd closure's `capturedPokemon` and `Pikachu` is still stored in the `pokemon` variable which is captured by reference by the 2nd closure too.
 7. 🕑 Another second later, GCD executes the second closure.
-  * In prints the _value_ `MewTwo` that it captured in `capturedPokemon` at the time that second closure was created on step 4.
+  * In prints the _value_ `Mewtwo` that it captured in `capturedPokemon` at the time that second closure was created on step 4.
   * It also evalutes the current value of the `pokemon` variable that it captured by reference, which is `Pikachu` (as it has been modified by the first closure since then)
   * Lastly, it sets the `pokemon` variable to `Charizard`, and the `Pikachu` pokemon that was only referenced by that `pokemon` variable isn't retained anymore and is deallocated.
-  * When the closure finished executing and is released by GCD, the `capturedPokemon` local variable goes out of scope so `MewTwo` is released, and nobody retains a reference to the `pokemon` variable anymore either so the `Charizard` pokemon it retained is released too.
+  * When the closure finished executing and is released by GCD, the `capturedPokemon` local variable goes out of scope so `Mewtwo` is released, and nobody retains a reference to the `pokemon` variable anymore either so the `Charizard` pokemon it retained is released too.
 
 
 ## Conclusion
