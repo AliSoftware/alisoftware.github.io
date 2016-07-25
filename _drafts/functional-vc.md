@@ -5,6 +5,9 @@ categories: swift architecture
 published: false
 ---
 
+### Intro to Rx
+
+https://realm.io/news/altconf-scott-gardner-reactive-programming-with-rxswift/
 
 ### Using Promises
 

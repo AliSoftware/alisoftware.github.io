@@ -36,6 +36,19 @@ func delay(seconds: NSTimeInterval, closure: ()->()) {
 }
 ```
 
+ℹ️ In Swift 3, the above function would be written something like this instead:
+{: .note :}
+
+```swift
+func delay(seconds: Int, closure: ()->()) {
+  let time = DispatchTime.now() + .seconds(seconds)
+  DispatchQueue.main.after(when: time) {
+    print("🕑")
+    closure()
+  }
+}
+```
+
 ## Default capture semantics
 
 Now, let's start with a simple example:
