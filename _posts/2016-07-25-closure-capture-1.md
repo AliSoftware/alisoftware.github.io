@@ -326,15 +326,15 @@ So, what did happen here? Being a bit complicated, let's explain each step in de
 2. Then the closure 1 is created and the _value_ (`Mew` at that time) of `pokemon` is captured into a new `capturedPokemon` variable — which is local to that closure (and the reference to the `pokemon` variable is captured too, as both `capturedPokemon` and `pokemeon` are used in the closure's code)
 3. 🔄 Then `pokemon` is changed to `Mewtwo`
 4. Then the closure 2 is created and the _value_ (`Mewtwo` at that time) of `pokemon` is captured into a new `capturedPokemon` variable — which is local to that closure (and the reference to the `pokemon` variable is captured too, as both are used in that closure's code)
-5. Now, the function `demo8()` has ended.
+5. Now, the function `demo7()` has ended.
 6. 🕑 One second later, GCD executes the first closure.
-  * In prints the _value_ `Mew` that it captured in `capturedPokemon` at the time that closure was created on step 2.
-  * It also evalutes the current value of the `pokemon` variable that it captured by reference, which is still `Mewtwo` (as of when we left it before exiting the `demo8()` function on step 5)
-  * Then it sets the `pokemon` variable to value `Pikachu` (again, the closure captured a _reference_ to the variable `pokemon` so that's the same variable as the one used in `demo8()`'s body as well as in the other closure that it assigns a value to)
+  * It prints the _value_ `Mew` that it captured in `capturedPokemon` at the time that closure was created on step 2.
+  * It also evaluates the current value of the `pokemon` variable that it captured by reference, which is still `Mewtwo` (as of when we left it before exiting the `demo7()` function on step 5)
+  * Then it sets the `pokemon` variable to value `Pikachu` (again, the closure captured a _reference_ to the variable `pokemon` so that's the same variable as the one used in `demo7()`'s body as well as in the other closure that it assigns a value to)
   * When the closure finished executing and is released by GCD, nobody retains `Mew` anymore, so it's deallocated. But `Mewtwo` is still captured by the 2nd closure's `capturedPokemon` and `Pikachu` is still stored in the `pokemon` variable which is captured by reference by the 2nd closure too.
 7. 🕑 Another second later, GCD executes the second closure.
-  * In prints the _value_ `Mewtwo` that it captured in `capturedPokemon` at the time that second closure was created on step 4.
-  * It also evalutes the current value of the `pokemon` variable that it captured by reference, which is `Pikachu` (as it has been modified by the first closure since then)
+  * It prints the _value_ `Mewtwo` that it captured in `capturedPokemon` at the time that second closure was created on step 4.
+  * It also evaluates the current value of the `pokemon` variable that it captured by reference, which is `Pikachu` (as it has been modified by the first closure since then)
   * Lastly, it sets the `pokemon` variable to `Charizard`, and the `Pikachu` pokemon that was only referenced by that `pokemon` variable isn't retained anymore and is deallocated.
   * When the closure finished executing and is released by GCD, the `capturedPokemon` local variable goes out of scope so `Mewtwo` is released, and nobody retains a reference to the `pokemon` variable anymore either so the `Charizard` pokemon it retained is released too.
 
