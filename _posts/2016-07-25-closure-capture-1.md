@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Closures Capturing Semantics, Part 1: Catch them all!"
+title: "Closures Capture Semantics, Part 1: Catch them all!"
 categories: swift closures
 ---
 
@@ -237,7 +237,7 @@ func demo6_equivalent() {
 
 _In fact, using the capture list is exactly equivalent in behavior to that code above… except that this `pokemonCopy` intermediate variable is local to the closure and will only be accessible from within the closure body._
 
-Compare this `demo6()` — that uses `[pokemonCopy = pokemon] in …` — and `demo2()` — which doesn't, and use `pokemon` direclty instead. `demo6()` outputs this:
+Compare this `demo6()` — that uses `[pokemonCopy = pokemon] in …` — and `demo2()` — which doesn't, and use `pokemon` directly instead. `demo6()` outputs this:
 
 ```
 before closure: <Pokemon Pikachu>
@@ -270,7 +270,7 @@ On the contrary, back in the `demo2` code above:
 
 So… did you catch it all? I know, there's a lot to get there…
 
-Here is a more contrieved example mixing both the value evaluated and captured at closure creation — thanks to a capture list — and the variable reference captured and evaluated at closure evaluation:
+Here is a more contrived example mixing both the value evaluated and captured at closure creation — thanks to a capture list — and the variable reference captured and evaluated at closure evaluation:
 
 ```swift
 func demo7() {
@@ -341,15 +341,15 @@ So, what did happen here? Being a bit complicated, let's explain each step in de
 
 ## Conclusion
 
-Still confused by all that gymnastics? That's normal. Closure capture semantics can sometimes be tricky, especially with that last contrieved example. Just remember these key points:
+Still confused by all that gymnastics? That's normal. Closure capture semantics can sometimes be tricky, especially with that last contrived example. Just remember these key points:
 
 * Swift closures capture a _reference_ to the outer variables that you happen to use inside the closure.
 * That reference gets **evaluated at the time the closure itself gets executed**.
-* Being a capture of the reference to the variable (and not the variable's value itself), **you can modify the variable's value from wthin the closure** (if that variable is declared as `var` and not `let`, of course)
+* Being a capture of the reference to the variable (and not the variable's value itself), **you can modify the variable's value from within the closure** (if that variable is declared as `var` and not `let`, of course)
 * **You can instead tell Swift to evaluate a variable at the point of the closure creation** and store that _value_ in a local constant, instead of capturing the variable itself. You do that using **capture lists** expressed inside brackets.
 
 
-I will let today's lesson sink it for now, as it might be sometimes hard to grasp. Don't hesitate to try and test this code and variations of it in a Playground to clearly understand how all of this works on your own.
+I will let today's lesson sink in for now, as it might be sometimes hard to grasp. Don't hesitate to try and test this code and variations of it in a Playground to clearly understand how all of this works on your own.
 
 Once you've understood this more clearly, it will be time for the next part of this blog post, on which we'll talk about capturing variables _weakly_ to avoid reference cycles, and what `[weak self]` and `[unowned self]` all means in closures.
 
