@@ -204,7 +204,7 @@ That's what `[constValue = value]` is doing in this closure: capturng the _value
 
 ## Back to Pokemons
 
-What we saw just above also means that if that value is a reference type — like  our `Pokemon` class — the closure does not really strongly capture the variable reference, but rather somehow capture a copy of the original value/content of the `pokemon` variable being captured:
+What we saw just above also means that if that value is a reference type — like  our `Pokemon` class — the closure does not really strongly capture the variable reference, but rather somehow capture a copy of the original instance contained in the `pokemon` variable being captured.:
 
 ```swift
 func demo6() {
@@ -217,6 +217,25 @@ func demo6() {
   print("after closure: \(pokemon)")
 }
 ```
+
+It's a bit like if we create an intermediate variable to point to the same pokemon, and captured this variable instead:
+
+```swift
+func demo6_equivalent() {
+  var pokemon = Pokemon(name: "Pikachu")
+  print("before closure: \(pokemon)")
+  // here we create an intermediate variable to hold the instance 
+  // pointed by the variable at that point in the code:
+  let pokemonCopy = pokemon
+  delay(1) {
+    print("inside closure: \(pokemonCopy)")
+  }
+  pokemon = Pokemon(name: "MewTwo")
+  print("after closure: \(pokemon)")
+}
+```
+
+_In fact, using the capture list is exactly equivalent in behavior to that code above… except that this `pokemonCopy` intermediate variable is local to the closure and will only be accessible from within the closure body._
 
 Compare this `demo6()` — that uses `[pokemonCopy = pokemon] in …` — and `demo2()` — which doesn't, and use `pokemon` direclty instead. `demo6()` outputs this:
 
