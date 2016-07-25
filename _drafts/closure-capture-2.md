@@ -7,7 +7,7 @@ published: false
 
 ## Reminder about weak & strong
 
-_Note: If you know about weak & strong references & retain cycles already, you can skip that part and jump directly to the "Closure Capture Semantics" paragraph._
+_Note: If you know about weak & strong references & retain cycles already, you can skip that part and jump directly to the nextparagraph._
 
 ### Strong references & ownership
 
@@ -87,15 +87,35 @@ When you execute that code above, both `deinit` methods will be called, proving 
 If you removed the `weak` keyword from the `Dog`'s `var owner` property declaration, neither `deinit` will be called because each will retain the other and you'll get a reference cycle. And that assertion `dog.owner === nil` even outside the `do { }` block declaring the owner… will no longer be true, further proving the memory leak.
 
 
+## weak captures
 
+`[weak x] in …`
 
-### Nested closures' capture semantic
+Particular case of `[weak self] in …`
+
+## Demo with a class
+
+Instead of using `delay()` top-level function, now create a `class Pokeball` that contains a `let pokemons: [Pokemon]` and some `let execute: (Pokmon) -> String` or similar closure property, to demonstrate that the capture can last as long as the closure itself is alive and retained.
+
+## Nested closures' capture semantic
 
 Explain the case of nested closures
 
+```swift
+self.execute() { [weak self] in
+  self?.execute() {
+    print("self") // weak or strong here?
+  }
+}
+```
 
+## var capture lists
 
+`[var x = y] in …`
 
+## multiple captures in a capture list
+
+`[a = x, b = y, c = z] in …`
 
 
 ### Links
