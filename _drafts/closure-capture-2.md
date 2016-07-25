@@ -93,6 +93,14 @@ If you removed the `weak` keyword from the `Dog`'s `var owner` property declarat
 
 Particular case of `[weak self] in …`
 
+## unowned captures
+
+`[unowned x] in …` == `[weak x] in` + `x!`
+
+- Might be killing ponies, except when both the object owning the closure and the captured variable are guaranteed to always be alive at the same time (like a UIBarButtonItem with a closure, retained by the UIViewController that is captured by the closure).
+- One might still prefer `[weak x] in` followed by `guard xx = x else { return }`
+- Link to the SE ML / proposal about a new `[guard x]` capture semantics that got rejected.
+
 ## Demo with a class
 
 Instead of using `delay()` top-level function, now create a `class Pokeball` that contains a `let pokemons: [Pokemon]` and some `let execute: (Pokmon) -> String` or similar closure property, to demonstrate that the capture can last as long as the closure itself is alive and retained.
@@ -117,6 +125,12 @@ self.execute() { [weak self] in
 
 `[a = x, b = y, c = z] in …`
 
+
+## NoEscape
+
+* Talk about `@noescape` and how it doesn't capture `self`.
+* Link to my other article about "Being Lazy" and `lazy var x: T = { … }()` being auto-escaped implicitly
+* Also talk about `@autoclosure`?
 
 ### Links
 
