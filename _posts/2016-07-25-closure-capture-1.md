@@ -362,7 +362,7 @@ Still confused by all that gymnastics? That's normal. Closure capture semantics 
 * **You can instead tell Swift to evaluate a variable at the point of the closure creation** and store that _value_ in a local constant, instead of capturing the variable itself. You do that using **capture lists** expressed inside brackets.
 
 
-I will let today's lesson sink in for now, as it might be sometimes hard to grasp. Don't hesitate to try and test this code and variations of it in a Playground to clearly understand how all of this works on your own.
+I will let today's lesson sink in for now, as it might be sometimes hard to grasp. Don't hesitate to [try and test this code and variations of it in the Playground attached](/assets/Closure-Capture.playground.zip) to clearly understand how all of this works on your own.
 
 Once you've understood this more clearly, it will be time for the next part of this blog post, on which we'll talk about capturing variables _weakly_ to avoid reference cycles, and what `[weak self]` and `[unowned self]` all means in closures.
 
