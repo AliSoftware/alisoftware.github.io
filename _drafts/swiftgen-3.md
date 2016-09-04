@@ -1,0 +1,117 @@
+---
+layout: post
+title: SwiftGen 3
+date: 2016-09-04
+categories: news oss
+---
+
+This is a quick announce about the new release of my OpenSource code generation tool [SwiftGen](https://github.com/AliSoftware/SwiftGen) 3.0.0.
+
+## What is SwiftGen?
+
+In case you don't know [SwiftGen](https://github.com/AliSoftware/SwiftGen), it's a tool (written in Swift) to do code generation for your Swift project.
+
+You can read more [in the `README`](https://github.com/AliSoftware/SwiftGen/blob/master/README.md), but bascally what this tool does is that it generates code from your images (xcassets), `Localizable.strings` files, fonts, storyboards and more, to create constants and type-safe code to use instead of string-based constants.
+
+An example of what you can write in your code, once you've let SwiftGen generate all the code with constants:
+
+```swift
+// Loading images
+let image1 = UIImage(asset: .Banana)
+
+// Translating strings (Localizable.strings)
+let msg = tr(.AlertMessage)
+// -> returns "Some alert body there"
+let bananas = L10n.Bananas.Owner(2, "John")
+// -> returns "Those 2 bananas belong to John."
+
+// Instantiate Storyboards
+StoryboardScene.Wizard.initialViewController()
+StoryboardScene.Wizard.ValidatePassword.viewController()
+StoryboardScene.Wizard.createAccountViewController()
+
+// Named Colors
+UIColor(named: .ArticleBody)
+
+// Custom Fonts
+let font = UIFont(font: FontFamily.Helvetica.Bold, size: 16.0)
+```
+
+Notice how these generated APIs don't use any hard-coded String-based parameters? That's because instead we use the constants generated automatically by SwiftGen to avoid manipulating those String-based APIs!
+
+The main advantage of code generation with SwiftGen are:
+
+* Avoid any typo you could have when using a String
+* Free auto-completion
+* Avoid the risk to use an non-existing asset/font/color/… name
+* All this will be ensured at compile time, instead of having a crash at runtim.
+
+## Templates to customize the code to your needs
+
+SwiftGen is based on templates: you can choose a template for the generated code, or even create your own template, so that the generated code looks exactly how you want. This allows you to:
+
+* Fit your naming conventions
+* Choose between multiple variants which style you prefer for the generated code
+* Select the right template depending if you want to generate **Swift 2 or Swift 3** code
+* Change the indentation, code style or naming by customizing the templates
+
+## Why a new major version?
+
+Recently there have been a great number of Pull Requests in SwiftGen. Thanks again to all the contributors! 🎉
+
+Even if SwiftGen 2.0 was released about only two month ago, the amount of changes brought by those pull requests brings more flexibility and new features, which requested some refactoring for the templates.
+
+These changes imply that [the name of the variables used as input for the templates have also slightly be updated](https://github.com/AliSoftware/SwiftGen/blob/master/documentation/Templates.md) to allow more flexibility in the templates. These changes have been necessary so that new templates like the `dot-syntax` one would now be possible.
+
+The main benefit of these changes are more flexible templates, more choices in the templates your can use, and support for more various conventions, both in Swift 2 and Swift 3.
+
+_This also means that if you created your own custom templates (instead of using the bundled ones), you might need to update them in order for them to continue working (see [the dedicated template documentation for custom templates](https://github.com/AliSoftware/SwiftGen/blob/master/documentation/Templates.md))_
+
+That's the main reason why this new release is yet again a _major_ version (without even an intermediate 2.x version).
+
+## So, what's new in SwiftGen 3.0?
+
+I strongly encourage you to [read the CHANGELOG](https://github.com/AliSoftware/SwiftGen/blob/master/CHANGELOG.md) of this version, but basically, a lot of the new features comes via new templates:
+
+* All subcommands now have a Swift3-compatible template. Simply use the flag `-t swift3` when invoking `swiftgen` to tell it to use the template named `swift3` associated with this subcommand instead of using the default template
+* There's also new templates for Strings, especially the templates named `structured` (Swift 2), `dot-syntax` (Swift 2) and `dot-syntax-swift3` (Swift 3)
+* You can now create custom templates easier than ever. The new `swiftgen templates` command let you list templates, print the content of a template, print its path… This way you can really easily duplicate an existing template into a new one and start customizing it.
+
+I know a lot of people use SwiftGen only via the `default` template for each subcommand. But **I strongly encourage you to test the alternative templates in your projects**, as you'll likely discover one that you like better.
+
+Especially the default template is still generating Swift 2 compatible code, so **if you're using Swift 3 you should use one of the Swift 3 compatible templates instead** of the default Swift 2 template.
+
+Also, the new `dot-syntax` template is very likely to become the new default template in an upcomming version, because it's so much better than the default one when you organize your `Localizable.strings` key using dot syntax:
+
+```
+// Your Localizable.strings file
+"apples.count" = "You have %d apples";
+"bananas.owner" = "Those %d bananas belong to %@.";
+```
+```sh
+# Generating the code via the command line:
+swiftgen strings -t dot-syntax /path/to/Localizable.strings
+# or, for Swift 3:
+swiftgen strings -t dot-syntax-swift3 /path/to/Localizable.strings
+```
+```swift
+// Using it in your Swift project
+let nbApples = L10n.Apples.Count(5)
+// -> "You have 5 apples"
+let bananas = L10n.Bananas.Owner(2, "John")
+// -> "Those 2 bananas belong to John"
+```
+
+## The future of SwiftGen
+
+There are so many things that I still want to add to SwiftGen in the next versions:
+
+* Add much more templates
+  * Today there are already many templates you can choose from, but I encourage you to submit new ones (via a PR). Creating a custom template is very easy, especially if you start from a copy of an existing one to customize it to your needs.
+  * There's plenty of room for new tempaltes, as there are many conventions on various teams out there, so to each their own style. For example, some people like to have `Localizable.strings` key written in all caps, others prefer using dot syntax, others use snake case or camel case…
+* Make contribution easier
+  * I already give contributor access to everyone who have created a PR as soon as the PR is merged, to make contributions easier. also if you wish to be added as contributor to the project, just ask!
+  * But I plan to write some `CONTRIBUTING` file and reorganize the project so that's easier for newcomers to dive into it, as discovering a project the first time is not always easy.
+
+
+I encourage you to create PRs, to add support for new features or propose things as easy as submitting a new template. It's a good way to start contributing to OpenSource! 😜

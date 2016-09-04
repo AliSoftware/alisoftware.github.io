@@ -1,3 +1,4 @@
+---
 layout: post
 title: ViewController LifeCycle Behaviors
 categories: swift analytics
