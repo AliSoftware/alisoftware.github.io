@@ -2,6 +2,7 @@ title: Crunchy Development
 description: Making your Swift code more fun 🎉, magical ✨ and crunchier 👌
 email: olivier@halligon.net
 author: Olivier Halligon
+image: apple-touch-icon-180x180.png
 
 baseurl:     ""
 url:         "http://alisoftware.github.io"
