@@ -2,6 +2,11 @@
 layout: post
 title: "Closures Capture Semantics, Part 1: Catch them all!"
 categories: swift closures
+translations:
+  - lang: Chinese
+    flag: 🇨🇳
+    author: the SwiftGG team
+    url: http://swift.gg/2016/09/09/closure-capture-1/
 ---
 
 Even with ARC nowadays, it's still important to understand memory management and objects life-cycles. A special case is when using closures, which are more and more present in Swift and have different capture semantics than ObjC's block capture rules. Let's see how they work.
