@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/aligatr
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://alisoftware.github.io
+  * I am aligatr (https://keybase.io/aligatr) on keybase.
+  * I have a public key with fingerprint 172F 2268 1A5A BD88 4FFF  D1B3 F6D2 6970 231A FBDE
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "01014dd6174f65a04ad914a829ba9829e9fea29fc4dee6a8a7380ed8144f129026f30a",
+            "fingerprint": "172f22681a5abd884fffd1b3f6d26970231afbde",
+            "host": "keybase.io",
+            "key_id": "f6d26970231afbde",
+            "kid": "01014dd6174f65a04ad914a829ba9829e9fea29fc4dee6a8a7380ed8144f129026f30a",
+            "uid": "f88b9458291b626e54c5c66b594a5719",
+            "username": "aligatr"
+        },
+        "service": {
+            "hostname": "alisoftware.github.io",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1474379023,
+    "expire_in": 157680000,
+    "prev": "7a613b2aa0b172767e94cca73cc47665f34db2bc7dc2ed9d7d9d7a97c004d70c",
+    "seqno": 4,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.56
+Comment: https://keybase.io/crypto
+
+yMInAnicrVJtSBRBGD41K63QfhX0I5qSPrBrd292ZvdEECJKkkiiFIuumZ3Zc9Vu
+z929u/wqCcIIKiIi+oCIigyTvn+lUSlCBGqZGBRBBSWokSYhlNhsH/Snnw3MDPPy
+PM/7vO+83QsyAtlpOB3suH2+ZF7a00cXEoGyt4U5DYDarA6EG0A1/3nxGsZdL1Jt
+MRAGkizJkDEkY2gilUiQMF2GRFN0SnRxct3kRNFNAzLOEdEIDmkSZ5oMoSkruqQg
+MyQRkA9MKxblTtyxYp6QlbFiKgrSZKISyjQNmqbJZBoyEVOQjiUlJBOTMi6Ilbbr
+M4Q5SlwetGwRE4/IT3v/wP9n34lfeTSN6lAVRJkiBXEVGqqBEFV1SFQs6z7Q5U6M
+7OUCTWqsKPEc0JQPRDBpGdzvq1/IX4Brm16KODwYtbzKBP1VV9yxPduwawSk0vPi
+btiX8OriPifFaeS3WoRaMSb6KRhJ7riWHQNhWSANz/LlZYhhCIsaQvmA74tbDo9Y
+PkLFSJPE8vPwpJDEBMkhqhAiUfEhGGGuQ8MQrTAMiBFSzRBkVKEGZobCmc6wv4mO
+DUmCDEsG8OurjdkgDIVNEhWSrhWNES/hcND0+OGuWYG07MDszHR/zgLZWbl/pg/u
+mRu407/FqU+uKy+f+Dgz0rgsnFVU3hHuT3qXwdnE/tb1GL+PdJ1Gz0tvjq/KLCp1
+X7Y4U9t7X5l5I92331zbWVJcUdb6pE7ZdLlo4P6DrxvAoebxmYyuwcm1F9tayxYF
+R1vm5ySqLxSOVk1eXDlnaPTLyZ7PGYPFV1cPX+nLnUw15A0PpJpuTPc68vLeos4X
+FYVSxpJzE1N3Dyw+Rk8cygkPPZv+cP3WqiONFd9yj64JDi38FF/ydmzqzIqNY1J9
+x2bpVPo7rSC4tOtSZ0/y4cFtJbWvm8fn9+R+353vDBQcXzbc1+610VRDVmb5zvam
+goC7tX+s8fDIvarHE6y0baPRu+bED2vYRV0=
+=PZ5l
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/aligatr
+
+==================================================================

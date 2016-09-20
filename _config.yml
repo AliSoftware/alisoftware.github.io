@@ -56,3 +56,4 @@ gems:         [jekyll-paginate, jekyll-redirect-from]
 paginate:     5
 sass:
   compressed: true
+include: [".well-known"]
