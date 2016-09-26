@@ -3,6 +3,7 @@ layout: post
 title: Being Lazy
 date: 2016-02-28
 categories: swift
+image: assets/lazy-cat.jpg
 translations:
   - lang: Chinese
     flag: 🇨🇳

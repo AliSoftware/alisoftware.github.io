@@ -15,8 +15,8 @@ This month, I'm gonna give my first big conference talks. People who know me alr
 
 And for my first time, I already chose quite a challenge:
 
-* My first talk will be at [NSSpain](http://2016.nsspain.com), on Sept 15-16, 2016 — doing **live coding** on Xcode 8 😱 about Costless abstractions
-* My second talk will be at [FrenchKit](http://frenchkit.fr), on the week right after (Sept 23-24) — talking about Mixins.
+* My first talk will be at [NSSpain](http://2016.nsspain.com), on Sept 15-16, 2016
+* My second talk will be at [FrenchKit](http://frenchkit.fr), on the week right after (Sept 23-24)
 
 The first talk will be quite a challenge for me, because it will be my first big conference, speaking in English (not my language), in a foreign country, but more importantly doing not just slides but mostly live-coding — with Swift 3… so in Xcode 8 beta 😱 yeah I too like to live dangeroulsy! — and about a subject that I haven't talked about in my blog or elsewhere yet 😓. Yeah, that's a lot of potential obstacles for my first talk, but hey, I'm up for the challenge!
 

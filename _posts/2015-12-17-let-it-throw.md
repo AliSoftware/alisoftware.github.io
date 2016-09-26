@@ -3,6 +3,7 @@ layout: post
 title: Let it throw, Let it throw!
 date: 2015-12-17
 categories: swift error
+image: assets/frozen-throw-man.jpg
 redirect_from: /2015/12/17/let-it-throw/
 translations:
   - lang: Chinese

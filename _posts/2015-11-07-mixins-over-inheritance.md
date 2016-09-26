@@ -3,6 +3,7 @@ layout: post
 title: Mixins over Inheritance
 date: 2015-11-08
 categories: [swift, protocol]
+image: assets/great-scott.gif
 translations:
   - lang: Chinese
     flag: 🇨🇳

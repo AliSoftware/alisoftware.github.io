@@ -3,6 +3,7 @@ layout: post
 title: Using Generics to improve TableView cells
 date: 2016-01-06
 categories: swift generics
+image: assets/ReusableLogo.png
 translations:
   - lang: Chinese
     flag: 🇨🇳
