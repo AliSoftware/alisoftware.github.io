@@ -45,9 +45,9 @@ func delay(seconds: NSTimeInterval, closure: ()->()) {
 {: .note :}
 
 ```swift
-func delay(seconds: Int, closure: ()->()) {
+func delay(seconds: Int, closure: @escaping ()->()) {
   let time = DispatchTime.now() + .seconds(seconds)
-  DispatchQueue.main.after(when: time) {
+  DispatchQueue.main.asyncAfter(deadline: time) {
     print("🕑")
     closure()
   }
