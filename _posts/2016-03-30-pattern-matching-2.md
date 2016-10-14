@@ -11,6 +11,8 @@ translations:
     url: http://swift.gg/2016/04/27/pattern-matching-2/
 ---
 
+![Swift 3](https://img.shields.io/badge/Swift-3.0-green.svg)
+
 In [the previous article](/swift/pattern-matching/2016/03/27/pattern-matching-1/), we saw the basics of pattern matching using `switch` on `enums`. But what about using `switch` with anything other than `enum` types?
 
 This post is part of an article series. You can read all the parts here: [part 1](/swift/pattern-matching/2016/03/27/pattern-matching-1/), [part 2](/swift/pattern-matching/2016/03/30/pattern-matching-2/), [part 3](/swift/pattern-matching/2016/04/24/pattern-matching-3/), [part 4](/swift/pattern-matching/2016/05/16/pattern-matching-4/)
@@ -84,7 +86,7 @@ Here you see that we mixed `cases` with a single `Int` value and `cases` with `R
 Even if using `Int` for ranges is the most common case, we can also do that with other `ForwardIndexType`, including… `Character`! Remember the code above? The problem is that it printed "Consonant" even for punctuation characters and anything other than `A-Z`. So let's solve that[^only-for-demo] (and also include lowercase vowels and consonants):
 
 ```swift
-func charType(car: Character) -> String {
+func charType(_ car: Character) -> String {
   switch car {
     case "A", "E", "I", "O", "U", "Y", "a", "e", "i", "o", "u", "y":
       return "Vowel"

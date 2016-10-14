@@ -11,6 +11,8 @@ translations:
     url: http://swift.gg/2016/04/28/pattern-matching-3/
 ---
 
+![Swift 3](https://img.shields.io/badge/Swift-3.0-green.svg)
+
 In parts [1](/swift/pattern-matching/2016/03/27/pattern-matching-1/) and [2](/swift/pattern-matching/2016/03/30/pattern-matching-2/) of this article series, we saw some usages of `switch` on a lot of things, including `tuples`, `Range`, `String`, `Character` and even type. But what if we can use pattern matching even with our own custom types?
 
 This post is part of an article series. You can read all the parts here: [part 1](/swift/pattern-matching/2016/03/27/pattern-matching-1/), [part 2](/swift/pattern-matching/2016/03/30/pattern-matching-2/), [part 3](/swift/pattern-matching/2016/04/24/pattern-matching-3/), [part 4](/swift/pattern-matching/2016/05/16/pattern-matching-4/)
@@ -137,9 +139,9 @@ Talking about this, I recently stumbled upon some code which used `enum` (with a
 
 ```swift
 enum MenuItem: Int {
-  case Home
-  case Account
-  case Settings
+  case home
+  case account
+  case settings
 }
 ```
 
@@ -147,26 +149,26 @@ But then to implement each tableView row based in the `MenuItem`, the code was l
 
 ```swift
 switch indexPath.row {
-case MenuItem.Home.rawValue: …
-case MenuItem.Account.rawValue: …
-case MenuItem.Settings.rawValue: …
+case MenuItem.home.rawValue: …
+case MenuItem.account.rawValue: …
+case MenuItem.settings.rawValue: …
 default: ()
 ```
 
 First of all, notice how the `switch` is done on an `Int` (`indexPath.row`) and then each `case` uses a `rawValue`. This is wrong for multiple reasons.
 
-* the first being that nothing prevents you to use any other value, like a copy/pasting could make you write `case FooBar.Baz.rawValue` and the compiler won't even complain. But you're dealing with `MenuItems`, so you should leverage the compiler to ensure you only deal with `MenuItems`, right?
+* the first being that nothing prevents you to use any other value, like a copy/pasting could make you write `case FooBar.baz.rawValue` and the compiler won't even complain. But you're dealing with `MenuItems`, so you should leverage the compiler to ensure you only deal with `MenuItems`, right?
 * the other problem is that this `switch` is not exhaustive by itself, this is why the `default` statement was necessary. I strongly recommand you to not use `default` when possible, and instead make your `switch` exhaustive, this way if you happen to add a new value to your `enum` you'll be forced to think about what to do with it instead of it being ignored or eaten up by the `default` without you realizing.
 
-So instead of switching on `indexPath` and `case ….rawValue`, you should rather build the enum from the `rawValue` first. This way you can then only switch over `cases` that use `MenuItem` enum cases, not anything else like `FooBar.Baz` or whatnot.
+So instead of switching on `indexPath` and `case ….rawValue`, you should rather build the enum from the `rawValue` first. This way you can then only switch over `cases` that use `MenuItem` enum cases, not anything else like `FooBar.baz` or whatnot.
 
 And to do that, because `MenuItem(rawValue:)` is a failable initializer and will in fact return a `MenuItem?`, you can leverage the syntactic sugar we discovered above!
 
 ```swift
 switch MenuItem(rawValue: indexPath.row) {
-case .Home?: …
-case .Account?: …
-case .Settings?: …
+case .home?: …
+case .account?: …
+case .settings?: …
 case nil: fatalError("Invalid indexPath!")
 }
 ```
@@ -177,9 +179,9 @@ Well to be honest, I rather prefer using a `guard let` for that kind of stuff, a
 ```swift
 guard let menuItem = MenuItem(rawValue: indexPath.row) else { fatalError("Invalid indexPath!") }
 switch menuItem {
-case .Home: …
-case .Account: …
-case .Settings: …
+case .home: …
+case .account: …
+case .settings: …
 }
 ```
 

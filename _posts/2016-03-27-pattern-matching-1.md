@@ -11,6 +11,8 @@ translations:
     url: http://swift.gg/2016/04/26/pattern-matching-1/
 ---
 
+![Swift 3](https://img.shields.io/badge/Swift-3.0-green.svg)
+
 From a simple `switch` to complex expressions, pattern matching in Swift can be quite powerful. Today we're gonna start exploring it by seing some cool usages of `switch`, before going further in later articles with even more advanced pattern matching techniques.
 
 _This article serves as an introduction to the incomming articles about Pattern Matching._
@@ -25,17 +27,17 @@ The simplest and more common usage of pattern matching in Swift is via a `switch
 
 ```swift
 enum Direction {
-  case North, South, East, West
+  case north, south, east, west
 }
 
 // We can easily switch between simple enum values
 extension Direction: CustomStringConvertible {
   var description: String {
     switch self {
-    case North: return "⬆️"
-    case South: return "⬇️"
-    case East: return "➡️"
-    case West: return "⬅️"
+    case .north: return "⬆️"
+    case .south: return "⬇️"
+    case .east: return "➡️"
+    case .west: return "⬅️"
     }
   }
 }
@@ -45,38 +47,38 @@ But `switch` can go even further, allowing you to match against **patterns** con
 
 ```swift
 enum Media {
-  case Book(title: String, author: String, year: Int)
-  case Movie(title: String, director: String, year: Int)
-  case WebSite(url: NSURL, title: String)
+  case book(title: String, author: String, year: Int)
+  case movie(title: String, director: String, year: Int)
+  case website(url: NSURL, title: String)
 }
 
 extension Media {
   var mediaTitle: String {
     switch self {
-    case .Book(title: let aTitle, author: _, year: _):
+    case .book(title: let aTitle, author: _, year: _):
       return aTitle
-    case .Movie(title: let aTitle, director: _, year: _):
+    case .movie(title: let aTitle, director: _, year: _):
       return aTitle
-    case .WebSite(url: _, title: let aTitle):
+    case .website(url: _, title: let aTitle):
       return aTitle
     }
   }
 }
 
-let book = Media.Book(title: "20,000 leagues under the sea", author: "Jules Verne", year: 1870)
+let book = Media.book(title: "20,000 leagues under the sea", author: "Jules Verne", year: 1870)
 book.mediaTitle
 ```
 
-The generic syntax in this case is `case MyEnum.EnumValue(let variable)` to tell "if the value is a `MyEnum.EnumValue` — which has an associated value — then bind the variable `variable` to that associated value".
+The generic syntax in this case is `case MyEnum.enumValue(let variable)` to tell "if the value is a `MyEnum.enumValue` — which has an associated value — then bind the variable `variable` to that associated value".
 
-When the `media` instance match one of the `case` — like with `book` which is a `Media.Book` and matches the first `case` of the `switch` — then **a new variable `let aTitle` is created** and the associated value `title` is _bound_ to this given variable.
+When the `media` instance match one of the `case` — like with `book` which is a `Media.book` and matches the first `case` of the `switch` — then **a new variable `let aTitle` is created** and the associated value `title` is _bound_ to this given variable.
 That's why the `let` is needed there, because that's gonna create a new variable (well, constant) if it matches.
 
 Note that you can write the `let` in front of the whole expression, instead of using it in front of each variable, e.g. these two lines are equivalent:
 
 ```swift
-case .Book(title: let aTitle, author: let anAuthor, year: let aYear): …
-case let .Book(title: aTitle, author: anAuthor, year: aYear): …
+case .book(title: let aTitle, author: let anAuthor, year: let aYear): …
+case let .book(title: aTitle, author: anAuthor, year: aYear): …
 ```
 
 Notice also the use of the wildcard pattern `_` in the above code, which basically means "I expect to be something there, but I don't care about it, so don't bother binding it to a variable as I won't use it anyway". So that's somehow like a placeholder for a value we won't use.
@@ -90,8 +92,8 @@ Remember that `case`  is still about **pattern matching**, so it tries to **matc
 extension Media {
   var isFromJulesVerne: Bool {
     switch self {
-    case .Book(title: _, author: "Jules Verne", year: _): return true
-    case .Movie(title: _, director: "Jules Verne", year: _): return true
+    case .book(title: _, author: "Jules Verne", year: _): return true
+    case .movie(title: _, director: "Jules Verne", year: _): return true
     default: return false
     }
   }
@@ -105,10 +107,10 @@ A more useful and generic example could be something like:
 
 ```swift
 extension Media {
-  func checkAuthor(author: String) -> Bool {
+  func checkAuthor(_ author: String) -> Bool {
     switch self {
-    case .Book(title: _, author: author, year: _): return true
-    case .Movie(title: _, director: author, year: _): return true
+    case .book(title: _, author: author, year: _): return true
+    case .movie(title: _, director: author, year: _): return true
     default: return false
     }
   }
@@ -124,43 +126,43 @@ _[EDIT]_ Another great example of matching with constants have been [suggested b
 
 ```swift
 enum Response {
-  case HTTPResponse(statusCode: Int)
-  case NetworkError(NSError)
+  case httpResponse(statusCode: Int)
+  case networkError(Error)
   …
 }
 
 let response: Response = …
 switch response {
-  case .HTTPResponse(200): …
-  case .HTTPResponse(404): …
+  case .httpResponse(200): …
+  case .httpResponse(404): …
   …
 }
 
-// cleaner than using stuff like `case .HTTPResponse(let code) where code == 200`, right?
+// cleaner than using stuff like `case .httpResponse(let code) where code == 200`, right?
 ```
 {: .note }
 
 ## Binding multiple patterns at once
 
-As per Swift 2.2, we can't bind multple patterns at once. So for example this isn't possible yet, because here we try to declare variables both if `self` matches `.Book` or `.Movie` , and bind a variable in both cases:
+As per Swift 2.2, we can't bind multple patterns at once. So for example this isn't possible yet, because here we try to declare variables both if `self` matches `.book` or `.movie` , and bind a variable in both cases:
 
 ```swift
 extension Media {
   var mediaTitle2: String {
     switch self {
       // Error: 'case' labels with multiple patterns cannot declare variables
-    case let .Book(title: aTitle, author: _, year: _), let .Movie(title: aTitle, director: _, year: _):
+    case let .book(title: aTitle, author: _, year: _), let .movie(title: aTitle, director: _, year: _):
       return aTitle
-    case let .WebSite(url: _, title: aTitle):
+    case let .website(url: _, title: aTitle):
       return aTitle
     }
   }
 }
 ```
 
-This is understandable in most cases; like what would you expect the code to do if you tried to write `case let .Book(title: aTitle, author: _, year: _), let .Movie(title: _, director: _, year: aYear)`? How would you be able to use the bound variables `aTitle` or `aYear` in your `case` code then? If it's a `.Book` then only `aTitle` would have been bound, so what about `aYear`? What if you tried to use that `aYear` variable in the code of that `case`? Wouldn't probably make sense.
+This is understandable in most cases; like what would you expect the code to do if you tried to write `case let .book(title: aTitle, author: _, year: _), let .movie(title: _, director: _, year: aYear)`? How would you be able to use the bound variables `aTitle` or `aYear` in your `case` code then? If it's a `.book` then only `aTitle` would have been bound, so what about `aYear`? What if you tried to use that `aYear` variable in the code of that `case`? Wouldn't probably make sense.
 
-But one might think that in the specific case when you try to bind variables of the **same type** and with the **same name**, that would still make sense to work, like in the example above where we try to bind with `aTitle` in both cases (`.Book` and `.Movie`). And that would be quite useful to avoid repeating code, right?
+But one might think that in the specific case when you try to bind variables of the **same type** and with the **same name**, that would still make sense to work, like in the example above where we try to bind with `aTitle` in both cases (`.book` and `.movie`). And that would be quite useful to avoid repeating code, right?
 So why is this not possible in that specific case? Well fear not, [this Swift-Evolution Proposal SE-0043](https://github.com/apple/swift-evolution/blob/master/proposals/0043-declare-variables-in-case-labels-with-multiple-patterns.md) has been accepted and allow this in Swift 3.
 
 ## Using tuples without argument labels
@@ -173,9 +175,9 @@ Note that when dealing with `enum` with associated values, we can consider the a
 extension Media {
   var mediaTitle2: String {
     switch self {
-    case let .Book(title, _, _): return title
-    case let .Movie(title, _, _): return title
-    case let .WebSite(_, title): return title
+    case let .book(title, _, _): return title
+    case let .movie(title, _, _): return title
+    case let .website(_, title): return title
     }
   }
 }
@@ -187,9 +189,9 @@ extension Media {
 extension Media {
   var mediaTitle3: String {
     switch self {
-    case let .Book(tuple): return tuple.title
-    case let .Movie(tuple): return tuple.title
-    case let .WebSite(tuple): return tuple.title
+    case let .book(tuple): return tuple.title
+    case let .movie(tuple): return tuple.title
+    case let .website(tuple): return tuple.title
     }
   }
 }
@@ -198,9 +200,9 @@ extension Media {
 As an added bonus, not specifying the tuple at all is syntactic sugar for matching any associated values, so those 3 expressions are equivalent:
 
 ```swift
-case .WebSite // not specifying the tuple at all
-case .WebSite(_) // matching a single tuple of associated values that we don't care about
-case .WebSite(_, _) // matching individual associated values that we don't care about either
+case .website // not specifying the tuple at all
+case .website(_) // matching a single tuple of associated values that we don't care about
+case .website(_, _) // matching individual associated values that we don't care about either
 ```
 
 ## Using Where
@@ -211,16 +213,16 @@ Pattern matching allows way more powerful stuff than just comparing two enums. Y
 extension Media {
   var publishedAfter1930: Bool {
     switch self {
-    case let .Book(_, _, year) where year > 1930: return true
-    case let .Movie(_, _, year) where year > 1930: return true
-    case .WebSite: return true // same as "case .WebSite(_)" but we ignore the associated tuple value
+    case let .book(_, _, year) where year > 1930: return true
+    case let .movie(_, _, year) where year > 1930: return true
+    case .website: return true // same as "case .website(_)" but we ignore the associated tuple value
     default: return false
     }
   }
 }
 ```
 
-This will only match if both the left side of the pattern (like `let .Book(_, _, year)`) successfully matches, **and** the `where` condition is evaluated to `true`. This allows some powerful patterns that we'll dig into in later parts of this article series.
+This will only match if both the left side of the pattern (like `let .book(_, _, year)`) successfully matches, **and** the `where` condition is evaluated to `true`. This allows some powerful patterns that we'll dig into in later parts of this article series.
 
 ## What's next?
 
