@@ -57,10 +57,10 @@ switch m {
 
 ## if case let where
 
-We can combine the `if case let` with a `where` clause of course:
+We can combine the `if let case` with a comma (`,`) -- where each condition is separated by `,` -- to create a multi-clause condition:
 
 ```swift
-  if case let Media.Movie(_, _, year) = m where year < 1888 {
+  if case let Media.Movie(_, _, year) = m, year < 1888 {
     print("Something seems wrong: the movie's year is before the first movie ever made.")
   }
 ```
@@ -69,7 +69,7 @@ That can lead to quite powerful expressions that would otherwise need a complex 
 
 ## guard case let
 
-Of course, `guard case let` is similar to `if case let`. You can use `guard case let` and `guard case let … where …` to ensure something matches a pattern and a condition and exit otherwise.
+Of course, `guard case let` is similar to `if case let`. You can use `guard case let` and `guard case let … , …` to ensure something matches a pattern and a condition and exit otherwise.
 
 ```swift
 enum NetworkResponse {
@@ -79,12 +79,12 @@ enum NetworkResponse {
 
 func processRequestResponse(response: NetworkResponse) {
   guard case let .Response(urlResp, data) = response,
-    let httpResp = urlResp as? NSHTTPURLResponse
-    where 200..<300 ~= httpResp.statusCode else {
+    let httpResp = urlResp as? NSHTTPURLResponse,
+    200..<300 ~= httpResp.statusCode else {
       print("Invalid response, can't process")
       return
   }
-  print("Processing \(data.length) bytes…")
+  print("Processing \(data.count) bytes…")
   /* … */
 }
 ```
