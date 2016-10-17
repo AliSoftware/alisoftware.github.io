@@ -8,9 +8,9 @@ translations:
     flag: 🇨🇳
     author: the SwiftGG team
     url: http://swift.gg/2016/06/06/pattern-matching-4/
+update_date: 2016-10-17
+swift_version: 3.0
 ---
-
-![Swift 3](https://img.shields.io/badge/Swift-3.0-green.svg)
 
 Now that we've revisited the various syntaxes for pattern matching in [part 1](/swift/pattern-matching/2016/03/27/pattern-matching-1/), [part 2](/swift/pattern-matching/2016/03/30/pattern-matching-2/) and [part 3](/swift/pattern-matching/2016/04/24/pattern-matching-3/), let's finish this blog post series with some advanced syntax using `if case let`, `for case where` and all!
 
@@ -222,3 +222,6 @@ Hope you enjoyed it and learned some interesting stuff 😉
 Next articles will be more focused back on some nice Swifty design patterns and architecture than on Swift syntax and language.
 
 💡 Don't hesitate to tell me [on Twitter](https://twitter.com/aligatr) if you have any particular subject on Swift you want me blog about and give me some ideas for what to write about next!
+
+Thanks to [Frank Manno](https://github.com/frankieshakes) for updating the code samples of this article to Swift 3!
+{: .note }

@@ -9,9 +9,9 @@ translations:
     flag: 🇨🇳
     author: the SwiftGG team
     url: http://swift.gg/2016/04/26/pattern-matching-1/
+update_date: 2016-10-17
+swift_version: 3.0
 ---
-
-![Swift 3](https://img.shields.io/badge/Swift-3.0-green.svg)
 
 From a simple `switch` to complex expressions, pattern matching in Swift can be quite powerful. Today we're gonna start exploring it by seing some cool usages of `switch`, before going further in later articles with even more advanced pattern matching techniques.
 
@@ -234,4 +234,7 @@ This article was pretty simple to remind you of the basics of pattern matching i
 * Combining them all to create some magic.
 
 ⏩ Read next part of this article series here: [part 2](/swift/pattern-matching/2016/03/30/pattern-matching-2/)
+{: .note }
+
+Thanks to [Frank Manno](https://github.com/frankieshakes) for updating the code samples of this article to Swift 3!
 {: .note }

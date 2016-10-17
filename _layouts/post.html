@@ -19,6 +19,9 @@ layout: default
   {% else %}
     {{ minutes }} minute read
   {% endif %}
+  {% if page.swift_version %}
+    — <img alt="Swift {{ page.swift_version }}" src="https://img.shields.io/badge/Swift-{{ page.swift_version }}-green.svg" style="vertical-align: middle" />
+  {% endif %}  
   </span>
   {% if page.translations %}
     <br/>

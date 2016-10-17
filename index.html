@@ -17,8 +17,11 @@ layout: default
           {% endif %}
         </p>
         <p class="post-meta small">
+          {% if post.swift_version %}
+            <img alt="Swift {{ post.swift_version }}" src="https://img.shields.io/badge/Swift-{{ post.swift_version }}-green.svg" style="vertical-align: middle" />
+          {% endif %}  
           {% if post.translations %}
-            Also available in: 
+            — Also available in: 
             {% for translation in post.translations %}
               {% if translation.author %}
                 {% assign tooltip = " translation — Thanks to " | prepend: translation.lang | append: translation.author" %}

@@ -9,9 +9,9 @@ translations:
     flag: 🇨🇳
     author: the SwiftGG team
     url: http://swift.gg/2016/04/28/pattern-matching-3/
+update_date: 2016-10-17
+swift_version: 3.0
 ---
-
-![Swift 3](https://img.shields.io/badge/Swift-3.0-green.svg)
 
 In parts [1](/swift/pattern-matching/2016/03/27/pattern-matching-1/) and [2](/swift/pattern-matching/2016/03/30/pattern-matching-2/) of this article series, we saw some usages of `switch` on a lot of things, including `tuples`, `Range`, `String`, `Character` and even type. But what if we can use pattern matching even with our own custom types?
 
@@ -192,4 +192,7 @@ But hey, it's good to know all the possible alternatives!
 That's it for today. Next (and probably last) part of this article series will talk about using pattern matching in contexts other than `switch`, especially `if`, `guard`, but also `for` loops, and using these features in a whole new level. Can't wait!
 
 ⏩ Read last part of this article series here: [part 4](/swift/pattern-matching/2016/05/16/pattern-matching-4/)
+{: .note }
+
+Thanks to [Frank Manno](https://github.com/frankieshakes) for updating the code samples of this article to Swift 3!
 {: .note }

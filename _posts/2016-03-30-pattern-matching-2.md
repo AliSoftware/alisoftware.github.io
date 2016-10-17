@@ -9,9 +9,9 @@ translations:
     flag: 🇨🇳
     author: the SwiftGG team
     url: http://swift.gg/2016/04/27/pattern-matching-2/
+update_date: 2016-10-17
+swift_version: 3.0
 ---
-
-![Swift 3](https://img.shields.io/badge/Swift-3.0-green.svg)
 
 In [the previous article](/swift/pattern-matching/2016/03/27/pattern-matching-1/), we saw the basics of pattern matching using `switch` on `enums`. But what about using `switch` with anything other than `enum` types?
 
@@ -171,4 +171,7 @@ In the upcoming parts we'll look at how to make your own types be directly usabl
 _Note: I'm gonna be traveling ✈️ to Japan 🇯🇵 in the next two weeks 🤗, so might not be able to publish the next parts of this article series as quickly as the previous ones, but I won't forget you!_
 
 ⏩ Read next part of this article series here: [part 3](/swift/pattern-matching/2016/04/24/pattern-matching-3/)
+{: .note }
+
+Thanks to [Frank Manno](https://github.com/frankieshakes) for updating the code samples of this article to Swift 3!
 {: .note }
