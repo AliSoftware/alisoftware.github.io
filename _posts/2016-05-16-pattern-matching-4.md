@@ -10,6 +10,8 @@ translations:
     url: http://swift.gg/2016/06/06/pattern-matching-4/
 ---
 
+![Swift 3](https://img.shields.io/badge/Swift-3.0-green.svg)
+
 Now that we've revisited the various syntaxes for pattern matching in [part 1](/swift/pattern-matching/2016/03/27/pattern-matching-1/), [part 2](/swift/pattern-matching/2016/03/30/pattern-matching-2/) and [part 3](/swift/pattern-matching/2016/04/24/pattern-matching-3/), let's finish this blog post series with some advanced syntax using `if case let`, `for case where` and all!
 
 Let's use what we saw in previous articles and apply them all to some advanced expressions.
@@ -27,29 +29,29 @@ For example, let's use an `enum` similar to the one from the previous articles:
 
 ```swift
 enum Media {
-  case Book(title: String, author: String, year: Int)
-  case Movie(title: String, director: String, year: Int)
-  case WebSite(urlString: String)
+  case book(title: String, author: String, year: Int)
+  case movie(title: String, director: String, year: Int)
+  case website(urlString: String)
 }
 ```
 
 Then we can write this[^tip]:
 
 ```swift
-let m = Media.Movie(title: "Captain America: Civil War", director: "Russo Brothers", year: 2016)
+let m = Media.movie(title: "Captain America: Civil War", director: "Russo Brothers", year: 2016)
 
-if case let Media.Movie(title, _, _) = m {
+if case let Media.movie(title, _, _) = m {
   print("This is a movie named \(title)")
 }
 ```
 
-[^tip]: The order of arguments (pattern vs. variable) in that syntax can be troubling. To remember the order, just think of it as using the same `case let Media.Movie(…)` syntax you use in a `switch`. That way, you'll remember to write `if case let Media.Movie(…) = m` instead of `if case let m = Media.Movie(…)` which wouldn't compile anyway — grouping the `case` with the **pattern** (`Media.Movie(title, _, _)`) like you do in `switch`, and not with the variable to compare it to (`m`).
+[^tip]: The order of arguments (pattern vs. variable) in that syntax can be troubling. To remember the order, just think of it as using the same `case let Media.movie(…)` syntax you use in a `switch`. That way, you'll remember to write `if case let Media.movie(…) = m` instead of `if case let m = Media.movie(…)` which wouldn't compile anyway — grouping the `case` with the **pattern** (`Media.movie(title, _, _)`) like you do in `switch`, and not with the variable to compare it to (`m`).
 
 This is equivalent to the more verbose code:
 
 ```swift
 switch m {
-  case let Media.Movie(title, _, _):
+  case let Media.movie(title, _, _):
     print("This is a movie named \(title)")
   default: () // do nothing, but this is mandatory as all switch in Swift must be exhaustive
 }
@@ -57,10 +59,10 @@ switch m {
 
 ## if case let where
 
-We can combine the `if case let` with a `where` clause of course:
+We can combine the `if case let` with a comma (`,`) -- where each condition is separated by `,` -- to create a multi-clause condition:
 
 ```swift
-  if case let Media.Movie(_, _, year) = m where year < 1888 {
+  if case let Media.movie(_, _, year) = m, year < 1888 {
     print("Something seems wrong: the movie's year is before the first movie ever made.")
   }
 ```
@@ -69,22 +71,22 @@ That can lead to quite powerful expressions that would otherwise need a complex 
 
 ## guard case let
 
-Of course, `guard case let` is similar to `if case let`. You can use `guard case let` and `guard case let … where …` to ensure something matches a pattern and a condition and exit otherwise.
+Of course, `guard case let` is similar to `if case let`. You can use `guard case let` and `guard case let … , …` to ensure something matches a pattern and a condition and exit otherwise.
 
 ```swift
 enum NetworkResponse {
-  case Response(NSURLResponse, NSData)
-  case Error(NSError)
+  case response(URLResponse, Data)
+  case error(Error)
 }
 
-func processRequestResponse(response: NetworkResponse) {
-  guard case let .Response(urlResp, data) = response,
-    let httpResp = urlResp as? NSHTTPURLResponse
-    where 200..<300 ~= httpResp.statusCode else {
+func processRequestResponse(_ response: NetworkResponse) {
+  guard case let .response(urlResp, data) = response,
+    let httpResp = urlResp as? HTTPURLResponse,
+    200..<300 ~= httpResp.statusCode else {
       print("Invalid response, can't process")
       return
   }
-  print("Processing \(data.length) bytes…")
+  print("Processing \(data.count) bytes…")
   /* … */
 }
 ```
@@ -95,18 +97,18 @@ Combining `for` and `case` can also let you iterate on a collection conditionall
 
 ```swift
 let mediaList: [Media] = [
-  .Book(title: "Harry Potter and the Philosopher's Stone", author: "J.K. Rowling", year: 1997),
-  .Movie(title: "Harry Potter and the Philosopher's Stone", director: "Chris Columbus", year: 2001),
-  .Book(title: "Harry Potter and the Chamber of Secrets", author: "J.K. Rowling", year: 1999),
-  .Movie(title: "Harry Potter and the Chamber of Secrets", director: "Chris Columbus", year: 2002),
-  .Book(title: "Harry Potter and the Prisoner of Azkaban", author: "J.K. Rowling", year: 1999),
-  .Movie(title: "Harry Potter and the Prisoner of Azkaban", director: "Alfonso Cuarón", year: 2004),
-  .Movie(title: "J.K. Rowling: A Year in the Life", director: "James Runcie", year: 2007),
-  .WebSite(urlString: "https://en.wikipedia.org/wiki/List_of_Harry_Potter-related_topics")
+  .book(title: "Harry Potter and the Philosopher's Stone", author: "J.K. Rowling", year: 1997),
+  .movie(title: "Harry Potter and the Philosopher's Stone", director: "Chris Columbus", year: 2001),
+  .book(title: "Harry Potter and the Chamber of Secrets", author: "J.K. Rowling", year: 1999),
+  .movie(title: "Harry Potter and the Chamber of Secrets", director: "Chris Columbus", year: 2002),
+  .book(title: "Harry Potter and the Prisoner of Azkaban", author: "J.K. Rowling", year: 1999),
+  .movie(title: "Harry Potter and the Prisoner of Azkaban", director: "Alfonso Cuarón", year: 2004),
+  .movie(title: "J.K. Rowling: A Year in the Life", director: "James Runcie", year: 2007),
+  .website(urlString: "https://en.wikipedia.org/wiki/List_of_Harry_Potter-related_topics")
 ]
 
 print("Movies only:")
-for case let Media.Movie(title, _, year) in mediaList {
+for case let Media.movie(title, _, year) in mediaList {
   print(" - \(title) (\(year))")
 }
   
@@ -125,7 +127,7 @@ Adding a `where` clause to that all can make it even more powerful:
 
 ```swift
 print("Movies by C. Columbus only:")
-for case let Media.Movie(title, director, year) in mediaList where director == "Chris Columbus" {
+for case let Media.movie(title, director, year) in mediaList where director == "Chris Columbus" {
   print(" - \(title) (\(year))")
 }
 
@@ -153,17 +155,17 @@ Let's finish this series with the Grand Finale: combine all that we learned from
 extension Media {
   var title: String? {
     switch self {
-    case let .Book(title, _, _): return title
-    case let .Movie(title, _, _): return title
+    case let .book(title, _, _): return title
+    case let .movie(title, _, _): return title
     default: return nil
     }
   }
   var kind: String {
     // Remember part 1 where we said we can omit the `(…)` associated values in the `case` if we don't care about any of them?
     switch self {
-    case .Book: return "Book"
-    case .Movie: return "Movie"
-    case .WebSite: return "Web Site"
+    case .book: return "Book"
+    case .movie: return "Movie"
+    case .website: return "Web Site"
     }
   }
 }
