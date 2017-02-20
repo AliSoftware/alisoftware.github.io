@@ -16,7 +16,7 @@ The thing that took most of my time lately is probably the new SwiftGen release,
 We even have a brand new logo now!
 
 <h3 align="center">
-  <img src="https://raw.githubusercontent.com/SwiftGen/Eve/master/logo/eve-swift-2c.png" alt="SwiftGen's new logo" height="256"/>
+  <img src="https://raw.githubusercontent.com/SwiftGen/Eve/master/logo/logo-256.png" alt="SwiftGen's new logo" height="256"/>
 </h3>
 
 ### Why such a big reorganization?
