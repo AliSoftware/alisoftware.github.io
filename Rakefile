@@ -17,7 +17,6 @@ task :post, :title do |_, args|
     ---
     layout: post
     title: #{title}
-    date: #{Time.new.strftime('%Y-%m-%d')}
     categories:
     ---
 
