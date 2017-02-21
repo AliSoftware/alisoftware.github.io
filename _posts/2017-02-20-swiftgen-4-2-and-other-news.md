@@ -120,11 +120,11 @@ Among other talks at AppDevCon are:
 
 At the end of April I'll also be talking at the [NSBudapest meetup](https://www.meetup.com/NSBudapest/) that will take place during the [Craft Conference](https://craft-conf.com) in Budapest, Hungary.
 
-I'll be talking about SwiftGen here, as well as code generation in general, but there are also plenty of other very interesting talks there too, including about _fastlane_ and Sourcery too (and I hear Budapest is a wonderful city to visit as well!), so I'm definitely looking forward to it… and maybe meet some of you too!
+I'll be talking about SwiftGen here, as well as code generation in general, but there are also plenty of other very interesting talks there, including about _fastlane_ and Sourcery too (and I hear Budapest is a wonderful city to visit as well!), so I'm definitely looking forward to it… and maybe meet some of you too!
 
 ## Blog Articles
 
-I know that I've letting you down for a little while with my blog, and haven't been writing since a long time.
+I know that I've let you down since a little while here, as I haven't been writing since a long time.
 
 If you read all those news above, you probably understand how busy I have been these past few month (and that's just about my free OSS work, but my full-time paid work has been pretty full too) and why I didn't have much time for blogging!
 
