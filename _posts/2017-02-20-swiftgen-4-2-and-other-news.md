@@ -9,6 +9,9 @@ SwiftGen — my tool to generate Swift code so you can use your images, localize
   
 This article intends to give you some news on all those various OSS projects as well as what has been going on lately and what's next to come.
 
+[SwiftGen](#swiftgen) • [Reusable](#reusable) • [fastlane](#fastlane) • [AppDevCon](#appdevcon-amsterdam-march-16-17) • [NSBudapest & CraftConf](#nsbudapest--craftconf-budapest-april-25-28) • [Blog Articles](#blog-articles)
+{: .note }
+
 ## SwiftGen
 
 The thing that took most of my time lately is probably the new SwiftGen release, which just went through a big internal refactoring, consisting of moving `SwiftGen` to its own GitHub organization and splitting it into multiple repositories.
@@ -70,17 +73,17 @@ If you want to know more about how it works, you can read my blog post about [Mi
 
 We recently released [Reusable 4](https://github.com/AliSoftware/Reusable/releases/tag/4.0.0) which improves the API and makes it even safer, so take a look and update your projects!
 
-## Fastlane
+## fastlane
 
 <h3 align="center">
   <img src="https://github.com/fastlane/fastlane/raw/master/fastlane/assets/fastlane_text.png" alt="fastlane Logo" height="128" />
 </h3>
 
-I also have the great pleasure to now [be part of the Fastlane Core Contributor team](https://twitter.com/FastlaneTools/status/824286337415135232) since recently.
+I also have the great pleasure to now [be part of the _fastlane_ Core Contributor team](https://twitter.com/FastlaneTools/status/824286337415135232) since recently.
 
-As a Core Contributor, I plan to contribute to Fastlane more, but also help other people wanting to contribute to Fastlane to feel welcome, help them do their first ruby PRs and make the _fastlane_ community grow even more!
+As a Core Contributor, I plan to contribute to _fastlane_ more, but also help other people wanting to contribute to _fastlane_ to feel welcome, help them do their first ruby PRs and make the _fastlane_ community grow even more!
 
-## AppDevCon (Amsterdam, March 16-17th)
+## AppDevCon (Amsterdam, March 16-17)
 
 <h3 align="center">
   <img src="https://pbs.twimg.com/profile_images/802779268631658496/N5IYeRr3.jpg" alt="AppDevCon Conference Logo" height="128" />
@@ -96,7 +99,7 @@ Among other talks at AppDevCon are:
 * [My talk about Mixins over Inheritance](http://appdevcon.nl/session/olivier-halligon-mixins-over-inheritance/)
 * A talk by Andrea Falcone, member of the Fastlane team, about ["Supercharging your mobile app release with fastlane"](http://appdevcon.nl/session/andrea-falcone-fabric-fastlane/)
 
-## NSBudapest & CraftConf
+## NSBudapest & CraftConf (Budapest, April 25-28)
 
 <h3 align="center">
 	<img src="https://pbs.twimg.com/profile_images/664400531687874560/m2uY7_RL_400x400.jpg" alt="NSBudapest Logo" height="128" />
