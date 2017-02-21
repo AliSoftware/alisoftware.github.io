@@ -5,13 +5,13 @@ date: 2017-02-19
 categories: news oss
 ---
 
-SwiftGen — my tool to generate Swift code so you can use your images, localized strings, fonts, storyboards and other assets in a type-safe way — has just been released in version 4.2 after a big internal refactoring. I've also been working on other OSS projects too lately.  
+SwiftGen — my tool to generate Swift code so you can use your images, localized strings, fonts, storyboards and other assets in a type-safe way — has just been released in version 4.2 after a big internal refactoring. I've also been working on other OSS projects lately.  
   
 This article intends to give you some news on all those various OSS projects as well as what has been going on lately and what's next to come.
 
 ## SwiftGen
 
-The thing that took most of my time lately is probably the new SwiftGen release, which just went through a big internal refactoring, consisting of moving SwiftGen to its own GitHub organization and splitting it into multiple repositories.
+The thing that took most of my time lately is probably the new SwiftGen release, which just went through a big internal refactoring, consisting of moving `SwiftGen` to its own GitHub organization and splitting it into multiple repositories.
 
 We even have a brand new logo now!
 
@@ -19,21 +19,19 @@ We even have a brand new logo now!
   <img src="https://raw.githubusercontent.com/SwiftGen/Eve/master/logo/logo-256.png" alt="SwiftGen's new logo" height="256" />
 </h3>
 
-### Why such a big reorganization?
+### Why splitting SwiftGen into multiple repositories?
 
-The reasons we decided to split SwiftGen in multiple repositories are:
+* Since the [Sourcery](https://github.com/krzysztofzablocki/Sourcery) project came to life — and because this new tool also uses [Stencil](https://github.com/kylef/Stencil) the same as we always did at `SwiftGen` — Krzysztof asked us to share the code we use to drive `Stencil`, to use it with his new tool too. This way `SwiftGen` and `Sourcery` could use the same tags, filters, and extensions to write their templates similarly, an users would have consistent understanding of the template language between both tools. That meant splitting that common code in its own framework, to make it independent of `SwiftGen` so that `Sourcery` could depend on it too.
+* Having separate repositories also helps separate the code of `SwiftGen` into clear modules with clear responsibilities.
+  * It should also help potential contributors to understand the code better, as each part of the `SwiftGen` pipeline will be clearly separated and documented.
+  * This also allows those modules to be used independently of SwiftGen's CLI, if other tools want to build something around them.
+* It allows those modules, as well as templates, to evolve with their own versions lifecycles, for example making it possible to release a new module or tag new templates without having to release a new version of `SwiftGen` as a whole.
 
-* Since [Sourcery](https://github.com/krzysztofzablocki/Sourcery) was born, and because this new tool uses [Stencil](https://github.com/kylef/Stencil) the same as we alays did at `SwiftGen`, Krzysztof asked us to share all the code we use to drive `Stencil` with his new tool. That meant splitting that code in its own framework, making it independent of SwiftGen so that Sourcery could depend on it.
-* Having separate repositories helps separate the code of SwiftGen into clear modules with clear responsibilities.
-  * It should also help people who want to contribute understand the code better, as each part of the SwiftGen pipeline will be clearly separated and documented.
-  * This also allows those modules to be used independently of SwiftGen CLI, if other tools want to depend on them.
-* It allows those modules, as well as templates, to evolve with their own versions lifecycles, for example making it possible to release a new module or tag new templates without having to release a new version of SwiftGen as a whole.
+### Why move SwiftGen into its own GitHub organization?
 
-The reasons we decided to move SwiftGen into its own GitHub organization are:
-
-* SwiftGen is more and more popular, and switching to a GitHub organization to host it made more and more sense (instead of hosting it on my own GitHub)
-* Since [David Jennes](https://github.com/djbe) has become a core contributor (thanks again to him as he did most of the work on the refactoring PRs!), I felt like SwiftGen has more and more become a community than just my own project
-* This use of a GitHub organization will hopefully help making the SwiftGen community grow, by attaching SwiftGen to an organization rather than an individual (me)
+* Since [David Jennes](https://github.com/djbe) has become a core contributor (thanks again to him as he did most of the work on the refactoring PRs!), I felt like `SwiftGen` has more and more become a community than just my own project
+* This use of a GitHub organization will hopefully help making the `SwiftGen` community grow, by attaching `SwiftGen` to an organization rather than an individual (me)
+* Since we needed to split `SwiftGen` in multiple repositories anyway, having a GitHub organizaton to host them all was the logical choice
 
 ### What changed for users?
 
@@ -43,7 +41,7 @@ This release also fixes some bugs, mainly the warning on `import YourAppModule` 
 
 ### What's next?
 
-We already have planned the next milestores for SwiftGen, which are the following:
+We already have planned the next milestores for `SwiftGen`, which are the following:
 
 * Version 4.2.1 will focus on improving documentation:
   * Update the global documentation explaining the new organization in the repo (what's the responsibility of each module)
@@ -51,7 +49,7 @@ We already have planned the next milestores for SwiftGen, which are the followin
   * Providing a `CONTRIBUTING.md` and a `CODE_OF_CONDUCT.md` and documentation to help contributors feel even more welcome and help them contribute
 * Version 5.0.0 will clean some stuff up:
   * Removing old legacy code and template variables (that were only present because Stencil wasn't as advanced back then as it is now)
-  * Re-organize and rename the templates bundled with SwiftGen (especially so that SwiftGen won't default to using Swift 2 templates, providing more alternatives, and organizing them in directories to overcome their growing number)
+  * Re-organize and rename the templates bundled with `SwiftGen` (especially so that `SwiftGen` won't default to using Swift 2 templates, providing more alternatives, and organizing them in directories to overcome their growing number)
 
 **If you have created your own custom templates**, as some templates variables will be removed in SwiftGen 5.0, I highly suggest that you start adapting them as soon as possible so they'll be ready and still working for SwiftGen 5.0 when it's released.  
 This simply consists of using the new variables instead of the old ones. Both the deprecated variables and the new ones are present in SwiftGen 4.2, so this transition should go smoothly.
