@@ -41,7 +41,7 @@ This release also fixes some bugs, mainly the warning on `import YourAppModule` 
 
 ### What's next?
 
-We already have planned the next milestores for `SwiftGen`, which are the following:
+We already have the next milestores for `SwiftGen` planned:
 
 * Version 4.2.1 will focus on improving documentation:
   * Update the global documentation explaining the new organization in the repo (what's the responsibility of each module)
