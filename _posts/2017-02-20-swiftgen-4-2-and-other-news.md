@@ -16,7 +16,7 @@ The thing that took most of my time lately is probably the new SwiftGen release,
 We even have a brand new logo now!
 
 <h3 align="center">
-  <img src="https://raw.githubusercontent.com/SwiftGen/Eve/master/logo/logo-256.png" alt="SwiftGen's new logo" height="256"/>
+  <img src="https://raw.githubusercontent.com/SwiftGen/Eve/master/logo/logo-256.png" alt="SwiftGen's new logo" height="256" />
 </h3>
 
 ### Why such a big reorganization?
@@ -61,7 +61,7 @@ To help you migrate your templates to be ready for the upcoming SwiftGen 5.0, yo
 ## Reusable
 
 <h3 align="center">
-  <img src="https://raw.githubusercontent.com/AliSoftware/Reusable/master/Logo.png" alt="Reusable logo" height="128"/>
+  <img src="https://raw.githubusercontent.com/AliSoftware/Reusable/master/Logo.png" alt="Reusable logo" height="128" />
 </h3>
 
 During my absence from this blog, we also worked on my [Reusable](https://github.com/AliSoftware/Reusable) pod, which is a "Mixin" to help you work with reusable views (like `UITableViewCell` and `UICollectionViewCell` subclasses), views designed in a XIB, and VCs loaded via a Storyboard, all in a type-safe way.
@@ -75,7 +75,7 @@ We recently released [Reusable 4](https://github.com/AliSoftware/Reusable/releas
 ## Fastlane
 
 <h3 align="center">
-  <img src="https://github.com/fastlane/fastlane/raw/master/fastlane/assets/fastlane_text.png" alt="fastlane Logo" height="128"/>
+  <img src="https://github.com/fastlane/fastlane/raw/master/fastlane/assets/fastlane_text.png" alt="fastlane Logo" height="128" />
 </h3>
 
 I also have the great pleasure to now [be part of the Fastlane Core Contributor team](https://twitter.com/FastlaneTools/status/824286337415135232) since recently.
@@ -85,7 +85,7 @@ As a Core Contributor, I plan to contribute to Fastlane more, but also help othe
 ## AppDevCon (Amsterdam, March 16-17th)
 
 <h3 align="center">
-  <img src="https://pbs.twimg.com/profile_images/802779268631658496/N5IYeRr3.jpg" alt="AppDevCon Conference Logo" height="128"/>
+  <img src="https://pbs.twimg.com/profile_images/802779268631658496/N5IYeRr3.jpg" alt="AppDevCon Conference Logo" height="128" />
 </h3>
 
 Next month, I'll be talking at the [AppDevCon](http://appdevcon.nl) conference (formerly known as "mDevCon") in Amsterdam.
@@ -97,6 +97,17 @@ Among other talks at AppDevCon are:
 * A tutorial session about `Sourcery` and `SwiftGen` by Paweł Brągoszewski: ["Adding magic to Swift with SwiftGen and Sourcery"](http://appdevcon.nl/session/pawel-bragoszewski-adding-magic-to-swift-with-swiftgen-and-sourcery/)
 * [My talk about Mixins over Inheritance](http://appdevcon.nl/session/olivier-halligon-mixins-over-inheritance/)
 * A talk by Andrea Falcone, member of the Fastlane team, about ["Supercharging your mobile app release with fastlane"](http://appdevcon.nl/session/andrea-falcone-fabric-fastlane/)
+
+## NSBudapest & CraftConf
+
+<h3 align="center">
+	<img src="https://pbs.twimg.com/profile_images/664400531687874560/m2uY7_RL_400x400.jpg" alt="NSBudapest Logo" height="128" />
+	<img src="https://pbs.twimg.com/profile_images/378800000824012775/97bb1d972974a336814f088a932add3f_400x400.png" alt="CraftConf Logo" height="128" />
+</h3>
+
+At the end of April I'll also be talking at the [NSBudapest meetup](https://www.meetup.com/fr-FR/NSBudapest/) that will take place during the [Craft Conference](https://craft-conf.com) in Budapest, Hungary.
+
+I'll be talking about SwiftGen here, as well as code generation in general, but there are also plenty of other very interesting talks there as well, including about Fastlane and Sourcery too (and I hear Budapest is a wonderful city to visit as well!), so I'm definitely looking forward to it… and maybe meet some of you too!
 
 ## Blog Articles
 
