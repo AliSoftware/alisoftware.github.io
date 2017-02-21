@@ -9,7 +9,7 @@ SwiftGen — my tool to generate Swift code so you can use your images, localize
   
 This article intends to give you some news on all those various OSS projects as well as what has been going on lately and what's next to come.
 
-[SwiftGen](#swiftgen) • [Reusable](#reusable) • [fastlane](#fastlane) • [AppDevCon](#appdevcon-amsterdam-march-16-17) • [NSBudapest & CraftConf](#nsbudapest--craftconf-budapest-april-25-28) • [Blog Articles](#blog-articles)
+Table of Contents: [SwiftGen](#swiftgen) • [Reusable](#reusable) • [fastlane](#fastlane) • [AppDevCon](#appdevcon-amsterdam-march-16-17) • [NSBudapest & CraftConf](#nsbudapest--craftconf-budapest-april-25-28) • [Blog Articles](#blog-articles)
 {: .note }
 
 ## SwiftGen
@@ -69,7 +69,7 @@ During my absence from this blog, we also worked on my [Reusable](https://github
 
 This pod is a great complement to `SwiftGen` to make your code even safer and continue getting rid of all String-based APIs.
 
-If you want to know more about how it works, you can read my blog post about [Mixins](http://alisoftware.github.io/swift/protocol/2015/11/08/mixins-over-inheritance/) as well as the [dedicated blog post about using Generics to dequeue cell safely](http://alisoftware.github.io/swift/generics/2016/01/06/generic-tableviewcells/).
+If you want to know more about how it works, you can read my blog post about [Mixins](http://alisoftware.github.io/swift/protocol/2015/11/08/mixins-over-inheritance/) as well as the [dedicated blog post about using Generics to dequeue cells safely](http://alisoftware.github.io/swift/generics/2016/01/06/generic-tableviewcells/).
 
 We recently released [Reusable 4](https://github.com/AliSoftware/Reusable/releases/tag/4.0.0) which improves the API and makes it even safer, so take a look and update your projects!
 
