@@ -105,7 +105,7 @@ Among other talks at AppDevCon are:
 
 * A tutorial session about `Sourcery` and `SwiftGen` by Paweł Brągoszewski: ["Adding magic to Swift with SwiftGen and Sourcery"](http://appdevcon.nl/session/pawel-bragoszewski-adding-magic-to-swift-with-swiftgen-and-sourcery/)
 * [My talk about Mixins over Inheritance](http://appdevcon.nl/session/olivier-halligon-mixins-over-inheritance/)
-* A talk by Andrea Falcone, member of the Fastlane team, about ["Supercharging your mobile app release with fastlane"](http://appdevcon.nl/session/andrea-falcone-fabric-fastlane/)
+* A talk by Andrea Falcone, member of the _fastlane_ team, about ["Supercharging your mobile app release with fastlane"](http://appdevcon.nl/session/andrea-falcone-fabric-fastlane/)
 
 ## NSBudapest & CraftConf (Budapest, April 25-28)
 
@@ -120,7 +120,7 @@ Among other talks at AppDevCon are:
 
 At the end of April I'll also be talking at the [NSBudapest meetup](https://www.meetup.com/NSBudapest/) that will take place during the [Craft Conference](https://craft-conf.com) in Budapest, Hungary.
 
-I'll be talking about SwiftGen here, as well as code generation in general, but there are also plenty of other very interesting talks there as well, including about Fastlane and Sourcery too (and I hear Budapest is a wonderful city to visit as well!), so I'm definitely looking forward to it… and maybe meet some of you too!
+I'll be talking about SwiftGen here, as well as code generation in general, but there are also plenty of other very interesting talks there too, including about _fastlane_ and Sourcery too (and I hear Budapest is a wonderful city to visit as well!), so I'm definitely looking forward to it… and maybe meet some of you too!
 
 ## Blog Articles
 
@@ -128,6 +128,6 @@ I know that I've letting you down for a little while with my blog, and haven't b
 
 If you read all those news above, you probably understand how busy I have been these past few month (and that's just about my free OSS work, but my full-time paid work has been pretty full too) and why I didn't have much time for blogging!
 
-Now that all those big tasks are mostly behind (even if I'll still continue to be busy with Fastlane and my talks, I expect to have a little more free time), it's about time I start writing again — starting with that part 2 of my capture semantics article that is long overdue!
+Now that all those big tasks are mostly behind (even if I'll still continue to be busy with _fastlane_ and my talks, I expect to have a little more free time), it's about time I start writing again — starting with that part 2 of my capture semantics article that is long overdue!
 
 In the meantime, I hope you'll enjoy all my hard work on my OSS tools and talks, and will see you soon for some technical articles again!
