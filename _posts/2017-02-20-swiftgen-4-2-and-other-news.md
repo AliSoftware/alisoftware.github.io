@@ -113,7 +113,7 @@ I'll be talking about SwiftGen here, as well as code generation in general, but 
 
 I know that I've letting you down for a little while with my blog, and haven't been writing since a long time.
 
-If you read all those news above, you probably understand how busy I have been these past few month (and that's just about my free OSS work, but my full-timepaid work has been pretty full too) and why I didn't have much time for blogging!
+If you read all those news above, you probably understand how busy I have been these past few month (and that's just about my free OSS work, but my full-time paid work has been pretty full too) and why I didn't have much time for blogging!
 
 Now that all those big tasks are mostly behind (even if I'll still continue to be busy with Fastlane and my talks, I expect to have a little more free time), it's about time I start writing again — starting with that part 2 of my capture semantics article that is long overdue!
 
