@@ -19,7 +19,9 @@ The thing that took most of my time lately is probably the new SwiftGen release,
 We even have a brand new logo now!
 
 <h3 align="center">
-  <img src="https://raw.githubusercontent.com/SwiftGen/Eve/master/logo/logo-256.png" alt="SwiftGen's new logo" height="256" />
+  <a href="https://github.com/SwiftGen/SwiftGen">
+    <img src="https://raw.githubusercontent.com/SwiftGen/Eve/master/logo/logo-256.png" alt="SwiftGen's new logo" height="256" />
+  </a>
 </h3>
 
 ### Why splitting SwiftGen into multiple repositories?
@@ -62,7 +64,9 @@ To help you migrate your templates to be ready for the upcoming SwiftGen 5.0, yo
 ## Reusable
 
 <h3 align="center">
-  <img src="https://raw.githubusercontent.com/AliSoftware/Reusable/master/Logo.png" alt="Reusable logo" height="128" />
+  <a href="https://github.com/AliSoftware/Reusable">
+    <img src="https://raw.githubusercontent.com/AliSoftware/Reusable/master/Logo.png" alt="Reusable logo" height="128" />
+  </a>
 </h3>
 
 During my absence from this blog, we also worked on my [Reusable](https://github.com/AliSoftware/Reusable) pod, which is a "Mixin" to help you work with reusable views (like `UITableViewCell` and `UICollectionViewCell` subclasses), views designed in a XIB, and VCs loaded via a Storyboard, all in a type-safe way.
@@ -76,7 +80,9 @@ We recently released [Reusable 4](https://github.com/AliSoftware/Reusable/releas
 ## fastlane
 
 <h3 align="center">
-  <img src="https://github.com/fastlane/fastlane/raw/master/fastlane/assets/fastlane_text.png" alt="fastlane Logo" height="128" />
+  <a href="https://github.com/fastlane/fastlane">
+    <img src="https://github.com/fastlane/fastlane/raw/master/fastlane/assets/fastlane_text.png" alt="fastlane Logo" height="128" />
+  </a>
 </h3>
 
 I also have the great pleasure to now [be part of the _fastlane_ Core Contributor team](https://twitter.com/FastlaneTools/status/824286337415135232) since recently.
@@ -86,7 +92,9 @@ As a Core Contributor, I plan to contribute to _fastlane_ more, but also help ot
 ## AppDevCon (Amsterdam, March 16-17)
 
 <h3 align="center">
-  <img src="https://pbs.twimg.com/profile_images/802779268631658496/N5IYeRr3.jpg" alt="AppDevCon Conference Logo" height="128" />
+  <a href="http://appdevcon.nl">
+    <img src="https://pbs.twimg.com/profile_images/802779268631658496/N5IYeRr3.jpg" alt="AppDevCon Conference Logo" height="128" />
+  </a>
 </h3>
 
 Next month, I'll be talking at the [AppDevCon](http://appdevcon.nl) conference (formerly known as "mDevCon") in Amsterdam.
@@ -102,11 +110,15 @@ Among other talks at AppDevCon are:
 ## NSBudapest & CraftConf (Budapest, April 25-28)
 
 <h3 align="center">
-	<img src="https://pbs.twimg.com/profile_images/664400531687874560/m2uY7_RL_400x400.jpg" alt="NSBudapest Logo" height="128" />
-	<img src="https://pbs.twimg.com/profile_images/378800000824012775/97bb1d972974a336814f088a932add3f_400x400.png" alt="CraftConf Logo" height="128" />
+  <a href="https://www.meetup.com/NSBudapest/">
+    <img src="https://pbs.twimg.com/profile_images/664400531687874560/m2uY7_RL_400x400.jpg" alt="NSBudapest Logo" height="128" />
+  </a>
+  <a href="https://craft-conf.com">
+    <img src="https://pbs.twimg.com/profile_images/378800000824012775/97bb1d972974a336814f088a932add3f_400x400.png" alt="CraftConf Logo" height="128" />
+  </a>
 </h3>
 
-At the end of April I'll also be talking at the [NSBudapest meetup](https://www.meetup.com/fr-FR/NSBudapest/) that will take place during the [Craft Conference](https://craft-conf.com) in Budapest, Hungary.
+At the end of April I'll also be talking at the [NSBudapest meetup](https://www.meetup.com/NSBudapest/) that will take place during the [Craft Conference](https://craft-conf.com) in Budapest, Hungary.
 
 I'll be talking about SwiftGen here, as well as code generation in general, but there are also plenty of other very interesting talks there as well, including about Fastlane and Sourcery too (and I hear Budapest is a wonderful city to visit as well!), so I'm definitely looking forward to it… and maybe meet some of you too!
 
