@@ -101,7 +101,7 @@ extension Media {
 book.isFromJulesVerne
 ```
 
-Granted, this example is not really useful _per se_, but it's just to show you that you can bind to constant values too. I mentionned it because I've already seen code that binds a value to a variable then check if that variable is equal to a constant… instead of pattern-match directly with the constant!
+Granted, this example is not really useful _per se_, but it's just to show you that you can bind to constant values too. I mentioned it because I've already seen code that binds a value to a variable then check if that variable is equal to a constant… instead of pattern-match directly with the constant!
 
 A more useful and generic example could be something like:
 
@@ -118,7 +118,7 @@ extension Media {
 book.checkAuthor("Jules Verne")
 ```
 
-Notice here that althrough we use `author` in the `case` patterns, we don't need to use `let` here (unlike in the preview paragraph). That's because in this case, we won't create a variable to bind a value to it. Instead, we use a constant which already has a value (provided by the function parameter) — not creating a new one that is gonna be bound to the value matched with `self`.
+Notice here that although we use `author` in the `case` patterns, we don't need to use `let` here (unlike in the preview paragraph). That's because in this case, we won't create a variable to bind a value to it. Instead, we use a constant which already has a value (provided by the function parameter) — not creating a new one that is gonna be bound to the value matched with `self`.
 
 
 _[EDIT]_ Another great example of matching with constants have been [suggested by @ashfurrow on Twitter](https://twitter.com/ashfurrow/status/734868499441418240) when dealing with HTTP status codes:
