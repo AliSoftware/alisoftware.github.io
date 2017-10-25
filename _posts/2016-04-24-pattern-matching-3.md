@@ -90,11 +90,11 @@ Another usage example of `~=` could be to check if a `String` is "close enough" 
 ```swift
 struct Answer {
   let text: String
-  let compareOptions: NSStringCompareOptions = [.CaseInsensitiveSearch, .DiacriticInsensitiveSearch, .WidthInsensitiveSearch]
+  let compareOptions: String.CompareOptions = [.caseInsensitive, .diacriticInsensitive, .widthInsensitive]
 }
 
 func ~= (lhs: Answer, rhs: String) -> Bool {
-  return lhs.text.compare(rhs, options: lhs.compareOptions, range: nil, locale: nil) == NSComparisonResult.OrderedSame
+  return lhs.text.compare(rhs, options: lhs.compareOptions, range: nil, locale: nil) == ComparisonResult.orderedSame
 }
 
 let question = "What's the French word for a face-to-face meeting?"
