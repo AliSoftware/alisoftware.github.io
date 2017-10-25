@@ -24,7 +24,7 @@ layout: default
             — Also available in: 
             {% for translation in post.translations %}
               {% if translation.author %}
-                {% assign tooltip = " translation — Thanks to " | prepend: translation.lang | append: translation.author" %}
+                {% assign tooltip = " translation — Thanks to " | prepend: translation.lang | append: translation.author %}
               {% else %}
                 {% assign tooltip = " translation" | prepend: translation.lang %}
               {% endif %}
