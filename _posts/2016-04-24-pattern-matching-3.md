@@ -94,7 +94,7 @@ struct Answer {
 }
 
 func ~= (lhs: Answer, rhs: String) -> Bool {
-  return lhs.text.compare(rhs, options: lhs.compareOptions, range: nil, locale: nil) == ComparisonResult.orderedSame
+  return lhs.text.compare(rhs, options: lhs.compareOptions) == .orderedSame
 }
 
 let question = "What's the French word for a face-to-face meeting?"
@@ -109,6 +109,58 @@ default: print("Sorry, wrong answer!")
 ```
 
 See how the comparison uses a case-sensitive, diacritics-insensitive and width-insensitive comparison to be lenient about the answer?
+
+[EDIT 26 Oct. 2017]
+Additional tip: we can improve that solution and make it generic with something like this:
+
+```swift
+struct CustomMatcher<T> {
+  let closure: (T) -> Bool
+  static func ~= (lhs: CustomMatcher<T>, rhs: T) -> Bool {
+    return lhs.closure(rhs)
+  }
+}
+
+func closeEnough(to text: String) -> CustomMatcher<String> {
+  return CustomMatcher {
+    text.compare($0, options: [.caseInsensitive, .diacriticInsensitive]) == .orderedSame
+  }
+}
+
+func contains(_ string: String) -> CustomMatcher<String> {
+  return CustomMatcher {
+    $0.contains(string)
+  }
+}
+
+let question = "What's the French word for a face-to-face meeting?"
+let userAnswer = "Face a Face"
+
+switch userAnswer {
+case contains("Face"): print("Hint: The French expression talks about heads rather than face…")
+case closeEnough(to: "tête-à-tête"): print("Good answer!")
+case closeEnough(to: "tête à tête"): print("Almost… don't forget dashes!")
+default: print("Sorry, wrong answer!")
+}
+// prints the hint
+```
+
+And then you can imagine easily creating other verbs to make your `switch` statements more powerful while still super-readable:
+
+```swift
+func contains<T>(subset: Set<T>) -> CustomMatcher<Set<T>> {
+  return CustomMatcher {
+    subset.isSubset(of: $0)
+  }
+}
+
+func contains<S: Sequence>(item: S.Element) -> CustomMatcher<S> where S.Element: Comparable {
+  return CustomMatcher {
+    $0.contains(item)
+  }
+}
+```
+[/EDIT]
 
 ## Syntactic sugar on Optionals
 
