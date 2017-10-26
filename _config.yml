@@ -52,7 +52,7 @@ kramdown:
   syntax_highlighter: rouge
 highlighter:  rouge
 permalink:    pretty
-gems:         [jekyll-paginate, jekyll-redirect-from]
+plugins:      [jekyll-paginate, jekyll-redirect-from]
 paginate:     5
 sass:
   compressed: true
