@@ -25,7 +25,13 @@ When you write `case 1900..<2000` for example in a `switch`, how does Swift know
 Well the answer is simple: Swift uses the `~=` operator. You can use a `Range<I>` in a `case` when switching over a `I` (e.g. an `Int`) simply because the `~=` operator is declared between a `Range<I>` and a `I`:
 
 ```swift
-func ~=<I : ForwardIndexType where I : Comparable>(pattern: Range<I>, value: I) -> Bool
+extension RangeExpression {
+    public static func ~=(pattern: Self, value: Self.Bound) -> Bool
+}
+// … and also
+public struct Range<Bound> where Bound : Comparable {
+    public static func ~=(pattern: Range<Bound>, value: Bound) -> Bool
+}
 ```
 
 And in fact when you write `switch someI` with a `case aRangeOfI` then Swift will try to match it by calling `aRangeOfI ~= someI` (which returns a `Bool` telling if it matched).
@@ -168,7 +174,7 @@ But the syntactic sugar of `switch` and pattern matching doesn't stop at the tra
 
 Another useful syntactic sugar to know when dealing with `switch` is simply `x?`. You recognize with the question mark the relation with `Optionals` of course.
 
-In this specific context, using `x?` is syntactic sugar for `.Some(x)`. This means that you can write stuff like this:
+In this specific context, using `x?` is syntactic sugar for `.some(x)`. This means that you can write stuff like this:
 
 ```swift
 let anOptional: Int? = 2
@@ -183,7 +189,7 @@ default: print("Other")
 
 In fact, if you don't use `?` but write `case 2:` instead of `case 2?:` then the compiler will complain with an error like: `expression pattern of type 'Int' cannot match values of type 'Int?'` because it would be trying to match an `Int?` (`anOptional`)  with an `Int` (`2`).
 
-But using `case 2?:` is the exact equivalent of writing `case Optional.Some(2)`, which produces an `Int?` containing `2`, which can be matched against another `Int?` like `anOptional`. `case 2?:` is just a more compact form of `.Some(2)`.
+But using `case 2?:` is the exact equivalent of writing `case Optional.some(2)`, which produces an `Int?` containing `2`, which can be matched against another `Int?` like `anOptional`. `case 2?:` is just a more compact form of `.some(2)`.
 
 ## Switch on enums from rawValue
 
@@ -207,12 +213,12 @@ case MenuItem.settings.rawValue: …
 default: ()
 ```
 
-First of all, notice how the `switch` is done on an `Int` (`indexPath.row`) and then each `case` uses a `rawValue`. This is wrong for multiple reasons.
+First of all, notice how the `switch` is done on an `Int` (`indexPath.row`) and then each `case` uses a `rawValue`. This is not the best solution for multiple reasons.
 
 * the first being that nothing prevents you to use any other value, like a copy/pasting could make you write `case FooBar.baz.rawValue` and the compiler won't even complain. But you're dealing with `MenuItems`, so you should leverage the compiler to ensure you only deal with `MenuItems`, right?
 * the other problem is that this `switch` is not exhaustive by itself, this is why the `default` statement was necessary. I strongly recommand you to not use `default` when possible, and instead make your `switch` exhaustive, this way if you happen to add a new value to your `enum` you'll be forced to think about what to do with it instead of it being ignored or eaten up by the `default` without you realizing.
 
-So instead of switching on `indexPath` and `case ….rawValue`, you should rather build the enum from the `rawValue` first. This way you can then only switch over `cases` that use `MenuItem` enum cases, not anything else like `FooBar.baz` or whatnot.
+So instead of switching on `indexPath` and `case ….rawValue`, I'd suggest here to rather build the enum from the `rawValue` first. This way you can then only switch over `cases` that use `MenuItem` enum cases, not anything else like `FooBar.baz` or whatnot.
 
 And to do that, because `MenuItem(rawValue:)` is a failable initializer and will in fact return a `MenuItem?`, you can leverage the syntactic sugar we discovered above!
 
@@ -237,7 +243,14 @@ case .settings: …
 }
 ```
 
-But hey, it's good to know all the possible alternatives!
+But hey, it's good to know all the possible alternatives! And sometimes it's use that to pattern-match a non-nil value:
+
+```swift
+…
+case .foo(let bar?): 
+  print("It's a foo with an non-nil associated value, and we'll bind `bar` to that non-nil unwrapped value")
+……
+```
 
 ## Conclusion
 
