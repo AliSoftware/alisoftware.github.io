@@ -53,7 +53,7 @@ kramdown:
 highlighter:  rouge
 permalink:    pretty
 plugins:      [jekyll-paginate, jekyll-redirect-from]
-paginate:     5
+paginate:     10
 sass:
   compressed: true
 include: [".well-known"]
