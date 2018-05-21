@@ -9,7 +9,7 @@ Today for my come-back post (hopefully), I'll be talking about a tip for your `U
 
 ## The idea
 
-A lot of developers, me included, have taken the habit of making your `UIViewController` the `delegate` dans `dataSource` of their `UITableView`. That's all good and fine, but in effort to minimize the code size of your `UIViewController` (you know, that Massive-View-Controller thing all we want to avoid) and limit the responsibility of your `UIViewController` (separation of concern), there's a better solution.
+A lot of developers, me included, have taken the habit of making your `UIViewController` the `delegate` and `dataSource` of their `UITableView`. That's all good and fine, but in effort to minimize the code size of your `UIViewController` (you know, that Massive-View-Controller thing all we want to avoid) and limit the responsibility of your `UIViewController` (separation of concern), there's a better solution.
 
 The general idea is in fact very simple: extract your `UITableViewDataSource` and `UITableViewDelegate` into a separate object. And make e.g. your `UIViewController` retain that object and set it as the `tableView`'s `delegate` and `dataSource`.
 
@@ -54,6 +54,7 @@ extension ListDataSource: UITableViewDataSource {
   }
 
   func cell(for product: Product) -> UITableViewCell {
+    // Of course in a real project we'd dequeue a custom cell from tableView, etc.
     let cell = UITableViewCell()
     cell.textLabel?.text = product.name
     return cell
