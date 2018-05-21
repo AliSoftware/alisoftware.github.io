@@ -114,10 +114,10 @@ class SectionsDataSource: NSObject {
   let sections: [Section]
 
   init(products: [Product]) {
+    // Dispatch products into a dictionary according to their category
     let groups = Dictionary(grouping: products, by: { product in product.category })
-    self.sections = groups.map { (key: String, value: [Product]) -> Section in
-      Section(title: key, items: value)
-    }
+    // Convert that dictionary into an array of Sections, then sort it by section title
+    self.sections = groups.map(Section.init).sorted(by: { $0.title < $1.title })
   }
 
   func product(at indexPath: IndexPath) -> Product {
@@ -162,7 +162,7 @@ Imagine if you had to do all that logic in your `DemoViewController` directly in
 
  - A lot of `if` tests inside `numberOfRowsInSection` and `cellForRowAtIndexPath` methods to return different things depending on the mode (flat list or sections by categories)
  - Be sure to make those `if` conditions consistent (have the same conditions and branches in `numberOfRowsInSection` and `cellForRowAtIndexPath` so that the count returned in one matches the object index used in the other)
- - Either two properties to hold the data (an array of Products for the flat list, and an array of Sections for the sectionned list mode), or just use an array of Sections and trick the logic by using an array with only one section in the case of the flat list… not very consistent and readable month later anyway…
+ - Either two properties to hold the data (an array of Products for the flat list, and an array of Sections for the sectionned list mode), or just use an array of Sections and trick the logic by using an array with only one section in the case of the flat list… not very consistent and readable months later anyway…
 
 A lot could go wrong in this setup, from mismatching the conditions in different methods you have to implement to having to focus on understanding the logic as a whole and understand the big picture at once to see how everything works together, with risks of inconsistencies along the way.
 
@@ -201,6 +201,8 @@ extension ListDataSource: UITableViewDelegate {
 ```
 
 Once again, the benefit of that is, if you do the same on the `SectionsDataSource`, then just switching your `currentDataSource` from `ListDataSource` to `SectionsDataSource` wouldn't require to change your `ViewController`, which would still work as expected, even if in one case the list is flat and in the other it's structured in sections!
+
+That's because now your DataSource object, whichever one is used, is responsible for translating your `IndexPath` into `Product` instances, so that you don't have to care about how those products are organized in the DataSource, all you have to implement in your `ViewController` is what to do when a given `Product` is selected (instead of when a given `IndexPath` is selected), abstracting away all that `IndexPath->Product` translation logic out of your ViewController.
 
 ### Allowing custom cells
 
