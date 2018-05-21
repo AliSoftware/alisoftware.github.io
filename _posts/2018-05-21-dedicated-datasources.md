@@ -156,6 +156,8 @@ See how everything continues to work, while the majority of your changes was loc
 Now that we have both `ListDataSource` and `SectionsDataSource`, we can easily imagine switching them at runtime.
 You could just add a `UISegmentedControl` or similar to your UI, and depending on which segment gets selected, you'd set `self.currentDataSource` to either `ListDataSource(products: products)` or `SectionsDataSource(products: products)`, and that's all!
 
+![ListDataSource](/assets/ListDataSource.png) ![SectionsDataSource](/assets/SectionsDataSource.png)
+
 Imagine if you had to do all that logic in your `DemoViewController` directly instead of having separate objects… That would very likely mean:
 
  - A lot of `if` tests inside `numberOfRowsInSection` and `cellForRowAtIndexPath` methods to return different things depending on the mode (flat list or sections by categories)
