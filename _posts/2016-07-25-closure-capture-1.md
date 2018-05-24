@@ -7,6 +7,7 @@ translations:
     flag: 🇨🇳
     author: the SwiftGG team
     url: http://swift.gg/2016/09/09/closure-capture-1/
+swift_version: 3+
 ---
 
 Even with ARC nowadays, it's still important to understand memory management and objects life-cycles. A special case is when using closures, which are more and more present in Swift and have different capture semantics than ObjC's block capture rules. Let's see how they work.
@@ -16,7 +17,9 @@ Even with ARC nowadays, it's still important to understand memory management and
 
 In Swift, closures capture the variables they reference: variables declared outside of the closure but that you use inside the closure are retained by the closure by default, to ensure they are still alive when the closure is executed.
 
-For the rest of this article, let's define a simplistic `Pokemon` example class:
+But let's see that in action.
+
+For the rest of this article, we'll define a simplistic `Pokemon` example class:
 
 ```swift
 class Pokemon: CustomDebugStringConvertible {
@@ -29,23 +32,10 @@ class Pokemon: CustomDebugStringConvertible {
 }
 ```
 
-Let also declare a simple function that takes a closure as parameter, and executes that closure some seconds later (using GCD). This way we'll use it in below examples to see how that closure captures the outer variables.
+Let's also declare a simple helper function which takes a closure as parameter, and executes that closure some seconds later (using GCD). This way we'll use it in below examples to see how that closure captures the outer variables.
 
 ```swift
-func delay(seconds: NSTimeInterval, closure: ()->()) {
-  let time = dispatch_time(DISPATCH_TIME_NOW, Int64(seconds * Double(NSEC_PER_SEC)))
-  dispatch_after(time, dispatch_get_main_queue()) {
-    print("🕑")
-    closure()
-  }
-}
-```
-
-ℹ️ In Swift 3, the above function would be written something like this instead:
-{: .note :}
-
-```swift
-func delay(seconds: Int, closure: @escaping ()->()) {
+func delay(_ seconds: Int, closure: @escaping ()->()) {
   let time = DispatchTime.now() + .seconds(seconds)
   DispatchQueue.main.asyncAfter(deadline: time) {
     print("🕑")
