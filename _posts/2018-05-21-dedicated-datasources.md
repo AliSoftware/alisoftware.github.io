@@ -183,7 +183,7 @@ From there we can go way further and improve this a lot:
 For extending the idea to `UITableViewDelegate`, you could go multiple ways:
 
 - You could either imagine making your existing classes extend `UITableViewDelegate`, so that you'd use the same dedicated object for both being the `dataSource` and the `delegate` of your `tableView`: `extension SectionsDataSource: UITableViewDelegate`, etc.
-- Or you could decide to use an entierly separate object again, so you'd have one dedicated object for your `tableView.dataSource`, and a different one to use as your `tableView.delegate`
+- Or you could decide to use an entirely separate object again, so you'd have one dedicated object for your `tableView.dataSource`, and a different one to use as your `tableView.delegate`
 
 Both options are valid, it depends of your needs and what your dedicated implementations are doing. The fact that for `UITableView`, the delegate and dataSource are often closely related might make you go towards the first solution though [^1].
 

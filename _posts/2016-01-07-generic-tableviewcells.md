@@ -53,7 +53,7 @@ Now thanks to Swift's type inference, **this method will use the call-site conte
   let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MyCustomCell
 ```
 
-> Observe how the `reuseIdentifier` used internally… entierly depends on what type you tell the Swift compiler to **return**! That's why I somehow see it like if the type is "retro-injected" in the implementation… and why I 😍 it so much!
+> Observe how the `reuseIdentifier` used internally… entirely depends on what type you tell the Swift compiler to **return**! That's why I somehow see it like if the type is "retro-injected" in the implementation… and why I 😍 it so much!
 
 Isn't that beautiful?
 
