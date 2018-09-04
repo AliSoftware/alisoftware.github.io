@@ -11,7 +11,7 @@ But sometimes, even if you need those properties in order to provide your implem
 
 Let's see that you want to create a dedicated object to manage your ViewControllers navigation, like a Coordinator.
 
-Every coordinator is gonna have a root `UINavigationController`, and share some common capabilities, like pushing and poping other ViewControllers on it. So at first it might look like this:
+Every coordinator is gonna have a root `UINavigationController`, and share some common capabilities, like pushing and poping other ViewControllers on it. So at first it might look like this[^1]:
 
 ```swift
 // Coordinator.swift
@@ -68,13 +68,13 @@ class MainCoordinator: Coordinator {
 }
 ```
 
-_Note: That's some simplified example ; don't focus on the implementation of the Coordinator pattern here — that's not really the point of that example, which focuses more about the need to have publicly accessible properties declared in the protocol._
+[^1]: That's some simplified example ; don't focus on the implementation of the Coordinator pattern here — that's not really the point of that example, which focuses more about the need to have publicly accessible properties declared in the protocol.
 
 ### The problem: leaking implementation details
 
 There are two problems with this solution regarding `protocol` visibility:
 
-* When we want to declare a new `Coordinator` object, we have to explicitly declare a `let navigationController: UINavigationController` property AND a `var childCoordinator: Coordinator?` every time. **Even if we don't use them explicitly** in our implementations — they are just there because we need them for the default implementations provided by the `protocol Coordinator` to work.
+* When we want to declare a new `Coordinator` object, we have to explicitly declare a `let navigationController: UINavigationController` property AND a `var childCoordinator: Coordinator?` every time. **Even if we don't use them explicitly** in implementations of our conforming types — they are just there because we need them for the default implementations provided by the `protocol Coordinator` to work.
 * Those two properties we have to declare have to be of the same visibility (the implicit `internal` access control level in our case) as our `MainCoordinator`, because that's a requirement of our `protocol Coordinator`. That makes them also visible to the outside, i.e. to code using `MainCoordinator`
 
 So the problem is both that we have to declare some properties every time while it's only some implementation details, but also that this implementation details is leaked to the outide interface, allowing consumers of that class to do things they shouldn't be allowed to do, like:
@@ -93,7 +93,7 @@ One could also hope that Swift would allow declaring those properties `filepriva
 
 So how could we solve that, to both provide those default implementations which require those properties, and not letting them leak to the outside interface?
 
-### The solution
+### A solution
 
 A trick to achive that is to hide those properties inside an intermediate object, and make the properties of that object `fileprivate`.
 
@@ -130,8 +130,8 @@ extension Coordinator {
   func pop(animated: Bool = true) {
     let privateAPI = self.coordinatorComponents
     if privateAPI.childCoordinator != nil {
-      privateAPI.navigationController.dismiss(animated: animated) { [weak self] in
-        self?.coordinatorComponents.childCoordinator = nil
+      privateAPI.navigationController.dismiss(animated: animated) { [weak privateAPI] in
+        privateAPI?.childCoordinator = nil
       }
     } else {
       privateAPI.navigationController.popViewController(animated: animated)
@@ -162,7 +162,7 @@ public class MainCoordinator: Coordinator {
 }
 ```
 
-Sure, you still nedd to declare `let coordinatorComponents` in the conforming type to provide the storage, and this declaration has to be visible (can't be made `private`) as it's part of the requirement for conforming to `protocol Coordinator`. But:
+Sure, you still need to declare `let coordinatorComponents` in the conforming type to provide the storage, and this declaration has to be visible (can't be made `private`) as it's part of the requirement for conforming to `protocol Coordinator`. But:
 
 * that's only one property to declare instead of 2 (or more in more complex cases)
 * and more importantly, even if it's accessible from the conforming type's implementation, and also from the outside interface, you can't do anything with it.
