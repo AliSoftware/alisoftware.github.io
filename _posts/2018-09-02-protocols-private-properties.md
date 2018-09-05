@@ -77,7 +77,7 @@ There are two problems with this solution regarding `protocol` visibility:
 * When we want to declare a new `Coordinator` object, we have to explicitly declare a `let navigationController: UINavigationController` property AND a `var childCoordinator: Coordinator?` every time. **Even if we don't use them explicitly** in implementations of our conforming types — they are just there because we need them for the default implementations provided by the `protocol Coordinator` to work.
 * Those two properties we have to declare have to be of the same visibility (the implicit `internal` access control level in our case) as our `MainCoordinator`, because that's a requirement of our `protocol Coordinator`. That makes them also visible to the outside, i.e. to code using `MainCoordinator`
 
-So the problem is both that we have to declare some properties every time while it's only some implementation details, but also that this implementation details is leaked to the outide interface, allowing consumers of that class to do things they shouldn't be allowed to do, like:
+So the problem is that we have to declare some properties every time while it's only some implementation details, but also that these implementation details are leaked to the outside interface, allowing consumers of that class to do things they shouldn't be allowed to do, like:
 
 ```swift
 let mainCoord = MainCoordinator()
@@ -142,7 +142,7 @@ extension Coordinator {
 
 And the conforming type `MainCoordinator` would now:
 
-* Only have to declare a single `let coordinatorComponents = CoordinatorComponents()` property, not having to know what's inside that `CoordinatorComponents` type (hinding the implementation details)
+* Only have to declare a single `let coordinatorComponents = CoordinatorComponents()` property, not having to know what's inside that `CoordinatorComponents` type (hiding the implementation details)
 * Wouldn't be able to access any of the `coordinatorComponents` properties from its `MainCoordinator.swift` file, as they are declared `fileprivate`
 
 ```swift
