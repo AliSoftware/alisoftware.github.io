@@ -15,7 +15,7 @@ Since the implementation has already landed in the `master` branch of Swift, it'
 
 I really encourage you to read the [SE-0228](https://github.com/apple/swift-evolution/blob/master/proposals/0228-fix-expressiblebystringinterpolation.md) proposal to get an idea of the design and motivations behind the new API.
 
-Basically, to make a type conform to `ExpressibleByStringInterpolation`, you hae to:
+Basically, to make a type conform to `ExpressibleByStringInterpolation`, you have to:
 
 * Make this type have a subtype `StringInterpolation`, that must itself conform to `StringInterpolationProtocol` and will be responsible to handle the interpretation of the interpolation
 * That subtype just have to implement `appendLiteral(_ literal: String)` and one or more `appendInterpolation(…)` method, with the signature of your choosing depending on what you want to support
