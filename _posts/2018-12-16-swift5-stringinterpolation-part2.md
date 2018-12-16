@@ -34,8 +34,10 @@ That big String uses the multi-line string literals syntax ([new in Swift 4.0, i
 
 The result `NSAttributedString`, once rendered in a `UILabel` or `NSTextView`, should then look like this:
 
-![rendering of the AttributedString created by the code above](/assets/StringInterpolation-AttrString.png)
+![rendering of the AttributedString created by the code above](/assets/StringInterpolation-AttrString.png)  
 {: style="text-align: center"}
+
+☝️ Yes, that above with the text and image… is really **just** an `NSAttributedString` (and not a complex view with layout or anything)! 🤯
 
 ## First implementation
 
