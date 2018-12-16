@@ -110,7 +110,7 @@ But dealing with attributes as a dictionary `[NAttributedString.Key: Any]` isn't
 So let's make that nicer by creating a dedicated `Style` type[^2] to help us building attributes dictionaries:
 
 ```swift
-extension AttrString.StringInterpolation {
+extension AttrString {
   struct Style {
     let attributes: [NSAttributedString.Key: Any]
     static func font(_ font: NSFont) -> Style {
