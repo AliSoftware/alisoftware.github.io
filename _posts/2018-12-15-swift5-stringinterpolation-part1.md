@@ -7,7 +7,7 @@ swift_version: 5.0
 ---
 
 
-In Swift 4, the `StringInterpolation` protocol got deprecated, because its original design was inefficient and inflexible, with the goal of redisigning it entirely after Swift 4. Since then, [SE-0228](https://github.com/apple/swift-evolution/blob/master/proposals/0228-fix-expressiblebystringinterpolation.md) introduced a new design for `StringInterpolation`, that's gonna be part of Swift 5, and opens a whole lot of powerful possibilities.
+In Swift 4, the `StringInterpolation` protocol got deprecated, because its original design was inefficient and inflexible, with the goal of redisigning it entirely after Swift 4. Since then, [SE-0228](https://github.com/apple/swift-evolution/blob/master/proposals/0228-fix-expressiblebystringinterpolation.md) introduced a new design for `StringInterpolation`, which is going to be part of Swift 5, and opens a whole lot of powerful possibilities.
 
 Since the implementation has already landed in the `master` branch of Swift, it's already possible to play with that new `StringInterpolation`, by downloading a [snapshot](https://swift.org/download/#swift-50-development) to install the latest Swift 5 toolchain and use it in Xcode… so let's have fun!
 
@@ -38,7 +38,7 @@ let comment: GitHubComment = """
   """
 ```
 
-How are we gonna implement that?
+So, how do we implement this?
 
 First let's declare the basic `struct GitHubComment` and make it `ExpressibleByStringLiteral` (because `ExpressibleByStringInterpolation` inherits that protocol so let's get that implementation out of the way) and `CustomStringConvertible` (for nice debugging when printing in the console)
 
@@ -60,9 +60,9 @@ extension GitHubComment: CustomStringConvertible {
 }
 ```
 
-Then, we're gonna make `GitHubComment` conform to `ExpressibleByStringInterpolation`, which means having a `StringInterpolation` subtype that will handle what to do when:
+Then, we'll make `GitHubComment` conform to `ExpressibleByStringInterpolation`, which means having a `StringInterpolation` subtype that will handle what to do when:
 
-* initializing itself: `init(literalCapacity: Int, interpolationCount: Int)` lets you the possibility to reserve some capacity to the buffer you're gonna use while building the type step by step. In our case, we could simply have used a `String` and append the segments to it while building the instance, but I instead chose to use a `parts: [String]`, that we'll assemble together later
+* initializing itself: `init(literalCapacity: Int, interpolationCount: Int)` lets you the possibility to reserve some capacity to the buffer you'll use while building the type step by step. In our case, we could simply have used a `String` and append the segments to it while building the instance, but I instead chose to use a `parts: [String]`, that we'll assemble together later
 * implement `appendLiteral(_ string: String)` to append the literal text to the `parts`
 * implement `appendInterpolation(user: String)` to append the markdown representation of a link to that user's profile when encountering `\(user: xxx)`
 * implement `appendInterpolation(issue: Int)` to append the markdown representation of a link to that issue

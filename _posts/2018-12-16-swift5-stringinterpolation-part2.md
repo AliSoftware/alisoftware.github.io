@@ -41,7 +41,7 @@ The result `NSAttributedString`, once rendered in a `UILabel` or `NSTextView`, s
 
 ## First implementation
 
-So how are we gonna implement this? Well, similar to how we implemented `GitHubComment` [in part 1](/swift/2018/12/15/swift5-stringinterpolation-part1/) of course!
+So how are we going to implement this? Well, similar to how we implemented `GitHubComment` [in part 1](/swift/2018/12/15/swift5-stringinterpolation-part1/) of course!
 
 So, let's start with the declaration of the dedicated type first, before even tackling string interpolation:
 
