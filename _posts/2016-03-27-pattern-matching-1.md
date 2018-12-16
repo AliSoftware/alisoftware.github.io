@@ -13,7 +13,7 @@ update_date: 2016-10-17
 swift_version: 3.0
 ---
 
-From a simple `switch` to complex expressions, pattern matching in Swift can be quite powerful. Today we're gonna start exploring it by seing some cool usages of `switch`, before going further in later articles with even more advanced pattern matching techniques.
+From a simple `switch` to complex expressions, pattern matching in Swift can be quite powerful. Today we're going to start exploring it by seing some cool usages of `switch`, before going further in later articles with even more advanced pattern matching techniques.
 
 _This article serves as an introduction to the incomming articles about Pattern Matching._
 
@@ -72,7 +72,7 @@ book.mediaTitle
 The generic syntax in this case is `case MyEnum.enumValue(let variable)` to tell "if the value is a `MyEnum.enumValue` — which has an associated value — then bind the variable `variable` to that associated value".
 
 When the `media` instance match one of the `case` — like with `book` which is a `Media.book` and matches the first `case` of the `switch` — then **a new variable `let aTitle` is created** and the associated value `title` is _bound_ to this given variable.
-That's why the `let` is needed there, because that's gonna create a new variable (well, constant) if it matches.
+That's why the `let` is needed there, because that is going to create a new variable (well, constant) if it matches.
 
 Note that you can write the `let` in front of the whole expression, instead of using it in front of each variable, e.g. these two lines are equivalent:
 
@@ -118,7 +118,7 @@ extension Media {
 book.checkAuthor("Jules Verne")
 ```
 
-Notice here that although we use `author` in the `case` patterns, we don't need to use `let` here (unlike in the preview paragraph). That's because in this case, we won't create a variable to bind a value to it. Instead, we use a constant which already has a value (provided by the function parameter) — not creating a new one that is gonna be bound to the value matched with `self`.
+Notice here that although we use `author` in the `case` patterns, we don't need to use `let` here (unlike in the preview paragraph). That's because in this case, we won't create a variable to bind a value to it. Instead, we use a constant which already has a value (provided by the function parameter) — not creating a new one that is going to be bound to the value matched with `self`.
 
 
 _[EDIT]_ Another great example of matching with constants have been [suggested by @ashfurrow on Twitter](https://twitter.com/ashfurrow/status/734868499441418240) when dealing with HTTP status codes:
@@ -226,7 +226,7 @@ This will only match if both the left side of the pattern (like `let .book(_, _,
 
 ## What's next?
 
-This article was pretty simple to remind you of the basics of pattern matching in `switch`. The next parts are gonna talk about more advanced usages, including:
+This article was pretty simple to remind you of the basics of pattern matching in `switch`. The next parts will talk about more advanced usages, including:
 
 * using `switch` with anything other than `enum` (especially pattern matching with `tuples`, `structs`, `is` and `as`).
 * using pattern matching with other statements, including `if case`, `guard case`, `for case`, `=~`, …

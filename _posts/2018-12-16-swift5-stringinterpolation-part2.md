@@ -191,7 +191,7 @@ let str: AttrString = """
   """
 ```
 
-## Support Images
+## Supporting Images
 
 Another capability of `NSAttributedString` is to add images as part of the string, by using `NSAttributedString(attachment: NSTextAttachment)`. To do that, it's just a matter of implementing `appendInterpolation(image: NSImage)` to use it.
 

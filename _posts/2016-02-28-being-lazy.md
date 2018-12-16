@@ -11,7 +11,7 @@ translations:
     url: http://swift.gg/2016/03/25/being-lazy/
 ---
 
-Today we're gonna see how we can be more efficient ⚡️ by… being la💤y 😴.  
+Today we'll see how we can be more efficient ⚡️ by… being la💤y 😴.  
 In particular, we'll talk about `lazy var` and `LazySequence`. And cats 😸.
 
 ![Lazy cat](/assets/lazy-cat.jpg){: height="200px" }
@@ -197,7 +197,7 @@ print("Result:")
 print(incArray[0], incArray[4])
 ```
 
-With this code, **even before** we access the `incArray` values, **all output values are computed**. So you're gonna see 1,000 of those `Computing next value of …` lines even before the `print("Result:")` gets executed! Even if we only read values for `[0]` and `[4]` entries, and never care about the others… imagine if we used a more computationally intensive function than this simple `increment` one!
+With this code, **even before** we access the `incArray` values, **all output values are computed**. So you'll see 1,000 of those `Computing next value of …` lines even before the `print("Result:")` gets executed! Even if we only read values for `[0]` and `[4]` entries, and never care about the others… imagine if we used a more computationally intensive function than this simple `increment` one!
 
 ## Lazy sequences
 

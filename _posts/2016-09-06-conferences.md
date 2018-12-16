@@ -5,13 +5,13 @@ date: 2016-09-06
 categories: news conferences
 ---
 
-This month, I'm gonna talk at ([NSSpain](http://2016.nsspain.com) and [FrenchKit](http://frenchkit.fr)) about Swift 🎉 I'm looking forward to speak for the first time at such great conferences, and I really hope to see you there!
+This month, I'm going to talk at ([NSSpain](http://2016.nsspain.com) and [FrenchKit](http://frenchkit.fr)) about Swift 🎉 I'm looking forward to speak for the first time at such great conferences, and I really hope to see you there!
 
 ## Talking at NSSpain & FrenchKit
 
 This post is just a quickie to do a small announcement, in case you didn't see me announce it on Twitter a few month ago.
 
-This month, I'm gonna give my first big conference talks. People who know me already know I don't have any problem talking a lot in public 😇 and I've already talked in meetings like CocoaHeads, but that will be the first time I'll speak at big conferences.
+This month, I'm going to give my first big conference talks. People who know me already know I don't have any problem talking a lot in public 😇 and I've already talked in meetings like CocoaHeads, but that will be the first time I'll speak at big conferences.
 
 And for my first time, I already chose quite a challenge:
 
@@ -22,7 +22,7 @@ The first talk will be quite a challenge for me, because it will be my first big
 
 The second one will probably be easier, first because I'll already have th experience from the first one, but also because it will be in my country 🇫🇷, with slides and not live-coding, and on a subject I already talked about. But hey, you never know how events could turn once on stage, and especially given how talkative I can be, I hope I'll fit into the 30 minutes window that I've been allocated!
 
-I'm not sure I'm entirely ready for those 😰 but nevertheless I really can't wait to meet a lot of people there and be part of that adventure 🎉! I really enjoyed going to conferences last year as an attendee, so this time going as a speaker I really think this is gonna be even more amazing!
+I'm not sure I'm entirely ready for those 😰 but nevertheless I really can't wait to meet a lot of people there and be part of that adventure 🎉! I really enjoyed going to conferences last year as an attendee, so this time going as a speaker I really think this is going to be even more amazing!
 
 _This also explains why I haven't been very present the last few weeks, quite busy preparing my talks… but worry not, I haven't forgotten about the part 2 of my last article about [Closure Capture Semantics](/swift/closures/2016/07/25/closure-capture-1/) and will hopefully resume my blogging around october after that!_
 

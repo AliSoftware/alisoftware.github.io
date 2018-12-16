@@ -308,4 +308,4 @@ This other concept is called Reactive Programming.
 Some of you might already know `ReactiveCocoa` (RAC in short), or `RxSwift`.
 Even if it's sharing some concepts with `Promises` (asynchronicity, error propagation, …), that's the next level beyond `Futures` & `Promises`: `Rx` allows multiple values to be emitted during time (instead of just one return value), and is a lot richer with tons of other features.
 
-But that's a whole new subject, which is gonna be an exploration for another day!
+But that's a whole new subject, which will be an exploration for another day!

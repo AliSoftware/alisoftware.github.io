@@ -109,7 +109,7 @@ So with Traits, the important stuff is not so much what they are, but what they 
 
 > While Inheritance let you describe what an object *is*, Traits let you describe what an object *can do*.
 
-[^diff]: I'm not gonna enter in the details of the difference between the concept of "Mixin" and "Traits" here. Let's say for the sake of simplicity that these two are similar and those two words can be used interchangeably in the context of this article.
+[^diff]: I'm not going to enter in the details of the difference between the concept of "Mixin" and "Traits" here. Let's say for the sake of simplicity that these two are similar and those two words can be used interchangeably in the context of this article.
 
 And best of all, a class can adopt multiple `Traits`, as it can do multiple things, while it can only be one thing (inherit only one superclass).
 
@@ -361,7 +361,7 @@ When practicing Swift, you'll realize that it's really a Protocols-Oriented lang
 
 With Swift Protocols and Protocols Default Implementations, you can implement Mixins & Traits, but you can also implement something similar to Abstract Classes[^future-post] and more, and make your code way more flexible.
 
-[^future-post]: That's probably gonna be a topic for a future blog post.
+[^future-post]: That will probably be a topic for a future blog post.
 
 The Mixins & Traits approach allows you to describe types by **what they can do rather than what they are**, and more importantly, to opt-in capabilities into your types. It's like doing your shopping and **pick the capabilities you want for your type, whatever the class they inherit**, if any.
 

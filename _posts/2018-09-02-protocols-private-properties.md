@@ -11,7 +11,7 @@ But sometimes, even if you need those properties in order to provide your implem
 
 Let's see that you want to create a dedicated object to manage your ViewControllers navigation, like a Coordinator.
 
-Every coordinator is gonna have a root `UINavigationController`, and share some common capabilities, like pushing and poping other ViewControllers on it. So at first it might look like this[^1]:
+Every coordinator is going to have a root `UINavigationController`, and share some common capabilities, like pushing and poping other ViewControllers on it. So at first it might look like this[^1]:
 
 ```swift
 // Coordinator.swift

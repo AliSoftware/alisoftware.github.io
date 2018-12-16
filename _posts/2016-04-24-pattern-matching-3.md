@@ -64,7 +64,7 @@ And this works and prints `3x+2`!
 
 Note however that Swift can't know if the `switch` is exhaustive with custom pattern matching. For example, even if we add a `case Affine(a: 2, b: 1)` and a `case Affine(a: 2, b: -1)` which would cover every positive and negative integer case, Swift wouldn't know and would still force us to use a `default:` statement.
 
-Also, don't mix up the parameters order: the first parameter of the infix `~=` operator (commonly named `lhs`, for _left-hand side_) is the object you're gonna use in your `case` statements. The second parameter (commonly named `rhs` for _right-hand side_) is the object you're `switch`-ing over.
+Also, don't mix up the parameters order: the first parameter of the infix `~=` operator (commonly named `lhs`, for _left-hand side_) is the object you will use in your `case` statements. The second parameter (commonly named `rhs` for _right-hand side_) is the object you're `switch`-ing over.
 
 ## Other uses of ~=
 

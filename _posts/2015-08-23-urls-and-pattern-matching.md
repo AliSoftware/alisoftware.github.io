@@ -11,7 +11,7 @@ translations:
 ---
 
 Today's goal is to parse URLs like `http://mywebsite.org/customers/:cid/orders/:oid` so that we can determine it's a customer's order request and extract the order #`oid` and customer #`cid` from it.  
-We're gonna try and do that in an elegant way, using pattern matching and variable binding.
+We'll try and do that in an elegant way, using pattern matching and variable binding.
 
 ## The idea
 
@@ -98,7 +98,7 @@ That's where I pull another trick from my hat: using a `Generator`
 
 If you don't know what a `Generator` is in the Swift standard library, it's quite simple really. It's like an iterator in C++, basically. It's an object which has a `next()` method, which returns the next item in the sequence it iterates over, or `nil` once it reached the end of the sequence.
 
-So how we're gonna use that fact to build our tuple? Simple! Every `SequenceType` (and thus any `Array` in particular) have a generator, and we just have to build our tuple by calling `next()` for each item. It will start filling the last items of the tuple with `nil` if the array is shorter:
+So how we'll use that fact to build our tuple? Simple! Every `SequenceType` (and thus any `Array` in particular) have a generator, and we just have to build our tuple by calling `next()` for each item. It will start filling the last items of the tuple with `nil` if the array is shorter:
 
 ```swift
 let path : [String] = …
