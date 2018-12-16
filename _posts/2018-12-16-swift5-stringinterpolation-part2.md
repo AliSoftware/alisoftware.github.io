@@ -6,7 +6,7 @@ categories: swift
 swift_version: 5.0
 ---
 
-In [the previous post](/swift/2018/12/15/swift5-stringinterpolation-part1/), we introduced the new StringInterpolation design coming to Swift 5. In this second part, I'll focus on one application of that new `ExpressibleByStringInterpolation`, to make `NSAttributedString` prettier
+In [the previous post](/swift/2018/12/15/swift5-stringinterpolation-part1/), we introduced the new StringInterpolation design coming to Swift 5. In this second part, I'll focus on one application of that new `ExpressibleByStringInterpolation`, to make `NSAttributedString` prettier.
 
 ## The goal
 
@@ -30,7 +30,7 @@ let str: AttrString = """
 
 [^1]: For the code in that post & playground, you'll need to use Swift 5. At the time of this writing, the latest Xcode is 10.1 with Swift 4.2, so if you want to try that code you'll need to [download the Swift 5 development snapshot by following the official instructions here](https://swift.org/download/#snapshot). It's an easy way to install the Swift 5 toolchain which you can then activate inn your Xcode preferences (see official instructions).
 
-That big String uses the multi-line string literals syntax ([new in Swift 4.0, in case you missed it](https://github.com/apple/swift-evolution/blob/master/proposals/0168-multi-line-string-literals.md)) — and even goes as far as wrapping another multi-line String literal inside another (see the `\(wrap: …)` segment)! — and contains interpolations to add some styling to parts of that big String.
+That big String uses the multi-line string literals syntax ([new in Swift 4.0, in case you missed it](https://github.com/apple/swift-evolution/blob/master/proposals/0168-multi-line-string-literals.md)) — and even goes as far as wrapping another multi-line String literal inside another (see the `\(wrap: …)` segment)! — and contains interpolations to add some styling to parts of that big String… so a lot of new features of Swift coming together!
 
 The result `NSAttributedString`, once rendered in a `UILabel` or `NSTextView`, should then look like this:
 
