@@ -10,9 +10,9 @@ In [the previous post](/swift/2018/12/15/swift5-stringinterpolation-part1/), we 
 
 ## The goal
 
-One of the first application I thought about when seeint that [new StringInterpolation design in Swift 5](https://github.com/apple/swift-evolution/blob/master/proposals/0228-fix-expressiblebystringinterpolation.md) was to make it easy to build an `NSAttributedString`.
+One of the first application I thought about when seeing that [new StringInterpolation design in Swift 5](https://github.com/apple/swift-evolution/blob/master/proposals/0228-fix-expressiblebystringinterpolation.md) was to make it easy to build an `NSAttributedString`.
 
-My goal was to be able to create an attributed string using a syntax like this:
+My goal was to be able to create an attributed string using a syntax like this[^1]:
 
 ```swift
 let username = "AliGator"
@@ -27,6 +27,8 @@ let str: AttrString = """
   Go there to \("learn more about String Interpolation", .link("https://github.com/apple/swift-evolution/blob/master/proposals/0228-fix-expressiblebystringinterpolation.md"), .underline(.blue, .single))!
   """
 ```
+
+[^1]: For the code in that post & playground, you'll need to use Swift 5. At the time of this writing, the latest Xcode is 10.1 with Swift 4.2, so if you want to try that code you'll need to [download the Swift 5 development snapshot by following the official instructions here](https://swift.org/download/#snapshot). It's an easy way to install the Swift 5 toolchain which you can then activate inn your Xcode preferences (see official instructions).
 
 That big String uses the multi-line string literals syntax ([new in Swift 4.0, in case you missed it](https://github.com/apple/swift-evolution/blob/master/proposals/0168-multi-line-string-literals.md)) — and even goes as far as wrapping another multi-line String literal inside another (see the `\(wrap: …)` segment)! — and contains interpolations to add some styling to parts of that big String.
 
@@ -60,7 +62,7 @@ extension AttrString: CustomStringConvertible {
 ```
 
 Simple enough, right? That's just a wrapper around `NSAttributedString`.
-Now, let's add support for `StringInterpolation` that would allow both literals but also strings annotated with `NSAttributedString` attributes:
+Now, let's add support for `ExpressibleByStringInterpolation` that would allow both literals but also strings annotated with `NSAttributedString` attributes:
 
 ```swift
 extension AttrString: ExpressibleByStringInterpolation {
@@ -103,7 +105,7 @@ That's already nice as it is, right?
 
 But dealing with attributes as a dictionary `[NAttributedString.Key: Any]` isn't really nice. Especially since that `Any` isn't typed, and forces us to know the expected type of the value for each key…
 
-So let's make that nicer by creating a dedicated `Style` type to help us building attributes dictionaries:
+So let's make that nicer by creating a dedicated `Style` type[^2] to help us building attributes dictionaries:
 
 ```swift
 extension AttrString.StringInterpolation {
@@ -142,7 +144,7 @@ extension AttrString.StringInterpolation {
 
 This allows us to use `Style.color(.blue)` to create a `Style` wrapping `[.foregroundColor: NSColor.blue]` easily.
 
-> Of course I've only implemented a limited list of styles there, for demo purposes. The idea would be to extend that `Style` type to support way more styles in the future, and ideally cover all possible `NSAttributedString.Key` that exists.
+[^2]: Of course I've only implemented a limited list of styles there, for demo purposes. The idea would be to extend that `Style` type to support way more styles in the future, and ideally cover all possible `NSAttributedString.Key` that exists.
 
 But let's not stop there then, and make our `StringInterpolation` handle such `Style` attributes now!
 
@@ -260,5 +262,3 @@ You can [download my Playground here](/assets/StringInterpolation.playground.zip
 
 There are plenty more nice ideas around here to make use of that new `ExpressibleByStringInterpolation` API coming in Swift 5 — including some from [Erica Sadun's blog here](https://ericasadun.com/2018/12/12/the-beauty-of-swift-5-string-interpolation/), [here](https://ericasadun.com/2018/12/14/more-fun-with-swift-5-string-interpolation-radix-formatting/) and [here](https://ericasadun.com/2018/12/16/swift-5-interpolation-part-3-dates-and-number-formatters/) — so don't hesitate to read more about it… and even have fun with it yourself!
 
-
-[^1]: For the code in that post & playground, you'll need to use Swift 5. At the time of this writing, the latest Xcode is 10.1 with Swift 4.2, so if you want to try that code you'll need to [download the Swift 5 development snapshot by following the official instructions here](https://swift.org/download/#snapshot). It's an easy way to install the Swift 5 toolchain which you can then activate inn your Xcode preferences (see official instructions).
