@@ -75,7 +75,11 @@ extension GitHubComment: ExpressibleByStringInterpolation {
 
     init(literalCapacity: Int, interpolationCount: Int) {
       self.parts = []
-      self.parts.reserveCapacity(literalCapacity + interpolationCount)
+      // - literalCapacity is the number of characters in literal segments (L)
+      // - interpolationCount is the number of interpolation segments (I)
+      // We estimate that we generally have a structure like "LILILIL"
+      // — e.g. "Hello \(world, .color(.blue))!" — hence the 2n+1
+      self.parts.reserveCapacity(2*interpolationCount+1)
     }
 
     mutating func appendLiteral(_ literal: String) {
