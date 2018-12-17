@@ -28,7 +28,7 @@ let str: AttrString = """
   """
 ```
 
-[^1]: For the code in that post & playground, you'll need to use Swift 5. At the time of this writing, the latest Xcode is 10.1 with Swift 4.2, so if you want to try that code you'll need to [download the Swift 5 development snapshot by following the official instructions here](https://swift.org/download/#snapshot). It's an easy way to install the Swift 5 toolchain which you can then activate inn your Xcode preferences (see official instructions).
+[^1]: For the code in that post & playground, you'll need to use Swift 5. At the time of this writing, the latest Xcode is 10.1 with Swift 4.2, so if you want to try that code you'll need to [download the Swift 5 development snapshot by following the official instructions here](https://swift.org/download/#snapshot). It's an easy way to install the Swift 5 toolchain which you can then activate in your Xcode preferences (see official instructions).
 
 That big String uses the multi-line string literals syntax ([new in Swift 4.0, in case you missed it](https://github.com/apple/swift-evolution/blob/master/proposals/0168-multi-line-string-literals.md)) — and even goes as far as wrapping another multi-line String literal inside another (see the `\(wrap: …)` segment)! — and contains interpolations to add some styling to parts of that big String… so a lot of new features of Swift coming together!
 
@@ -237,7 +237,7 @@ extension AttrString.StringInterpolation {
 }
 ```
 
-And with all that, we have achieved our goal and are finally able to create an AttributedString using this simple string with interpolations:
+And with all that, we have achieved our goal and are finally able to create an AttributedString using this single string with interpolations:
 
 ```swift
 let username = "AliGator"
@@ -258,7 +258,7 @@ let str: AttrString = """
 
 ## Conclusion
 
-I hope you enjoyed this series on `StringInterpolation` and that gives you a glimpse at the power brought by that new design.
+I hope that you enjoyed this series on `StringInterpolation` and that it gave you a glimpse at the power brought by that new design.
 
 You can [download my Playground here](/assets/StringInterpolation.playground.zip)[^1] with the full implementation for `GitHubComment` (see [part 1](/swift/2018/12/15/swift5-stringinterpolation-part1/)), `AttrString`, and even some fun I tried with an simplistic implementation for `RegEx`.
 
