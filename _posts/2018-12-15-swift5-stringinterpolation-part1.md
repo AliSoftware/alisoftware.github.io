@@ -9,7 +9,9 @@ swift_version: 5.0
 
 In Swift 4, the `StringInterpolation` protocol got deprecated, because its original design was inefficient and inflexible, with the goal of redisigning it entirely after Swift 4. Since then, [SE-0228](https://github.com/apple/swift-evolution/blob/master/proposals/0228-fix-expressiblebystringinterpolation.md) introduced a new design for `StringInterpolation`, which is going to be part of Swift 5, and opens a whole lot of powerful possibilities.
 
-Since the implementation has already landed in the `master` branch of Swift, it's already possible to play with that new `StringInterpolation`, by downloading a [snapshot](https://swift.org/download/#swift-50-development) to install the latest Swift 5 toolchain and use it in Xcode… so let's have fun!
+This feature is part of Swift 5, so you will need Xcode 10.2 and Swift 5 to use it.
+
+Note: This article is an introduction to the new `StringInterpolation`. A followup article with a more advanced example is available in [part 2 of this article](/swift/2018/12/16/swift5-stringinterpolation-part2/).
 
 ## The new StringInterpolation design
 
@@ -128,4 +130,6 @@ This new design opens a large range of possibilities for making your own types `
 
 [Brent Royal-Gordon](https://github.com/brentdax), who  came up with that awesome design for the new String Interpolation alongside [Michael Ilseman](https://github.com/milseman), provided some more example in [this gist](https://gist.github.com/brentdax/0b46ce25b7da1049e61b4669352094b6)
 
-I for one gave a try at implementing support for `NSAttributedString`, and I wanted to [share that implementation draft with you in a dedicated post](/swift/2018/12/16/swift5-stringinterpolation-part2/), as I find it really beautiful. See you on the part 2 of this post then!
+Personally I gave a shot at building NSAttributedStrings using StringInterpolation, and found the result really beautiful 🤩 So I am really excited to share it with you in [part 2 of this post](/swift/2018/12/16/swift5-stringinterpolation-part2/) 🙂 
+
+See you there! 👋
