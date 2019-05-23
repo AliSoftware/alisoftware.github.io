@@ -5,7 +5,7 @@ author: Olivier Halligon
 image: apple-touch-icon-180x180.png
 
 baseurl:     ""
-url:         "http://alisoftware.github.io"
+url:         "https://alisoftware.github.io"
 date_format: "%b %-d, %Y"
 
 # Optional features
