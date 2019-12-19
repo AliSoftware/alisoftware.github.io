@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Closures Capture Semantics, Part 1: Catch them all!"
+title: "Closures Capture Semantics: Catch them all!"
 categories: swift closures
 translations:
   - lang: Chinese
@@ -359,7 +359,7 @@ Still confused by all that gymnastics? That's normal. Closure capture semantics 
 
 I will let today's lesson sink in for now, as it might be sometimes hard to grasp. Don't hesitate to [try and test this code and variations of it in the Playground attached](/assets/Closure-Capture.playground.zip) to clearly understand how all of this works on your own.
 
-Once you've understood this more clearly, it will be time for the next part of this blog post, on which we'll talk about capturing variables _weakly_ to avoid reference cycles, and what `[weak self]` and `[unowned self]` all means in closures.
+Once you've understood this more clearly, you should be ready to go to the next level and look at how we can capture variables _weakly_ to avoid reference cycles, and what `[weak self]` and `[unowned self]` all means in closures. But that's an article for another day (and this one I'm not sure I will write to be honest, as there are already plenty of existing blog posts about `weak` and `unowned` all by themselves that already cover this topic nicely 🙂)
 
 _Thanks to [@merowing](https://twitter.com/merowing_) for the discussion about all those capture semantics we had in Slack and some revelations about captured variables being evaluated at closure execution time! You can visit [his blog here](http://merowing.info) 😉_
 {: .note :}
