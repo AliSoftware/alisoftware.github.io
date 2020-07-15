@@ -304,7 +304,7 @@ func demo7() {
 }
 ```
 
-Can you guess the output on this one? It might be a bit hard to guess, but it's a good execise to try to determine the output yourself to check if you understood all of today's lesson…
+Can you guess the output on this one? It might be a bit hard to guess, but it's a good exercise to try to determine the output yourself to check if you understood all of today's lesson…
 
 ![drumroll](/assets/pokemon-drumroll.gif)
 {: style="text-align: center"}

@@ -95,7 +95,7 @@ So how could we solve that, to both provide those default implementations which 
 
 ### A solution
 
-A trick to achive that is to hide those properties inside an intermediate object, and make the properties of that object `fileprivate`.
+A trick to achieve that is to hide those properties inside an intermediate object, and make the properties of that object `fileprivate`.
 
 That way, even if we'll still have conforming types to declare that property in their public interface, consumers of that interface won't be able to access internal properties of that object. While our default implementation of the protocol will be able to access them — as long as it's declared in the same file (as they'll be `fileprivate`).
 

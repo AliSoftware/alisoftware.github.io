@@ -26,7 +26,7 @@ BOOL ok = [string writeToFile:path
                      encoding:NSUTF8StringEncoding
                         error:&error];
 if (!ok) {
-  NSLog(@"An error happend: %@", error);
+  NSLog(@"An error happened: %@", error);
 }
 ```
 

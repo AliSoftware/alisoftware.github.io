@@ -13,7 +13,7 @@ update_date: 2016-10-17
 swift_version: 3.0
 ---
 
-From a simple `switch` to complex expressions, pattern matching in Swift can be quite powerful. Today we're going to start exploring it by seing some cool usages of `switch`, before going further in later articles with even more advanced pattern matching techniques.
+From a simple `switch` to complex expressions, pattern matching in Swift can be quite powerful. Today we're going to start exploring it by seeing some cool usages of `switch`, before going further in later articles with even more advanced pattern matching techniques.
 
 _This article serves as an introduction to the incomming articles about Pattern Matching._
 

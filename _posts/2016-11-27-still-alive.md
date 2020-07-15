@@ -22,4 +22,4 @@ But fret not, I haven't forgotten about the part two of my "Closures Capture Sem
 <center><iframe width="560" height="315" src="https://www.youtube.com/embed/Y6ljFaKRTrI" frameborder="0" allowfullscreen></iframe></center>
 
 ---
-_PS: For those of you who like video games and music, I stongly encourage you to go see the [VideoGames Live](http://videogameslive.com) show. It's a concert of game music played by an orchestra, really stunning. You can see the videos I've filmed from it [here on my Twitter](https://twitter.com/search?q=from%3A%40aligatr%20%20%23VideoGamesLive)._
+_PS: For those of you who like video games and music, I strongly encourage you to go see the [VideoGames Live](http://videogameslive.com) show. It's a concert of game music played by an orchestra, really stunning. You can see the videos I've filmed from it [here on my Twitter](https://twitter.com/search?q=from%3A%40aligatr%20%20%23VideoGamesLive)._

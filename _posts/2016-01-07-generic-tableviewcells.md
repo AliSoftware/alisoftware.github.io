@@ -21,7 +21,7 @@ But when it comes to `UITableViewCell` or `UICollectionViewCell` and their ident
 
 ## The magic
 
-The idea is to declare the `reuseIdentifier` as a `static var` on the `UITableViewCell` (resp. `UICollectionViewCell`)  subclass, then use it transparently to instanciate cells of that class.
+The idea is to declare the `reuseIdentifier` as a `static var` on the `UITableViewCell` (resp. `UICollectionViewCell`)  subclass, then use it transparently to instantiate cells of that class.
 
 Let's declare that as a protocol first, so that we can [use it as a Mixin](/swift/protocol/2015/11/08/mixins-over-inheritance/) later:
 

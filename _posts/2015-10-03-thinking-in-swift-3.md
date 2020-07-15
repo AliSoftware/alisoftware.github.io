@@ -111,7 +111,7 @@ This `??` operator a little similar to ObjC's `opt ?: val` expression, for those
 
 So here `iconName ?? ""` allows us to use an empty `""` image name in case `iconName` is `nil`, which we know will lead to a `nil` `UIImage` (and `icon = nil`) in such case.
 
-⚠️ Note ⚠️: That's **NOT** the best and clean way to handle a `nil` `iconName` and have a `nil` `UIImage` as a result. In fact, it even seems a bit ugly and cheaty to use a fake `""` name to have an empty image. But that was an occasion to show you the existance of this `??` operator… and hey, let's also keep some nice stuff for the next part of this article series 😉 _(Spoiler: it involves `flatMap` again)_.
+⚠️ Note ⚠️: That's **NOT** the best and clean way to handle a `nil` `iconName` and have a `nil` `UIImage` as a result. In fact, it even seems a bit ugly and cheaty to use a fake `""` name to have an empty image. But that was an occasion to show you the existence of this `??` operator… and hey, let's also keep some nice stuff for the next part of this article series 😉 _(Spoiler: it involves `flatMap` again)_.
 
 ## Conclusion
 

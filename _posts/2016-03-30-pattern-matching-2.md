@@ -59,13 +59,13 @@ switch car {
 }
 ```
 
-Here you can also notice that you can use multiple patterns separated by a comma to execute the same code for mutliple matches (namely all the vowels here). This allows you to avoid code repetition easily.
+Here you can also notice that you can use multiple patterns separated by a comma to execute the same code for multiple matches (namely all the vowels here). This allows you to avoid code repetition easily.
 
 ## Ranges
 
 Ranges are also usable for pattern matching. As a reminder, a `Range<T>` is a generic type which contains a `start` and `end` both of type `T`, where `T` must be a `ForwardIndexType`. This includes types like `Int` and `Character`.
 
-💡 _In Swift 2, you can declare a range either explicitly using `Range(start: 1900, end: 2000)`, or using the syntactic sugar operators `..<` (range excluding its `end`) and `...` (range including its `end`); e.g. you can declare the same range as above using `1900..<2000`. The latter form (using the `..<` operator) is prefered though, both because it's more readable and because `Range(start:end:)` will be removed in Swift 3.0 anyway._
+💡 _In Swift 2, you can declare a range either explicitly using `Range(start: 1900, end: 2000)`, or using the syntactic sugar operators `..<` (range excluding its `end`) and `...` (range including its `end`); e.g. you can declare the same range as above using `1900..<2000`. The latter form (using the `..<` operator) is preferred though, both because it's more readable and because `Range(start:end:)` will be removed in Swift 3.0 anyway._
 
 So how do we use that with `switch`? Well easy, use ranges in your `case` patterns to check if a value is within that range!
 

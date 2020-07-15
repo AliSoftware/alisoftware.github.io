@@ -17,7 +17,7 @@ And now for something completely different™, today I'll take this opportunity 
 
 So the big news of this week is obviously Swift now being OpenSource. Apple went way further that anyone expected there, releasing the **full GIT history** of [Swift source](https://github.com/Apple), but also the source of **other tools** like `lldb` and the REPL, revealing they are working on a [Swift Package Manager](https://swift.org/package-manager/), and making everything to [build a better community](https://swift.org/community/)!
 
-That's a very welcomed move from Apple and even if they announced at the WWDC'15 that this were comming, I'm almost certain that nobody expected it to be that huge, and that well done and handled.
+That's a very welcomed move from Apple and even if they announced at the WWDC'15 that this were coming, I'm almost certain that nobody expected it to be that huge, and that well done and handled.
 
 But what's all this fuzz about OpenSource, why is it so great?
 Instead of talking about what Swift being OpenSource can bring to all of us — there is already plenty of blog posts on the net about that — let me tell you my story with OpenSource and how it changed my way of thinking. Hopefully you'll get why I love it so much!

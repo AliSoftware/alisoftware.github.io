@@ -187,7 +187,7 @@ For extending the idea to `UITableViewDelegate`, you could go multiple ways:
 
 Both options are valid, it depends of your needs and what your dedicated implementations are doing. The fact that for `UITableView`, the delegate and dataSource are often closely related might make you go towards the first solution though [^1].
 
-[^1]: For example, the `titleForHeaderInSection` function is in the `UITableViewDataSource` protocol, but the `viewForHeaderInSection` function is in the `UITableViewDelegate` protocol… go figure; also, they both expect the cells to be indexed the same way by your `IndexPaths`, so using a delegate which assumes one way of organizing your data (e.g. in a flat list) and a dataSource wich assumes another (e.g. in sections) probably wouldn't fit well together
+[^1]: For example, the `titleForHeaderInSection` function is in the `UITableViewDataSource` protocol, but the `viewForHeaderInSection` function is in the `UITableViewDelegate` protocol… go figure; also, they both expect the cells to be indexed the same way by your `IndexPaths`, so using a delegate which assumes one way of organizing your data (e.g. in a flat list) and a dataSource which assumes another (e.g. in sections) probably wouldn't fit well together
 
 Also, imagining you go with the first route (use the same object for dataSource and delegate), you could give closures to that object on `init` to tell it what to do especially when a `Product` is selected, then forward delegate method to call that closure:
 

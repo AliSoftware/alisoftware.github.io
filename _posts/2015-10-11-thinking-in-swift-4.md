@@ -179,7 +179,7 @@ I'm not saying that it's easy. Changing your way of thinking when you're already
 
 That concludes the last part of the Thinking in Swift series[^epilogue]. It's time for you to go nuts on new Swift projects, and to fully commit to thinking in Swift!
 
-[^epilogue]: I'll just post an upcomming epilogue very soon to drop a word about _Monads_ and really conclude all this series. But don't worry, there are still a lot articles on Swift to come after that!
+[^epilogue]: I'll just post an upcoming epilogue very soon to drop a word about _Monads_ and really conclude all this series. But don't worry, there are still a lot articles on Swift to come after that!
 
 Happy Swifting, and…  
 ![map-everywhere](/assets/map-all-the-things.jpg)

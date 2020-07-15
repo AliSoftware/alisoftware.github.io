@@ -144,7 +144,7 @@ There are some mechanisms that can help us reduce that in Swift:
 * combining multiple `if let` statements into one: `if let x = opt1, y = opt2`
 * using the `guard` statement, which allow us to bail early from a function if a condition is not met, avoiding to shift the rest of the function body.
 
-Let's also use that code cleaning iteration to remove the variables types when they can be infered — like simply use `let items = NSMutableArray()` — and take advantage of that `guard` statement to also ensure that our json is really an array of `NSDictionary` objects. Finally, let's use a Swift-er return type `[ListItem]` instead of that ObjC `NSArray`:
+Let's also use that code cleaning iteration to remove the variables types when they can be inferred — like simply use `let items = NSMutableArray()` — and take advantage of that `guard` statement to also ensure that our json is really an array of `NSDictionary` objects. Finally, let's use a Swift-er return type `[ListItem]` instead of that ObjC `NSArray`:
 
 ```swift
 class ListItem {

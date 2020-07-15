@@ -69,7 +69,7 @@ This is ugly and quite verbose. Exactly what we don't want here on this blog. So
 
 ## A tuple of fixed length
 
-What about using a tuple of fixed length, and use `nil` values at the end if it's shorter? Sure that's wouldn't be a great way to represent persistant data across our app, but using that kind of format only inside our `switch` is ok, and will become very handy to treat every case with the same tuple of fixed length.
+What about using a tuple of fixed length, and use `nil` values at the end if it's shorter? Sure that's wouldn't be a great way to represent persistent data across our app, but using that kind of format only inside our `switch` is ok, and will become very handy to treat every case with the same tuple of fixed length.
 
 But how to build such a tuple? Well of course one could do a `switch` again:
 

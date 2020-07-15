@@ -11,7 +11,7 @@ translations:
     url: http://swift.gg/2015/12/15/mixins-over-inheritance/
 ---
 
-When coming from an Object-Oriented Programming language like ObjC, inheritence is often used to share code between multiple classes. But that solution is not always the best, and have some issues.  
+When coming from an Object-Oriented Programming language like ObjC, inheritance is often used to share code between multiple classes. But that solution is not always the best, and have some issues.  
 In today's article, we'll see how Swift's Protocol Extensions and their usage as "Mixins" can change the deal.
 
 > _TL;DR: You can download [the Swift Playground containing all the code of that article here](/assets/Mixins.playground.zip)._
@@ -47,7 +47,7 @@ What would you do, make a `CommonTableViewController` that implement the same th
 
 Of course, the typical and rightful answer is this:
 
-> Prefer Composition over Inheritence.
+> Prefer Composition over Inheritance.
 
 That means that insteed of making use of inheritance, we'll make our `UIViewController` contain / be composed of inner classes that provide the behavior.
 
