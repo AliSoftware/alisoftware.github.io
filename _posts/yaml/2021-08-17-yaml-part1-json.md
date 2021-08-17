@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "YAML Superpowers, part 1: JSON is YAML"
-permalink: yaml-1-json
 date: 2021-08-17
 tags: ci yaml
 ---
