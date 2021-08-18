@@ -3,6 +3,7 @@ layout: post
 title: "YAML Superpowers, part 1: JSON is YAML"
 date: 2021-08-17
 tags: ci yaml
+category: yaml
 ---
 
 This post is part 1 of a series of posts where I plan to focus on little-known features of YAML like multiline string processing, aliases and anchors, base64 support, tags and more.

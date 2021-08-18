@@ -16,12 +16,15 @@ layout: default
             {{ post.excerpt }}
           {% endif %}
         </p>
-        <p class="post-meta small">
+        <div class="post-meta small">
           {% if post.swift_version %}
-            <img alt="Swift {{ post.swift_version }}" src="https://img.shields.io/badge/Swift-{{ post.swift_version }}-green.svg" style="vertical-align: middle" />
-          {% endif %}  
+            <img alt="Swift {{ post.swift_version }}" src="https://img.shields.io/badge/Swift-{{ post.swift_version }}-orange.svg" style="vertical-align: middle" />
+          {% endif %}
+          {% for category in post.categories %}
+              <img alt="Topic: {{ category }}" src="https://img.shields.io/badge/Topic-{{ category | url_escape }}-blue.svg" style="vertical-align: middle" />
+          {% endfor %}
           {% if post.translations %}
-            — Also available in: 
+            <p class="post-translations small">– Also available in: 
             {% for translation in post.translations %}
               {% if translation.author %}
                 {% assign tooltip = " translation — Thanks to " | prepend: translation.lang | append: translation.author %}
@@ -31,8 +34,9 @@ layout: default
               <a href="{{ translation.url }}" title="{{ tooltip }}">{{ translation.flag }} {{ translation.lang }}</a>
               {% unless forloop.last %}, {% endunless %}
             {% endfor %}
+            </p>
           {% endif %}
-        </p>
+        </div>
       </div>
     {% endfor %}
   </div>
