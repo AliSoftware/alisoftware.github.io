@@ -36,6 +36,7 @@ But did you know you could also represent a list using the JSON "square brackets
 ```yaml
 ["item1", "item2", "item3", "etc"]
 ```
+
 That's right, that syntax is the same as what you use to represent arrays in JSON. And it's no coincidence, because JSON is a subset of YAML, so that's also valid YAML, and both syntaxes are interchangeable in YAML!
 
 Likewise, you often see dictionaries (aka "maps" in YAML parlance) represented like this in most YAML files:
@@ -159,7 +160,7 @@ Ready to go further? That's the whole goal of this article series after all! �
 
 In addition to all that above, YAML also provides quite powerful features that will be the focus of the next parts of this article series 🥳. Here's our program:
 
- - Multiline strings (part 2), including various ways to process indentation
+ - Multiline strings ([part 2](/yaml/2021/08/19/yaml-part2-strings)), including various ways to process indentation
  - Anchors & aliases (part 3), to avoid repeating yourself
  - Merging dictionaries (part 4), which is especially useful when used with anchors
  - Hex/Binary/Octal numbers, Booleans and the Null value (part 5)
@@ -168,7 +169,7 @@ In addition to all that above, YAML also provides quite powerful features that w
 
 To be honest, parts 2,3 and 4 are probably the ones that will be the most useful for CI configs, and the rest is mostly some bonus 😜. There's even more to YAML[^5], but this will hopefully already give you an extensive-enough tour to what will likely be the features you might find the most useful in the context of using YAML as config files.
 
-See you in part 2!
+See you in [part 2](/yaml/2021/08/19/yaml-part2-strings)!
 
 [^1]: Technically [JSON5](https://json5.org), which is a successor of JSON, does support comments; but the more common JSON that you've seen around for ages and that we still find in most places doesn't.
 
