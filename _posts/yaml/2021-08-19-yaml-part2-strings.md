@@ -7,7 +7,7 @@ category: yaml
 
 This is part 2 of a series of post about lesser-known features about YAML – especially the ones useful in contexts like CI or tools' config files. In this post we will discover the many ways YAML can represent strings, including multiline strings, keeping or stripping indentation, and more!
 
-<p class="small">[Missed part 1? head here!](/yaml/2021/08/17/yaml-part1-json)</p>
+<p class="small"><a href="/yaml/2021/08/17/yaml-part1-json">Missed part 1? head here!</a></p>
 
 ## Simple strings ("Flow" scalars)
 
