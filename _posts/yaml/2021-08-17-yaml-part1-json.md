@@ -101,6 +101,52 @@ This extract of a typical BuildKite config file[^3] defines:
    - The second single-key dictionary has the key `automattic/git-s3-cache#v1.1.0` and its values is yet another dictionary, this time with 2 keys.
    - For the second step though (the one to configure the test step), the value of the `plugins` key is in fact an array of mixed value, the first one being a single string, while the second one being a single-key dictionary like in the first step.
 
+<p><details><summary class="small">💡 More comfortable with JSON? Open to see the same structure using only JSON-compatible syntax.</summary>
+<!-- Editor's note: triple-backticks in markdown source seems to not be parsed by Jekyll's Kramdown renderer when inside a <details> node… so no syntax highlighting for this one :( -->
+<pre class="language-json"><code>{
+  "steps": [
+    {
+      "label": "Build the app",
+      "key": "build",
+      "plugins": [
+        {
+          "automattic/bash-cache#v1.5.0": {
+            "bucket": "a8c-cache"
+          }
+        },
+        {
+          "automattic/git-s3-cache#v1.1.0": {
+            "bucket": "a8c-repo-mirrors",
+            "repo": "wordpress-mobile/wordpress-ios/"
+          }
+        }
+      ],
+      "env": {
+        "IMAGE_ID": "xcode-12.5.1"
+      },
+      "command": "bundle exec fastlane build_for_testing"
+    },
+    {
+      "label": "Run Tests",
+      "key": "test",
+      "plugins": [
+        "automattic/bash-cache#v1.5.0",
+        {
+          "automattic/git-s3-cache#v1.1.0": {
+            "bucket": "a8c-repo-mirrors",
+            "repo": "wordpress-mobile/wordpress-ios/"
+          }
+        }
+      ],
+      "env": {
+        "IMAGE_ID": "xcode-12.5.1"
+      },
+      "command": "bundle exec fastlane tests"
+    }
+  ]
+}</code></pre>
+</details></p>
+
 These 2 ways of listing the various `plugins` in a CI `step` is actually common in most CIs (this is an example from a BuildKite config file, but e.g. CircleCI has similar use cases of arrays of mixed types, with Strings and single-key dictionaries too).
 
 This is a common way in YAML to describe an ordered list of items (here BuildKite plugins) while allowing some of them to define "options" (by making the plugin "name" be the key of a single-key dictionary, and providing the options as the value for that key), while others might not need any option (and most CI config syntaxes allow you to use simple strings mentioning the plugin "name" for those cases instead of single-key dict with no value[^4]).
