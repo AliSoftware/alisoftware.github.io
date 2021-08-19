@@ -99,8 +99,8 @@ This extract of a typical BuildKite config file[^3] defines:
  - The value of the `plugins` key is what might look the most unusual, as it is such a so-called ordered map, aka an _array of single-key dictionaries_.
    - In fact, for the first "step" described in this YAML, the value for `plugins` is an array of 2 items, each of them being a dictionary with only a single key – so deep down it's in fact 2 single-key dictionaries and not a single dictionary with 2 keys  as one might think… even if in practice for all intents and purposes you will probably read it as an ordered dictionary with 2 keys for interpretation of the config file.
    - The first single-key dictionary has the key `automattic/bash-cache#v1.5.0`, and its value is yet another dictionary (intended to define the "options" of that "plugin") which happens to only have the `bucket:` key
-   - The second single-key dictionary has the key `automattic/git-s3-cache#v1.1.0` and its values is yet another dictionary, this time with 2 keys.
-   - For the second step though (the one to configure the test step), the value of the `plugins` key is in fact an array of mixed value, the first one being a single string, while the second one being a single-key dictionary like in the first step.
+   - The second single-key dictionary has the key `automattic/git-s3-cache#v1.1.0` and its value is yet another dictionary, this time with 2 keys.
+   - For the second step though (the one to configure the test step), the value of the `plugins` key is in fact an array of mixed values, the first one being a single string, while the second one being a single-key dictionary like in the first step.
 
 <p><details><summary class="small">💡 More comfortable with JSON? Open to see the same structure using only JSON-compatible syntax.</summary>
 <!-- Editor's note: triple-backticks in markdown source seems to not be parsed by Jekyll's Kramdown renderer when inside a <details> node… so no syntax highlighting for this one :( -->
@@ -177,6 +177,6 @@ See you in [part 2](/yaml/2021/08/19/yaml-part2-strings)!
 
 [^3]: Borrowed from our Wordpress-iOS source code [here](https://github.com/wordpress-mobile/WordPress-iOS/blob/develop/.buildkite/pipeline.yml)
 
-[^4]: In most CIs, including BuildKite, it would also be valid to use a single-key dictionary with a `null` value for items which don't need options to be provided as values, instaed of using a single String. So we could have used `- automattic/bash-cache#v1.5.0: null` as well here. But let's keep the talk about null values for part 5 of this article series ☺️.
+[^4]: In most CIs, including BuildKite, it would also be valid to use a single-key dictionary with a `null` value for items which don't need options to be provided as values, instead of using a single String. So we could have used `- automattic/bash-cache#v1.5.0: null` as well here. But let's keep the talk about null values for part 5 of this article series ☺️.
 
 [^5]: I'll probably not go into preprocessor directives, or defining your own tags, or putting multiple YAML documents into a single YAML file, etc… because they are way less useful to the context of using YAML as CI or tools' config files, but feel free to search for those feature if you're curious about YAML in general!
