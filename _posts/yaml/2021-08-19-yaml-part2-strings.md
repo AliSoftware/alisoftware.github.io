@@ -54,7 +54,7 @@ In a multi-line block, YAML first determines the indentation level of the whole 
  - Either by guessing it from the number of leading spaces of the first non-empty line, if you don't specify anything (most common case)
  - Or by using the explicit value you provide after the `|` or `>`, to indicate the number of *additional* spaces compared to the parent node.
 
-The leading spaces correpsonding to (implicit or explicit) indentation are then ignored in the final interpreted string.
+The leading spaces corresponding to (implicit or explicit) indentation are then ignored in the final interpreted string.
 
 ```yaml
 multi-line-yaml-blocks:
