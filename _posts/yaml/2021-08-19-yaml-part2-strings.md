@@ -5,7 +5,7 @@ tags: ci yaml
 category: yaml
 ---
 
-This is part 2 of a series of post about lesser-known features about YAML – especially the ones useful in contexts like CI or tools' config files. In this post we will discover the many ways YAML can represent strings, including multiline strings, keeping or stripping indentation, and more!
+This is part 2 of a series of post about lesser-known features of YAML – especially the ones useful in contexts like CI or tools' config files. In this post we will discover the many ways YAML can represent strings, including multiline strings, keeping or stripping indentation, and more!
 
 <p class="small"><a href="/yaml/2021/08/17/yaml-part1-json">Missed part 1? head here!</a></p>
 
@@ -43,9 +43,9 @@ This means that the strings in the following array of strings are all valid:
 
 ## Multi-line blocks and long strings
 
-YAML also supports writing strings on multiple lines in your YAML, with two different styles: literal and folded. Those are represented by a `|` (for literal style) or `>` (for folded style) header line (see examples below), and we will go into their differences below.
+YAML also supports writing strings on multiple lines in your YAML, with two different styles: literal and folded. Those are represented by a `|` (for literal style) or `>` (for folded style) header line (see examples below), and we will go into their differences soon.
 
-But first, note that any leading indentation in those multi-line blocks is stripped by YAML, so you don't have to worry about this; in fact, let's talk about this first before going further.
+But first, note that any leading indentation in those multi-line blocks is stripped by YAML, so you don't have to worry about it; in fact, let's talk a bit about indentation first before going further.
 
 ### Indentation in multi-line blocks
 
@@ -81,7 +81,7 @@ When using the block syntax, the literal style, denoted by `|` header, is the si
 
 As the name suggests, it keeps the content as is, including rendering newlines as actual newlines in the end content. The only thing that is stripped is the leading indentation.
 
-This is most useful when you want to embed strings with multiple lines in your YAML, typically like the content of a bash script with multiple command lines.
+This is most useful when you want to embed strings with multiple lines in your YAML; a typical example being the content of a bash script with multiple commands defined in a step of your CI config file.
 
 ```yaml
 steps:
@@ -114,7 +114,7 @@ notify:
 
 ### Chomp mode
 
-In addition to the style (literal `|` or folded `>`), and optional explicit indentation number, you can also specify a chomp mode in the block header. The chomp mode defines how YAML will interpret trailing newlines and spaces in your block, and can be one of the following:
+In addition to the style (literal `|` or folded `>`), and optional explicit indentation number, you can also specify a chomp mode in the block header. The chomp mode defines how YAML will interpret trailing newlines and spaces at the end of your block, and can be one of the following:
 
  - "Clip" mode: this is the default behavior, the one used when you don't specify any specific chomp indicator in your header. In this mode, the final newline is preserved, but any additional trailing empty line are ignored.
  - "Strip" mode: indicated by a `-` in the block header, this will strip not only trailing empty lines like in clip mode, but also the final newline at the end of the string.
@@ -142,11 +142,11 @@ equivalent-output:
   keep: "This content will keep both the LF and the trailing empty lines.\n\n\n"
 ```
 
-### Block Comment
+### Optional block Comment
 
-Every block syntax starts with a header (with `|` or `>`, optional indentation number, and optional chomp indicator). The only other thing that is also allowed on that header line is a single-line `# comment`; the rest (the content of the block literal) has to start on the next line.
+So every block syntax starts with a header (with `|` or `>`, optional indentation number, and optional chomp indicator). The only other thing that is also allowed on that header line is a single-line `# comment`; the rest (the content of the block literal) has to start on the next line.
 
-Adding a single-line comment can be nice to provide some context for future you:
+Adding a single-line comment can be nice to provide some context:
 
 ```yaml
 notify:
